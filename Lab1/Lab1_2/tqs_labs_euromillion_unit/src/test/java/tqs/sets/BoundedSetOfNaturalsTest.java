@@ -35,6 +35,7 @@ class BoundedSetOfNaturalsTest {
     }
 
     // @Disabled("TODO revise test logic")
+    @DisplayName("add elements to a set")
     @Test
     public void testAddElement() {
 
@@ -57,6 +58,7 @@ class BoundedSetOfNaturalsTest {
     }
 
     // @Disabled("TODO revise to test the construction from invalid arrays")
+    @DisplayName("New BoundedSetOfNaturals rejects bad arrays")
     @Test
     public void testAddFromBadArray() {
         int[] elems = new int[]{10, -20, -30};
@@ -76,6 +78,7 @@ class BoundedSetOfNaturalsTest {
     }
 
     //@Disabled(" NEW Test: Intersection of two sets")
+    @DisplayName("Intersection of two sets")
     @Test
     public void testIntersection() {
         BoundedSetOfNaturals setI = setB.intersects(setC);

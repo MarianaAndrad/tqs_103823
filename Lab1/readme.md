@@ -125,9 +125,9 @@ Depois da criação de um projeto *Maven*, no ficheiro *POM.xml*, é necessário
 ### Diagrama UML 
   ![diagrama UML](/Lab1/Lab1_1/IStack.png)
 
-A implementação da *TqsStack* seguiu um processo de **desenvolvimento orientado por testes (TDD)**, onde antes foram escritos testes antes da implementação do codígo. 
-A classe **DraftStack**, trata-se da implementação inicial de **TqsStack**,  sem o implementação de código, onde todos os testes falham. 
-Em seguida, foi implementada a classe **TqsStack** corrigida, onde os testes do ficheiro **TqsStackTest** forma executados repetidamente, e até todos os testes serem passados, de forma a garantir que a classse estivesse correta e completa.
+A implementação da *TqsStack* seguiu um processo de **desenvolvimento orientado por testes (TDD)**, onde antes foram escritos testes antes da implementação do codígo. <br>
+A classe **DraftStack**, trata-se da implementação inicial de **TqsStack**,  sem o implementação de código, onde todos os testes falham. <br>
+Em seguida, foi implementada a classe **TqsStack** corrigida, onde os testes do ficheiro **TqsStackTest** forma executados repetidamente, e até todos os testes serem passados, de forma a garantir que a classse estivesse correta e completa.<br>
 A classe **BoundedStack** trata-se de uma implentação de *TqsStack* com  um limite máximo de elementos. A sua implementação também foi feita com o mesmo processo da anterior, e o seu teste no ficherio **BoundedStackTest**.
 
 
@@ -259,9 +259,9 @@ Na imagem dada pode se observar que o projeto possui 656 instruções, 70 branch
 #### ##### **BoundedSetOfNaturals After**
 ![BoundedSetOfNaturals-after.png](/Lab1/Lab1_2/BoundedSetOfNaturals-after.png)
 
-Na classe *BoundedSetOfNaturals* foi necessário acrescentar mais caso de teste explificamente em **testAddElement()** e **testAddFromArray()**, pois devido a repetição de cenários iguais e falta de outros testes.
-E colocação de um novo teste para testar o metodo intersects, que por sinal também era necessário implementar. 
-Em ambos os resultados os Hashcode e o equals(Object) não tem percentagem a 100%, pois como este métodos são padrão em java e pode ser gerados automaticamente pelo IDE, por isso é que se tente a não escrever testes específicos para eles. No entanto, é importante lembrar que, se você implementar os métodos `equals()` e `hashCode()` de forma personalizada, ou seja, que diferem do padrão fornecido pelo Java, é importante testá-los adequadamente. Isso porque a igualdade e a comparação de hash são usadas em muitas partes do código Java, como em coleções e algoritmos de busca, e um comportamento incorreto desses métodos pode levar a bugs no sistema.
+Na classe *BoundedSetOfNaturals* foi necessário acrescentar mais caso de teste explificamente em **testAddElement()** e **testAddFromArray()**, pois devido a repetição de cenários iguais e falta de outros testes.<br>
+E colocação de um novo teste para testar o metodo intersects, que por sinal também era necessário implementar. <br>
+Em ambos os resultados os *Hashcode* e o *equals(Object)* não tem percentagem a 100%, pois como este métodos são padrão em java e pode ser gerados automaticamente pelo IDE, por isso é que se tente a não escrever testes específicos para eles. No entanto, é importante lembrar que, se você implementar os métodos `equals()` e `hashCode()` de forma personalizada, ou seja, que diferem do padrão fornecido pelo Java, é importante testá-los adequadamente. Isso porque a igualdade e a comparação de hash são usadas em muitas partes do código Java, como em coleções e algoritmos de busca, e um comportamento incorreto desses métodos pode levar a bugs no sistema.
 
 # Referências
 * [SmartBear. (2021). What is Unit Testing?](https://smartbear.com/learn/automated-testing/what-is-unit-testing/)

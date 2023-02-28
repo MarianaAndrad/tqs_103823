@@ -67,11 +67,11 @@ assertEquals(2, calculator.add(1, 1), "1 + 1 should equal 2");
 Nesta etapa foi pedido a implementação de uma **estrutura de dados de pilha** (TqsStack), juntamente com a implementação de *Unit Test* apropriados. 
 
 A *stack contract* é um conjunto de regras que descreve o comportamento de uma pilha, com o príncipio de **LIFO** (Last In First Out). A *stack contract* é composta por 5 metodos:
-		* **push**: Adiciona um elemento ao topo da pilha;
-		* **pop**: Remove o elemento do topo da pilha;
-		* **peek**: Retorna o elemento do topo da pilha;
-		* **size**: Retorna o número de elementos na pilha;
-		* **isEmpty**: Retorna se a pilha está vazia;
+  *	**push**: Adiciona um elemento ao topo da pilha; 
+  * **pop**: Remove o elemento do topo da pilha;
+  * **peek**: Retorna o elemento do topo da pilha;
+  * **size**: Retorna o número de elementos na pilha;
+  * **isEmpty**: Retorna se a pilha está vazia;
 
 ## Estrutura do projeto
 ```

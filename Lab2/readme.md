@@ -9,7 +9,7 @@ Um aplicativo que precisa executar geocodificação reserva para localizar um c�
 
 ![](Lab2_2/Geocoding_class.png)
 
-## whenResolveDetiGps_returnJacintoMagalhaeAddress
+## **whenResolveDetiGps_returnJacintoMagalhaeAddress**
 
 Este método testa a funcionalidade do método **findAddressForLocation()** quando recebe coordenadas válidas. 
 
@@ -17,16 +17,16 @@ Neste teste, usamos Mockito para criar um Mock da interface ISimpleHttpClient, q
 
 Em seguida, chamamos o método **findAddressForLocation()** com coordenadas válidas e verificamos se a resposta retornada corresponde ao endereço esperado.
 
-### Questão alinea b 
+### **Questão alinea b**
 O SuT(subject under test) é a classe *AddressResolver* e o serviço a ser mockado é *ISimpleHttpClient*, responsável por fazer a chamada HTTP para o serviço de geocodificação remota.
 
-## whenBadCoordidates_thenReturnNoValidAddress
+## **whenBadCoordidates_thenReturnNoValidAddress**
 
 Este método testa a funcionalidade do método **findAddressForLocation()** quando recebe coordenadas inválidas.
 
 Neste teste, configuramos o mock para retornar uma resposta JSON que indica que uma solicitação inválida foi feita com coordenadas incorretas. Em seguida, chamamos o método **findAddressForLocation()** com coordenadas inválidas e verificamos se a resposta retornada corresponde a um endereço inválido esperado.
 
-## whenCoordinatesNull_thenReturnExpection
+## **whenCoordinatesNull_thenReturnExpection**
 
 Este método extra testa a funcionalidade do método **findAddressForLocation()** quando recebe coordenadas nulas.
 
@@ -44,7 +44,7 @@ Na forma pedida e para garantir que a execução do teste não falhe devido a pr
 
 Por fim, executei os testes pelo terminal com os seguintes comandos: `mvn test` e o `mvn install failsafe:integration-test`.
 
-## Diferenças entre `mvn test` e o `mvn install failsafe:integration-test`
+## **Diferenças entre `mvn test` e o `mvn install failsafe:integration-test`**
 
 O comando `mvn test` executa os testes unitários, enquanto o comando `mvn install failsafe:integration-test` executa os testes de integração do projeto usando o plugin Failsafe do Maven.
 
@@ -53,17 +53,17 @@ O plugin Failsafe é usado para executar testes de integração. O plugin Failsa
 O plugin Failsafe é executado quando o comando `mvn install failsafe:integration-test` é executado. O plugin Failsafe executa os testes de integração em um novo ciclo de vida do Maven, chamado de ciclo de vida de integração.
 
 
-## Testes de unidade e de integração
+## **Testes de unidade e de integração**
 
-### Testes de unidade
+### **Testes de unidade**
 
 Os testes de unidade testam as classes e métodos individualmente, isolando as dependências externas usando mocks ou stubs, e garantem que cada unidade do código funcione corretamente em relação à sua especificação.
 
-### Testes de integração
+### **Testes de integração**
 
 Os testes de integração, por outro lado, testam a interação entre diferentes unidades do sistema, bem como a integração com componentes externos, como bancos de dados, sistemas de arquivos, serviços da web, etc. Eles garantem que o sistema funcione como um todo e que as diferentes partes se comuniquem corretamente.
 
-### Diferenças entre testes de unidade e de integração
+### **Diferenças entre testes de unidade e de integração**
 
 Portanto, enquanto os testes de unidade podem detectar problemas em uma única unidade do código, os testes de integração são importantes para garantir que o sistema como um todo atenda aos requisitos e funcione corretamente em um ambiente mais realista.
 

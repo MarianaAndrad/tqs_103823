@@ -68,4 +68,10 @@ Os testes de integração, por outro lado, testam a interação entre diferentes
 Portanto, enquanto os testes de unidade podem detectar problemas em uma única unidade do código, os testes de integração são importantes para garantir que o sistema como um todo atenda aos requisitos e funcione corretamente em um ambiente mais realista.
 
  
+# Referencias
+
+* [Mockito](https://site.mockito.org/))<br>
+* [Mockito example](https://github.com/bonigarcia/mastering-junit5/tree/master/junit5-mockito))<br>
+* [Testing with Hamcrest](https://www.baeldung.com/java-junit-hamcrest-guide)<br>
+* [Hamcrest example](https://github.com/bonigarcia/mastering-junit5/blob/master/junit5-assertions/src/test/java/io/github/bonigarcia/HamcrestTest.java)
 

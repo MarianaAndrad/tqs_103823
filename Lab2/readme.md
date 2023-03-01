@@ -1,6 +1,82 @@
 # Lab02 - Mocking dependencias (for unit testing)
 
 # Stocks portfolio
+O StocksPortfolio contém uma coleção de Ações, um valor atual da carteira dependente do estado atual do mercado de ações. A imagem seguinte corresponde a classes implementadas para o exercicio.
+
+![](Lab2_1/StockPorfolioClasses.png)
+
+## POM.XMl
+Para implementar os testes unitários, foi necessário adicionar as seguintes dependências ao ficheiro pom.xml:
+
+* JUnit 5
+* Mockito
+* Hamcrest
+
+```xml
+    <properties>
+        <slf4j.version>2.0.6</slf4j.version>
+        <logback.version>1.4.5</logback.version>
+
+        <junit-jupiter.version>5.9.2</junit-jupiter.version>
+        <mockito-junit-jupiter.version>5.1.1</mockito-junit-jupiter.version>
+
+        <maven-surefire-plugin.version>3.0.0-M9</maven-surefire-plugin.version>
+
+        <maven.compiler.source>17</maven.compiler.source>
+        <maven.compiler.target>17</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>${slf4j.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+            <version>${logback.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter</artifactId>
+            <version>${junit-jupiter.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-junit-jupiter</artifactId>
+            <version>${mockito-junit-jupiter.version}</version>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.hamcrest</groupId>
+            <artifactId>hamcrest-all</artifactId>
+            <version>1.3</version>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>${maven-surefire-plugin.version}</version>
+            </plugin>
+        </plugins>
+    </build>
+```
+
+## Test *getTotalValue()*
+
+Este método testa a funcionalidade do método **getTotalValue()** da classe **StocksPortfolio**.
+
+Neste teste, usamos Mockito para criar um Mock da interface IStockMarket, que é usada pelo StocksPortfolio para obter o valor atual de cada ação. Configuramos o mock para retornar um valor de ação fixo para cada ação.
+
+Em seguida, chamamos o método **getTotalValue()** e verificamos se o valor total retornado corresponde ao valor total esperado.
 
 # Geocoding
 Um aplicativo que precisa executar geocodificação reserva para localizar um código postal para um determinado ponto de coordenadas de GPS. Este serviço utiliza APIs públicas, exemplo [MapQuest API](https://developer.mapquest.com/documentation/geocoding-api/reverse/get/) para obter o código postal. O serviço é executado em um servidor dedicado e é acessível através de uma API REST.

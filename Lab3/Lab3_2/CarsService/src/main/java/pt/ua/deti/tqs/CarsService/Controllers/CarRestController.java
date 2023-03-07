@@ -22,17 +22,21 @@ public class CarRestController {
 
     @PostMapping("/cars")
     public ResponseEntity<Car> createCar(@RequestBody Car car) {
-        return null;
+        HttpStatus status = HttpStatus.CREATED;
+        Car savedCar = carManagerService.save(car);
+        return new ResponseEntity<>(car, status);
     }
 
     @GetMapping(path = "/cars",  produces = "application/json")
     public List<Car> getAllCars() {
-        return null;
+        return carManagerService.getAllCars();
     }
 
     @GetMapping("/cars/{id}")
-    public ResponseEntity<Car> getCarById(@PathVariable(value = "id") Long carId){
-        return null;
+    public ResponseEntity<Car> getCarById(@PathVariable(value = "id") Long carId) throws ResourceNotFoundException {
+        Car car = carManagerService.getCarDetails(carId)
+                .orElseThrow(() -> new ResourceNotFoundException("Car not found for id: " + carId));
+        return ResponseEntity.ok().body(car);
     }
 
 }

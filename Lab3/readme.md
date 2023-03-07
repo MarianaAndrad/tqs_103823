@@ -2,17 +2,17 @@
 
 # Employee manager example
 
-# A
-base de dados disponibel 
-logica dos metodos esta bem implementada 
+        # A
+        base de dados disponibel 
+        logica dos metodos esta bem implementada 
 
-# B
-incidir na logica do servico 
+        # B
+        incidir na logica do servico 
 
-# C
-endpoints estao funcionais 
+        # C
+        endpoints estao funcionais 
 
-# D, E
+        # D, E
 
 ## Questions:
 
@@ -39,7 +39,10 @@ with SpringBoot. Which are the main/key differences?
 
 **Resposta**:
 
+
 # Cars Service
+
+
 
 # Integration test
 

@@ -19,7 +19,7 @@ Mock é um objeto que simula o comportamento de uma dependência externa, mas ta
 ## SuT
 SuT significa "Subject under Test" e se refere ao objeto ou componente que está sendo testado em um determinado cenário de teste. Em outras palavras, é o objeto que é testado em um caso de teste específico. O SuT é geralmente a classe ou método que está sendo testado e é o ponto focal do teste. Ao escrever um caso de teste, é importante entender qual é o SuT para garantir que o teste esteja se concentrando no objeto correto e que o comportamento do objeto seja testado de forma adequada.
 
-## Guideline
+## Workflow
 1. Prepare a mock to substitute the remote service (@Mock annotation)
 2. Create an instance of the subject under test (SuT) and use the mock to set 
 the (remote) service instance.

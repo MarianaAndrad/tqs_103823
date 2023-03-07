@@ -34,5 +34,4 @@ public class CarRestController {
     public ResponseEntity<Car> getCarById(@PathVariable(value = "id") Long carId){
         return null;
     }
-
 }

@@ -16,17 +16,15 @@ public class CarManagerService {
         this.carRepository = carRepository;
     }
 
-    public Car save(Object any) {
-        return null;
+    public Car save(Car car){
+        return carRepository.save(car);
     }
 
     public List<Car> getAllCars(){
-        return null;
+        return carRepository.findAll();
     }
 
-    public Optional<Car> getCarDetails(Long carId){
-        return null;
+    public Optional<Car> getCarDetails(Long carId) {
+        return Optional.ofNullable(carRepository.findByCarId(carId));
     }
-
-
 }

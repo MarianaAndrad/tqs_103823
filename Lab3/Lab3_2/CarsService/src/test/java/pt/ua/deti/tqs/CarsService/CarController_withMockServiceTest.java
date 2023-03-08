@@ -38,7 +38,7 @@ public class CarController_withMockServiceTest {
     }
 
     @Test
-    void whwnPostCar_thenCreateCar() throws Exception{
+    void whenPostCar_thenCreateCar() throws Exception{
         Car car = new Car ("Nissan", "Nissan3");
 
         when(service.save(Mockito.any())).thenReturn(car);

@@ -24,7 +24,7 @@ public class CarRestController {
     public ResponseEntity<Car> createCar(@RequestBody Car car) {
         HttpStatus status = HttpStatus.CREATED;
         Car savedCar = carManagerService.save(car);
-        return new ResponseEntity<>(car, status);
+        return new ResponseEntity<>(savedCar, status);
     }
 
     @GetMapping(path = "/cars",  produces = "application/json")

@@ -1,6 +1,7 @@
 package pt.ua.deti.tqs.CarsService;
 
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -58,7 +59,7 @@ public class CarService_UnitTest {
         Long carId = 11L;
         Optional<Car> found = carService.getCarDetails(carId);
 
-        assertThat(found.isPresent()).isEqualTo(carId);
+        assertThat(found.isPresent()).isEqualTo(true);
         assertThat(found.get().getCarId()).isEqualTo(carId);
 
         Mockito.verify(carRepository, VerificationModeFactory.times(1)).findByCarId(carId);
@@ -71,16 +72,17 @@ public class CarService_UnitTest {
 
         assertThat(found.isPresent()).isEqualTo(false);
         Mockito.verify(carRepository, VerificationModeFactory.times(1)).findByCarId(carId);
-        assertThat(found).isNull();
+
     }
 
     @Test
     public void given3Cars_whenGetAll_thenReturn3Records(){
-        Car audi = new Car("A1", "audi");
-        Car bmw = new Car("BMW XM", "BMW");
-        Car nissan = new Car("Nissan", "Nissan");
+        Car audi = new Car(11L,"A1", "audi");
+        Car bmw = new Car(12L,"BMW XM", "BMW");
+        Car nissan = new Car(13L,"Nissan", "Nissan");
 
         List<Car> allCars = carService.getAllCars();
+
         verifyFindAllCarsIsCalledOnce();
         assertThat(allCars).hasSize(3).extracting(Car::getCarId).contains(nissan.getCarId(), bmw.getCarId(), audi.getCarId());
         assertThat(allCars).hasSize(3).extracting(Car::getModel).contains(nissan.getModel(), bmw.getModel(), audi.getModel());
@@ -102,23 +104,23 @@ public class CarService_UnitTest {
         assertThat(carFound).isNotNull();
     }
 
+
     @Test
-    public void whenGetCarDetails_thenCarShouldNotBeFound(){
+    public void whenGetCarDetails_thenCarShouldNotBeFound() {
         Optional<Car> carFound = carService.getCarDetails(-10L);
 
         assertThat(carFound.isPresent()).isEqualTo(false);
 
         Mockito.verify(carRepository, VerificationModeFactory.times(1)).findByCarId(-10L);
 
-        assertThat(carFound).isNull();
     }
 
     @Test
     public void whenSaveCar_thenCarShouldBeSaved(){
-        Car audi = new Car("A1", "audi");
+        Car audi = new Car(11L,"A1", "audi");
         Car savedCar = carService.save(audi);
 
-        assertThat(savedCar).isNotNull();
+        assertThat(savedCar).isNotNull().isEqualTo(audi);
 
         Mockito.verify(carRepository, VerificationModeFactory.times(1)).save(audi);
 

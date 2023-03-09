@@ -71,7 +71,7 @@ public class CarRestControllerTemplateIT {
         Car car = new Car("Audi", "A3");
         carRepository.saveAndFlush(car);
 
-        ResponseEntity<Car> response = restTemplate.exchange("/api/cars/" + car.getCarId(), HttpMethod.GET, null, new ParameterizedTypeReference<Car>() {});
+        ResponseEntity<Car> response = restTemplate.exchange("/api/carId/" + car.getCarId(), HttpMethod.GET, null, new ParameterizedTypeReference<Car>() {});
 
         assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
 

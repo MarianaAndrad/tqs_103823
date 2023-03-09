@@ -39,12 +39,12 @@ public class CarRestController {
         return ResponseEntity.ok().body(car);
     }
 
-    @GetMapping("/carsModel/{model}")
+    @GetMapping(path = "/carsModel/{model}", produces = "application/json")
     public List<Car> getCarByModel(@PathVariable(value = "model") String model) throws ResourceNotFoundException {
         return carManagerService.getCarByModel(model);
     }
 
-    @GetMapping("/carsMaker/{maker}")
+    @GetMapping(path="/carsMaker/{maker}", produces = "application/json")
     public List<Car> getCarByMaker(@PathVariable(value = "maker") String maker) throws ResourceNotFoundException {
         return carManagerService.getCarByMaker(maker);
     }
@@ -54,13 +54,13 @@ public class CarRestController {
         return carManagerService.existsByCarId(carId);
     }
 
-    @DeleteMapping("car/{id}")
+    @DeleteMapping("/car/{id}")
     public ResponseEntity<String> deleteCar(@PathVariable(value = "id") Long carId) {
         HttpStatus status = HttpStatus.ACCEPTED;
         String response = "";
-        if(carManagerService.deleteCar(carId)=="Car deleted successfully"){
+        if (carManagerService.deleteCar(carId).equals("Car deleted successfully")) {
             return new ResponseEntity<>("Car deleted successfully", status);
-        }else{
+        } else {
             return new ResponseEntity<>("Car not found", HttpStatus.NOT_FOUND);
         }
 

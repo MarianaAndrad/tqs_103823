@@ -41,7 +41,7 @@ public class CarManagerService {
     }
 
     public String deleteCar(Long carId) {
-        if (carRepository.deleteByCarId(carId)){
+        if (carRepository.deleteByCarId(carId) != null){
             return "Car deleted successfully";
         }
         return "Car not found";

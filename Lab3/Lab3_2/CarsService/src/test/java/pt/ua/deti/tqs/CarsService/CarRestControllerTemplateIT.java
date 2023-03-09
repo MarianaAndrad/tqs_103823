@@ -20,8 +20,8 @@ import static org.assertj.core.api.Assertions.assertThat;
 import java.util.List;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-// @AutoConfigureTestDatabase // this annotation is not needed because we are using the same database
-@TestPropertySource(locations = "/application-integrationtest.properties")
+@AutoConfigureTestDatabase // this annotation is not needed because we are using the same database
+// @TestPropertySource(locations = "/application-integrationtest.properties")
 public class CarRestControllerTemplateIT {
     // will need to use the server port for the invocation url
     @LocalServerPort
@@ -79,10 +79,80 @@ public class CarRestControllerTemplateIT {
         assertThat(response.getBody().getMaker()).isEqualTo("A3");
     }
 
+    @Test
+    void whenValidInput_thenGetCarByModel_thenStatus200(){
+        Car car = new Car("Audi", "A3");
+        carRepository.saveAndFlush(car);
+        Car car2 = new Car("Audi", "A4");
+        carRepository.saveAndFlush(car2);
+
+        ResponseEntity<List<Car>> response = restTemplate
+                .exchange("/api/carsModel/" + car.getModel() , HttpMethod.GET, null, new ParameterizedTypeReference<List<Car>>() {
+                });
+
+        assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
+        assertThat(response.getBody()).extracting(Car::getModel).containsExactly("Audi", "Audi");
+        assertThat(response.getBody()).extracting(Car::getMaker).containsExactly("A3", "A4");
+
+    }
+
+    @Test
+    void whenValidInput_thenGetCarByMaker_thenStatus200(){
+        Car car = new Car("Audi", "A3");
+        carRepository.saveAndFlush(car);
+        Car car2 = new Car("astro", "A3");
+        carRepository.saveAndFlush(car2);
+
+        ResponseEntity<List<Car>> response = restTemplate
+                .exchange("/api/carsMaker/" + car.getMaker() , HttpMethod.GET, null, new ParameterizedTypeReference<List<Car>>() {
+                });
+
+        assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
+        assertThat(response.getBody()).extracting(Car::getModel).containsExactly("Audi", "astro");
+        assertThat(response.getBody()).extracting(Car::getMaker).containsExactly("A3", "A3");
+    }
+
+    @Test
+    void whenValidInput_thenExistCarValidId_thenStatus200(){
+        Car car = new Car(1L,"Audi", "A3");
+        carRepository.saveAndFlush(car);
+
+        ResponseEntity<Boolean> response = restTemplate
+                .exchange("/api/Bool/carID/" + car.getCarId() , HttpMethod.GET, null, new ParameterizedTypeReference<>() {
+                });
+
+        assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
+        assertThat(response.getBody().equals(true));
+    }
+
+    @Test
+    void whenValidInput_thenExistCarInValidId_thenStatus200(){
+        Car car = new Car(1L,"Audi", "A3");
+        carRepository.saveAndFlush(car);
+
+        ResponseEntity<Boolean> response = restTemplate
+                .exchange("/api/Bool/carID/2" , HttpMethod.GET, null, new ParameterizedTypeReference<>() {
+                });
+
+        assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
+        assertThat(response.getBody().equals(false));
+    }
 
     private void createTestCar(String model, String market) {
         Car newcar = new Car(model, market);
         carRepository.saveAndFlush(newcar);
+    }
+
+    @Test
+    void whenValidInput_thenDeleteCar() {
+        Car car = new Car(11L,"Audi", "A4");
+        carRepository.saveAndFlush(car);
+        ResponseEntity<String> response = restTemplate
+                .exchange("/api/car/"+ car.getCarId() , HttpMethod.DELETE, null, new ParameterizedTypeReference<>() {
+                });
+
+        assertThat(response.getStatusCode()).isEqualTo(HttpStatus.ACCEPTED);
+        assertThat(response.getBody().equals("Car deleted successfully"));
     }
 
 }

@@ -64,10 +64,10 @@ public class CarService_UnitTest {
         Mockito.when(carRepository.findByMaker(bmw.getMaker())).thenReturn(List.of(bmw));
         Mockito.when(carRepository.findByMaker(nissan.getMaker())).thenReturn(List.of(nissan));
 
-        Mockito.when(carRepository.deleteByCarId(audi.getCarId())).thenReturn(true);
-        Mockito.when(carRepository.deleteByCarId(bmw.getCarId())).thenReturn(true);
-        Mockito.when(carRepository.deleteByCarId(nissan.getCarId())).thenReturn(true);
-        Mockito.when(carRepository.deleteByCarId(-10L)).thenReturn(false);
+        Mockito.when(carRepository.deleteByCarId(audi.getCarId())).thenReturn(audi.getCarId());
+        Mockito.when(carRepository.deleteByCarId(bmw.getCarId())).thenReturn(bmw.getCarId());
+        Mockito.when(carRepository.deleteByCarId(nissan.getCarId())).thenReturn(nissan.getCarId());
+        Mockito.when(carRepository.deleteByCarId(-10L)).thenReturn(null);
 
 
         Mockito.when(carRepository.findByCarId(-10L)).thenReturn(null);

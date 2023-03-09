@@ -11,6 +11,7 @@ import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.test.context.TestPropertySource;
 import pt.ua.deti.tqs.CarsService.Data.CarRepository;
 import pt.ua.deti.tqs.CarsService.Model.Car;
 
@@ -19,7 +20,8 @@ import static org.assertj.core.api.Assertions.assertThat;
 import java.util.List;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-@AutoConfigureTestDatabase
+// @AutoConfigureTestDatabase // this annotation is not needed because we are using the same database
+@TestPropertySource(locations = "/application-integrationtest.properties")
 public class CarRestControllerTemplateIT {
     // will need to use the server port for the invocation url
     @LocalServerPort

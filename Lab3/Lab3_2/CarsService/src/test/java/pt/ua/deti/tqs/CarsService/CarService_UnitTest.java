@@ -165,17 +165,21 @@ public class CarService_UnitTest {
     @Test
     public void whenDeleteCar_thenCarShouldBeDeleted(){
         Long carId = 11L;
-        carService.deleteCar(carId);
+        String response = carService.deleteCar(carId);
 
         Mockito.verify(carRepository, VerificationModeFactory.times(1)).deleteByCarId(carId);
+
+        assertThat(response).isEqualTo("Car deleted successfully");
     }
 
     @Test
     public void whenDeleteCar_thenCarShouldNotBeDeleted(){
         Long carId = -10L;
-        carService.deleteCar(carId);
+        String response = carService.deleteCar(carId);
 
         Mockito.verify(carRepository, VerificationModeFactory.times(1)).deleteByCarId(carId);
+
+        assertThat(response).isEqualTo("Car not found");
     }
 
     @Test

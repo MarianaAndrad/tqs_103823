@@ -51,6 +51,19 @@ public class CarService_UnitTest {
         Mockito.when(carRepository.findByCarId(bmw.getCarId())).thenReturn(bmw);
         Mockito.when(carRepository.findByCarId(nissan.getCarId())).thenReturn(nissan);
 
+        Mockito.when(carRepository.existsByCarId(audi.getCarId())).thenReturn(true);
+        Mockito.when(carRepository.existsByCarId(bmw.getCarId())).thenReturn(true);
+        Mockito.when(carRepository.existsByCarId(nissan.getCarId())).thenReturn(true);
+        Mockito.when(carRepository.existsByCarId(-10L)).thenReturn(false);
+
+        Mockito.when(carRepository.findByModel(audi.getModel())).thenReturn(List.of(audi));
+        Mockito.when(carRepository.findByModel(bmw.getModel())).thenReturn(List.of(bmw));
+        Mockito.when(carRepository.findByModel(nissan.getModel())).thenReturn(List.of(nissan));
+
+        Mockito.when(carRepository.findByMaker(audi.getMaker())).thenReturn(List.of(audi));
+        Mockito.when(carRepository.findByMaker(bmw.getMaker())).thenReturn(List.of(bmw));
+        Mockito.when(carRepository.findByMaker(nissan.getMaker())).thenReturn(List.of(nissan));
+
         Mockito.when(carRepository.findByCarId(-10L)).thenReturn(null);
     }
 
@@ -127,5 +140,121 @@ public class CarService_UnitTest {
         assertThat(savedCar.getCarId()).isEqualTo(audi.getCarId());
         assertThat(savedCar.getModel()).isEqualTo(audi.getModel());
         assertThat(savedCar.getMaker()).isEqualTo(audi.getMaker());
+    }
+
+    @Test
+    public void whenExistsCar_thenCarShouldBeFound(){
+        Long carId = 11L;
+        boolean found = carService.existsByCarId(carId);
+
+        assertThat(found).isEqualTo(true);
+
+        Mockito.verify(carRepository, VerificationModeFactory.times(1)).existsByCarId(carId);
+    }
+
+    @Test
+    public void whenExistsCar_thenCarShouldNotBeFound(){
+        Long carId = -10L;
+        boolean found = carService.existsByCarId(carId);
+
+        assertThat(found).isEqualTo(false);
+
+        Mockito.verify(carRepository, VerificationModeFactory.times(1)).existsByCarId(carId);
+    }
+
+    @Test
+    public void whenDeleteCar_thenCarShouldBeDeleted(){
+        Long carId = 11L;
+        carService.deleteCar(carId);
+
+        Mockito.verify(carRepository, VerificationModeFactory.times(1)).deleteByCarId(carId);
+    }
+
+    @Test
+    public void whenDeleteCar_thenCarShouldNotBeDeleted(){
+        Long carId = -10L;
+        carService.deleteCar(carId);
+
+        Mockito.verify(carRepository, VerificationModeFactory.times(1)).deleteByCarId(carId);
+    }
+
+    @Test
+public void whenUpdateCar_thenCarShouldBeUpdated(){
+        Car audi = new Car(11L,"A1", "audi");
+        Car updatedCar = carService.updateCar(audi);
+
+        assertThat(updatedCar).isNotNull().isEqualTo(audi);
+
+        Mockito.verify(carRepository, VerificationModeFactory.times(1)).save(audi);
+
+        assertThat(updatedCar.getCarId()).isEqualTo(audi.getCarId());
+        assertThat(updatedCar.getModel()).isEqualTo(audi.getModel());
+        assertThat(updatedCar.getMaker()).isEqualTo(audi.getMaker());
+    }
+
+    @Test
+    public void whenUpdateCar_thenCarShouldNotBeUpdated(){
+        Car audi = new Car(-10L,"A1", "audi");
+        Car updatedCar = carService.updateCar(audi);
+
+        assertThat(updatedCar).isNotNull().isEqualTo(audi);
+
+        Mockito.verify(carRepository, VerificationModeFactory.times(1)).save(audi);
+
+        assertThat(updatedCar.getCarId()).isEqualTo(audi.getCarId());
+        assertThat(updatedCar.getModel()).isEqualTo(audi.getModel());
+        assertThat(updatedCar.getMaker()).isEqualTo(audi.getMaker());
+    }
+
+    @Test
+    public void whenGetCarByModel_thenCarShouldBeFound(){
+        String model = "A1";
+        List<Car> carsFound = carService.getCarByModel(model);
+
+        assertThat(carsFound).isNotNull();
+
+        Mockito.verify(carRepository, VerificationModeFactory.times(1)).findByModel(model);
+
+        assertThat(carsFound).hasSize(1).extracting(Car::getCarId).contains(11L);
+        assertThat(carsFound).hasSize(1).extracting(Car::getModel).contains("A1");
+        assertThat(carsFound).hasSize(1).extracting(Car::getMaker).contains("audi");
+    }
+
+    @Test
+    public void whenGetCarByModel_thenCarShouldNotBeFound(){
+        String model = "A2";
+        List<Car> carsFound = carService.getCarByModel(model);
+
+        assertThat(carsFound).isNotNull();
+
+        Mockito.verify(carRepository, VerificationModeFactory.times(1)).findByModel(model);
+
+        assertThat(carsFound).hasSize(0);
+    }
+
+    @Test
+    public void whenGetCarByMaker_thenCarShouldBeFound(){
+        String maker = "audi";
+        List<Car> carsFound = carService.getCarByMaker(maker);
+
+        assertThat(carsFound).isNotNull();
+
+        Mockito.verify(carRepository, VerificationModeFactory.times(1)).findByMaker(maker);
+
+        assertThat(carsFound).hasSize(1).extracting(Car::getCarId).contains(11L);
+        assertThat(carsFound).hasSize(1).extracting(Car::getModel).contains("A1");
+        assertThat(carsFound).hasSize(1).extracting(Car::getMaker).contains("audi");
+    }
+
+    @Test
+    public void whenGetCarByMaker_thenCarShouldNotBeFound(){
+        String maker = "audi2";
+        List<Car> carsFound = carService.getCarByMaker(maker);
+
+        assertThat(carsFound).isNotNull();
+
+        Mockito.verify(carRepository, VerificationModeFactory.times(1)).findByMaker(maker);
+
+        assertThat(carsFound).hasSize(0);
     }
 }

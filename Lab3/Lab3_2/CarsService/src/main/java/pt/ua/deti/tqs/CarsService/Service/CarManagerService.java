@@ -27,4 +27,24 @@ public class CarManagerService {
     public Optional<Car> getCarDetails(Long carId) {
         return Optional.ofNullable(carRepository.findByCarId(carId));
     }
+
+    public boolean existsByCarId(Long carId) {
+        return false;
+    }
+
+    public List<Car> getCarByModel(String model) {
+        return null;
+    }
+
+    public List<Car> getCarByMaker(String maker) {
+        return null;
+    }
+
+    public String deleteCar(Long carId) {
+        return null;
+    }
+
+    public Car updateCar(Car audi) {
+        return null;
+    }
 }

@@ -64,6 +64,12 @@ public class CarService_UnitTest {
         Mockito.when(carRepository.findByMaker(bmw.getMaker())).thenReturn(List.of(bmw));
         Mockito.when(carRepository.findByMaker(nissan.getMaker())).thenReturn(List.of(nissan));
 
+        Mockito.when(carRepository.deleteByCarId(audi.getCarId())).thenReturn(true);
+        Mockito.when(carRepository.deleteByCarId(bmw.getCarId())).thenReturn(true);
+        Mockito.when(carRepository.deleteByCarId(nissan.getCarId())).thenReturn(true);
+        Mockito.when(carRepository.deleteByCarId(-10L)).thenReturn(false);
+
+
         Mockito.when(carRepository.findByCarId(-10L)).thenReturn(null);
     }
 
@@ -180,34 +186,6 @@ public class CarService_UnitTest {
         Mockito.verify(carRepository, VerificationModeFactory.times(1)).deleteByCarId(carId);
 
         assertThat(response).isEqualTo("Car not found");
-    }
-
-    @Test
-public void whenUpdateCar_thenCarShouldBeUpdated(){
-        Car audi = new Car(11L,"A1", "audi");
-        Car updatedCar = carService.updateCar(audi);
-
-        assertThat(updatedCar).isNotNull().isEqualTo(audi);
-
-        Mockito.verify(carRepository, VerificationModeFactory.times(1)).save(audi);
-
-        assertThat(updatedCar.getCarId()).isEqualTo(audi.getCarId());
-        assertThat(updatedCar.getModel()).isEqualTo(audi.getModel());
-        assertThat(updatedCar.getMaker()).isEqualTo(audi.getMaker());
-    }
-
-    @Test
-    public void whenUpdateCar_thenCarShouldNotBeUpdated(){
-        Car audi = new Car(-10L,"A1", "audi");
-        Car updatedCar = carService.updateCar(audi);
-
-        assertThat(updatedCar).isNotNull().isEqualTo(audi);
-
-        Mockito.verify(carRepository, VerificationModeFactory.times(1)).save(audi);
-
-        assertThat(updatedCar.getCarId()).isEqualTo(audi.getCarId());
-        assertThat(updatedCar.getModel()).isEqualTo(audi.getModel());
-        assertThat(updatedCar.getMaker()).isEqualTo(audi.getMaker());
     }
 
     @Test

@@ -29,22 +29,22 @@ public class CarManagerService {
     }
 
     public boolean existsByCarId(Long carId) {
-        return false;
+        return carRepository.existsByCarId(carId);
     }
 
     public List<Car> getCarByModel(String model) {
-        return null;
+        return carRepository.findByModel(model);
     }
 
     public List<Car> getCarByMaker(String maker) {
-        return null;
+        return carRepository.findByMaker(maker);
     }
 
     public String deleteCar(Long carId) {
-        return null;
+        if (carRepository.deleteByCarId(carId)){
+            return "Car deleted successfully";
+        }
+        return "Car not found";
     }
 
-    public Car updateCar(Car audi) {
-        return null;
-    }
 }

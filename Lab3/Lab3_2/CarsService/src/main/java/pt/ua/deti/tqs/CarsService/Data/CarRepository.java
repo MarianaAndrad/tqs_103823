@@ -17,5 +17,5 @@ public interface CarRepository  extends JpaRepository<Car, Long> {
 
     List<Car> findByMaker(String maker);
 
-    void deleteByCarId(Long carId);
+    boolean deleteByCarId(Long carId);
 }

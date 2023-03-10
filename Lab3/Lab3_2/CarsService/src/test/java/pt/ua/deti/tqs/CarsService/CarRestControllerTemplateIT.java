@@ -20,8 +20,8 @@ import static org.assertj.core.api.Assertions.assertThat;
 import java.util.List;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-@AutoConfigureTestDatabase // this annotation is not needed because we are using the same database
-// @TestPropertySource(locations = "/application-integrationtest.properties")
+// @AutoConfigureTestDatabase // this annotation is not needed because we are using the same database
+@TestPropertySource(locations = "/application-integrationtest.properties")
 public class CarRestControllerTemplateIT {
     // will need to use the server port for the invocation url
     @LocalServerPort

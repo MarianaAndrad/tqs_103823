@@ -2,6 +2,17 @@
 
 # Employee manager example
 
+## Diagrama UML
+![](Lab3_1/Employee/src/main/java/tqsdemo/employeemngr/cd-diagram.png)
+
+## Testes
+![](https://media.discordapp.net/attachments/887155995887960085/1083809281012412436/image.png)
+
+![](https://media.discordapp.net/attachments/887155995887960085/1083809328282226798/image.png)
+
+
+> You may run individual tests using maven command line options.
+> `mvn test -Dtest=EmployeeService*`
 
 ## Questions:
 

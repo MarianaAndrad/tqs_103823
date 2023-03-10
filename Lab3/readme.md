@@ -75,10 +75,12 @@ Para iniciar o desenvolvimento da API, foi preciso criar um projeto Srping Boot 
 </dependencies>
 ```
 
-##
+## Implementação de Testes 
+
 >Abordando a estratégia **TDD** foi incentivada na implementação do projeto. Os testes foram escritos em uma abordagem de cima para baixo, começando pelo *controller*, depois pelo *service* e depois pelo *repositório*.
 
-Etapa:
+Etapas:
+
 1. Para criar um teste para verificar o Car [Rest]Controller e simular o bean CarService, podemos utilizar a biblioteca Mockito para criar um mock do CarService e injetá-lo no Controller. Podemos então testar o comportamento do Controller em relação às chamadas de métodos do CarService. O teste deve ser "resource efficient", ou seja, deve executar o mínimo de recursos possíveis.
         
 ```java
@@ -237,8 +239,6 @@ public class CarRestControllerTemplateIT {
 > O diagrama UML abaixo mostra a estrutura do projeto final, acrescentando novos métodos para além dos pedidos.
 
 ![](Lab3_2/carsServiceDiagram.png)
-
-
 
 
 # Integration test

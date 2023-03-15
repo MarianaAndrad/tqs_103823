@@ -13,7 +13,7 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @ExtendWith(SeleniumJupiter.class)
-public class buyTripC {
+public class BuyTripC {
     @Test
     void buyTripTest(FirefoxDriver driver) {
         // 1 | open | / |

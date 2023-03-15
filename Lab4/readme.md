@@ -159,11 +159,134 @@ public class HelloWorldChromeJupiterTest {
 3. Escolha um nome de arquivo para a sua classe de teste e salve-a como um arquivo "*.java".
 
 # Page Object pattern
+> *O modelo Page Object é um padrão de design de objetos no Selenium, em que as páginas da web são representadas como classes e os vários elementos [de interesse] na página são definidos como variáveis ​​na classe. Todas as possíveis interações do usuário [em uma página] podem ser implementadas como métodos na classe.*
+> Implementar o padrão de design *Page Object* para um teste mais limpo e legível usando o mesmo problema de aplicação do [*Selenium IDE*](#selenium-ide-recorder)
+
+
+1. Crie uma classe para cada página do aplicativo que deseja testar.
+
+```java
+public class HomePage {
+
+   private WebDriver driver;
+
+    public HomePage(WebDriver driver) {
+        this.driver = driver;
+
+        //Inicializa os elementos da página
+        PageFactory.initElements(driver, this);
+        driver.get("https://blazedemo.com/");
+    }
+    By subTitle = By.cssSelector("h1");
+
+    @FindBy(name = "fromPort")
+    @CacheLookup
+    private WebElement fromPort;
+
+    // ... continue
+
+        public String getTitle() {
+        return driver.getTitle();
+    }
+    public void selectFromPort(String fromPort) {
+    //        WebElement dropdown = driver.findElement(By.name("fromPort"));
+    //        dropdown.findElement(By.xpath("//option[. = '" + fromPort + "']")).click();
+
+            this.fromPort.sendKeys(fromPort);
+    }
+
+    // ...continue
+}
+```
+
+2. Crie uma classe de teste para testar o que deseja executar.
+
+```java
+public class BlazeDemoTest {
+
+    private WebDriver driver;
+
+    @BeforeEach
+    void setup() {
+        driver = new FirefoxDriver();
+        HomePage homePage = new HomePage(driver);
+    }
+
+    @Test
+    void test() {
+         // Navegar para a página inicial
+        Assertions.assertEquals("BlazeDemo", homePage.getTitle());
+        Assertions.assertEquals("Welcome to the Simple Travel Agency!", homePage.getSubTitle());
+        // Preencher o formulário de pesquisa
+        homePage.selectFromPort("Boston");
+        homePage.selectToPort("London");
+
+        // Clicar no botão de pesquisa
+        homePage.clickFindFlightsButton();
+
+        // continue ....
+    }
+
+    @AfterEach
+    void teardown() {
+        driver.quit();
+    }
+}
+```
+
+3. Refator a implementação anterior para usar a extensão Selenium-Jupiter e o padrão Page Object.
+
+```Java
+@ExtendWith(SeleniumJupiter.class)
+public class BlazeDemoTest {
+    @Test
+    public void testSuccessSearchFlights(FirefoxDriver driver) {
+        HomePage homePage = new HomePage(driver);
+        FlightsPage flightsPage = new FlightsPage(driver);
+        PurchasePage purchasePage = new PurchasePage(driver);
+        ConfirmationPage confirmationPage = new ConfirmationPage(driver);
+
+        // Navegar para a página inicial
+        Assertions.assertEquals("BlazeDemo", homePage.getTitle());
+        Assertions.assertEquals("Welcome to the Simple Travel Agency!", homePage.getSubTitle());
+        // Preencher o formulário de pesquisa
+        homePage.selectFromPort("Boston");
+        homePage.selectToPort("London");
+
+        // Clicar no botão de pesquisa
+        homePage.clickFindFlightsButton();
+
+        // continue ....
+    }
+}
+```
 
 #  Browser variations
+>Considerando não utilizar um navegador que não está intalado no meu sistema. Recorre a uma iamgem docker, conectando o WebDriver a um navegador remoto.
 
+
+```java
+@ExtendWith(SeleniumJupiter.class)
+public class DockerBlazeDemoTest {
+
+    @Test
+    @DisplayName("Teste de sucesso na pesquisa de voos")
+    public void testSuccessSearchFlights(@DockerBrowser(type = CHROME) WebDriver driver) {
+        HomePage homePage = new HomePage(driver);
+        FlightsPage flightsPage = new FlightsPage(driver);
+        PurchasePage purchasePage = new PurchasePage(driver);
+        // ...
+    }
+}
+```
+
+>*Nota:* Deve ter o docker instalado.  
 
 # Referências
 - [Getting Started in Selenium IDE](https://www.selenium.dev/selenium-ide/docs/en/introduction/getting-started)
 - [Code Export Selenium IDE](https://www.selenium.dev/selenium-ide/docs/en/introduction/code-export)
 - [Comandos Selenium IDE](https://www.selenium.dev/selenium-ide/docs/en/api/commands)
+- [Chapter 7. The Page Object Model (POM)](https://learning.oreilly.com/library/view/hands-on-selenium-webdriver/9781098109998/ch07.html#idm45849710155104)
+- [Automation in Selenium: Page Object Model and Page Factory](https://www.toptal.com/selenium/test-automation-in-selenium-using-page-object-model-and-page-factory)
+- [Docker Browers](https://bonigarcia.dev/selenium-jupiter/#docker-browsers)
+- [Selenium-Jupiter](https://bonigarcia.dev/selenium-jupiter/)

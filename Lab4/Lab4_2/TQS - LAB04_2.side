@@ -58,12 +58,26 @@
       ],
       "value": ""
     }, {
-      "id": "11fe6b33-3079-4b24-b279-3c7fcecefcb1",
+      "id": "c9992644-e558-46f6-b00c-e9719a206ef4",
       "comment": "",
       "command": "select",
       "target": "name=fromPort",
       "targets": [],
       "value": "label=Boston"
+    }, {
+      "id": "3c344abb-52aa-42c1-8543-3c1e46427a88",
+      "comment": "Tentativa de fazer o teste  falhar ",
+      "command": "",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "11fe6b33-3079-4b24-b279-3c7fcecefcb1",
+      "comment": "",
+      "command": "//select",
+      "target": "name=fromPort",
+      "targets": [],
+      "value": "label=Bost"
     }, {
       "id": "a6c18839-8d2f-4f86-8d79-ce1e708ccbf9",
       "comment": "",

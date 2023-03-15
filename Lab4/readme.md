@@ -109,6 +109,61 @@ public class HelloWorldChromeJupiterTest {
 ```
 
 # Selenium IDE recorder
+> Geralmente,usa-se o *Selenium IDE* para preparar/gravar os testes interativamente e explorar os *locators*- por exemplo, id para um determinado elemento da web.
+
+
+## Instalar plug-in/ add-on no navegador
+- [Firefox](https://addons.mozilla.org/en-GB/firefox/addon/selenium-ide/)
+- [Chrome](https://chrome.google.com/webstore/detail/selenium-ide/mooikfkahbdckldjjndioackbalphokd)
+
+## Gravar um teste interativamente
+> Usando o aplicativo da web de uma agência de viagens fictícias, [https://blazedemo.com/](https://blazedemo.com/), grave um teste no qual seleciona e compra uma viagem. Adicione verificações relevantes (*asserts*) ao test. 
+
+### Basic steps
+
+1. Abrir o *Selenium Ide* (ícone da barra de menu do navegador)
+
+2. Ao iniciar o IDE, selecionar a opção : 
+   - `Record a new test in a new project`, no caso de ver a primeira vez a utilizar o IDE
+   - `Open an existing project` ou `Create a new project`, dependo da sua necessidade.
+    </br>
+
+    ![](https://cdn.discordapp.com/attachments/887155995887960085/1085596810451632318/image.png)
+
+3. Nomeie o projeto e configure a *URL base*¹, que é a página inicial do aplicativo de viagens.
+4. Após as configurações, uma nova janela do navegador será aberta, carregará a URL base e iniciará a gravação do teste.
+5. Interaja com a página e cada uma das ações serão registadas no IDE.
+6. Para parar a gravação, mude para  a janela do IDE e clique no ícone de parar (vermelho) no canto superior direito da janela do navegador.
+
+    ![](https://cdn.discordapp.com/attachments/887155995887960085/1085597639963316284/image.png)
+
+7. Adicione os asserts necessários ao seu teste, verificando se as informações são corretas, como por exemplo, se o título da página contém a palavra "BlazeDemo", se a cidade de partida selecionada é "Boston" e se a cidade de destino selecionada é "New York".
+   [ver mais]()
+
+8. Execute o teste clicando no ícone de reprodução no canto superior esquerdo da janela do navegador.
+
+    ![](https://cdn.discordapp.com/attachments/887155995887960085/1085597424896192532/image.png)
+
+9.  Analise os resultados do teste, e se houver falhas, faça as correções necessárias e execute novamente.
+
+> ¹URL base é o URL do aplicativo que será testado.Pode ser defenido uma vez e usado em todos os teste do projeto. 
+
+## Exportar e Guardar o projeto
+### Guardar em *.side*
+1. Clique no botão "Save" (botão de disquete) na barra de ferramentas do Selenium IDE.
+2. Escolha um nome de arquivo para o seu projeto de teste e salve-o como um arquivo "*.side".
+
+### Exportar o projeto para uma classe de teste em Java
+1. Clique com o botão direito do mouse em um teste, seleciona "Export"
+2. Seleciona `Java JUnit` no meno que lhe apareceu.
+3. Escolha um nome de arquivo para a sua classe de teste e salve-a como um arquivo "*.java".
+
 # Page Object pattern
+
 #  Browser variations
 
+
+# Referências
+- [Getting Started in Selenium IDE](https://www.selenium.dev/selenium-ide/docs/en/introduction/getting-started)
+- [Code Export Selenium IDE](https://www.selenium.dev/selenium-ide/docs/en/introduction/code-export)
+- [Comandos Selenium IDE](https://www.selenium.dev/selenium-ide/docs/en/api/commands)

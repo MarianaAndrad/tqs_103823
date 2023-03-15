@@ -4,6 +4,7 @@ import org.junit.jupiter.api.*;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.openqa.selenium.WebDriver;
 
+import static io.github.bonigarcia.seljup.BrowserType.CHROME;
 import static io.github.bonigarcia.seljup.BrowserType.FIREFOX;
 
 @ExtendWith(SeleniumJupiter.class)
@@ -11,7 +12,7 @@ public class DockerBlazeDemoTest {
 
     @Test
     @DisplayName("Teste de sucesso na pesquisa de voos")
-    public void testSuccessSearchFlights(@DockerBrowser(type = FIREFOX) WebDriver driver) {
+    public void testSuccessSearchFlights(@DockerBrowser(type = CHROME) WebDriver driver) {
         HomePage homePage = new HomePage(driver);
         FlightsPage flightsPage = new FlightsPage(driver);
         PurchasePage purchasePage = new PurchasePage(driver);

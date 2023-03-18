@@ -13,7 +13,7 @@ Feature: Book Search
     And another book with the title 'The Hobbit', written by 'J.R.R. Tolkien', published in 1937-09-21 and categorized as 'Fantasy'
     And another book with the title 'The Lord of the Rings', written by 'J.R.R. Tolkien', published in 1954-07-29 and categorized as 'Fantasy'
     And another book with the title 'The Alchemist', written by 'Paulo Coelho', published in 1988-01-01 and categorized as 'Fiction'
-    And another book with the title 'Harry Potter and the Philosopher''s Stone', written by 'J.K. Rowling', published in 1997-06-26 and categorized as 'Fantasy'
+    And another book with the title "Harry Potter and the Philosopher's Stone", written by 'J.K. Rowling', published in 1997-06-26 and categorized as 'Fantasy'
     And another book with the title 'The Girl with the Dragon Tattoo', written by 'Stieg Larsson', published in 2005-08-16 and categorized as 'Mystery'
 
   Scenario: Search books by publication year
@@ -34,39 +34,42 @@ Feature: Book Search
     And Book 1 should have the author 'Douglas Adams'
 
   Scenario: Search books by author and title
-    When the customer searches for books by author 'Tolkien' and by title 'The'
-    Then 1 books should have been found
-    And Book 1 should have the title 'The Hobbit'
+    When the customer searches for books by author 'J.R.R. Tolkien' and by title 'The'
+    Then 2 books should have been found
+    And Book 1 should have the title 'The Lord of the Rings'
+    And Book 2 should have the title 'The Hobbit'
 
   Scenario: Search books by category1
     Given a book with the title 'The Hunger Games', written by 'Suzanne Collins', published in 2008-09-14 and categorized as 'Young Adult Fiction'
     And another book with the title 'The Fault in Our Stars', written by 'John Green', published in 2012-01-10 and categorized as 'Young Adult Fiction'
     When the customer searches for books in the 'Young Adult Fiction' category
     Then 2 books should have been found
-    And Book 1 should have the title 'The Hunger Games'
-    And Book 2 should have the title 'The Fault in Our Stars'
+    And Book 1 should have the title 'The Fault in Our Stars'
+    And Book 2 should have the title 'The Hunger Games'
 
   Scenario: Search books by category2
     When the customer searches for books in the 'Fiction' category
     Then 4 books should have been found
-    And Book 1 should have the title 'The Catcher in the Rye'
-    And Book 2 should have the title 'The Great Gatsby'
-    And Book 3 should have the title 'Pride and Prejudice'
-    And Book 4 should have the title 'The Alchemist'
+    And Book 1 should have the title 'The Alchemist'
+    And Book 2 should have the title 'The Catcher in the Rye'
+    And Book 3 should have the title 'The Great Gatsby'
+    And Book 4 should have the title 'Pride and Prejudice'
 
     Scenario: Search books by title and category
         When the customer searches for books by title 'The' and in the 'Fiction' category
-        Then 2 books should have been found
-        And Book 1 should have the title 'The Catcher in the Rye'
-        And Book 2 should have the title 'The Great Gatsby'
+        Then 3 books should have been found
+        And Book 1 should have the title 'The Alchemist'
+        And Book 2 should have the title 'The Catcher in the Rye'
+        And Book 3 should have the title 'The Great Gatsby'
 
     Scenario: Search books by author and category
-        When the customer searches for books by author 'Tolkien' and in the 'Fantasy' category
-        Then 1 books should have been found
-        And Book 1 should have the title 'The Hobbit'
+        When the customer searches for books by author 'J.R.R. Tolkien' and in the 'Fantasy' category
+        Then 2 books should have been found
+        And Book 1 should have the title 'The Lord of the Rings'
+        And Book 2 should have the title 'The Hobbit'
 
     Scenario: Search books by multiple filters
-      When the customer searches for books written by 'J.R.R. Tolkien' and published after 1930 and categorized as 'Fantasy'
+      When the customer searches for books written by 'J.R.R. Tolkien' and published before 1940-01-01 and categorized as 'Fantasy'
       Then 1 books should have been found
       And Book 1 should have the title 'The Hobbit'
 

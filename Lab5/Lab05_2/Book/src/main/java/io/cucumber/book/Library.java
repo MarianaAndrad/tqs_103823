@@ -19,6 +19,7 @@ public class Library {
         }).sorted(Comparator.comparing(Book::getPublished).reversed()).collect(Collectors.toList());
     }
 
+<<<<<<< HEAD
     public List<Book> booksByAuthor(final String author) {
         return store.stream().filter(book -> {
             return book.getAuthor().equals(author);
@@ -30,4 +31,6 @@ public class Library {
             return book.getTitle().equals(title);
         }).sorted(Comparator.comparing(Book::getPublished).reversed()).collect(Collectors.toList());
     }
+=======
+>>>>>>> parent of 6892117 (write new feature)
 }

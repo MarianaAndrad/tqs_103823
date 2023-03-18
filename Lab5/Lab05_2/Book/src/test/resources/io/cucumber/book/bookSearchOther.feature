@@ -11,7 +11,7 @@ Feature: Book Search
     And another book with the title 'The Great Gatsby', written by 'F. Scott Fitzgerald', published in 1925-04-10
     And another book with the title 'Pride and Prejudice', written by 'Jane Austen', published in 1813-01-28
     And another book with the title 'The Hobbit', written by 'J.R.R. Tolkien', published in 1937-09-21
-
+    And another book with the title 'The Lord of the Rings', written by 'J.R.R. Tolkien', published in 1954-07-29
 
   Scenario: Search books by publication year
     When the customer searches for books published between 2013-01-01 and 2014-12-31
@@ -20,14 +20,18 @@ Feature: Book Search
     And Book 2 should have the title 'One good book'
 
   Scenario: Search books by author
-    When the customer searches for books by author 'Anonymous'
-    Then 1 book should have been found
-    And Book 1 should have the title 'One good book'
+    When the customer searches for books by author 'J.R.R. Tolkien'
+    Then 2 books should have been found
+    And Book 1 should have the title 'The Lord of the Rings'
+    And Book 2 should have the title 'The Hobbit'
+
 
   Scenario: Search books by title
     When the customer searches for books by title "The Hitchhiker's Guide to the Galaxy"
-    Then 1 book should have been found
+    Then 1 books should have been found
     And Book 1 should have the author 'Douglas Adams'
+
+
 
 
 

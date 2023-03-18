@@ -24,4 +24,10 @@ public class Library {
             return book.getAuthor().equals(author);
         }).sorted(Comparator.comparing(Book::getPublished).reversed()).collect(Collectors.toList());
     }
+
+    public List<Book> booksByTitle(String title) {
+        return store.stream().filter(book -> {
+            return book.getTitle().equals(title);
+        }).sorted(Comparator.comparing(Book::getPublished).reversed()).collect(Collectors.toList());
+    }
 }

@@ -48,5 +48,22 @@ public class StepDefinitions {
         Assertions.assertEquals(result.get(position - 1).getTitle(), title);
     }
 
+    @When("the customer searches for books by author {string}")
+    public void searchForBooksByAuthor(final String author) {
+        result = library.booksByAuthor(author);
+    }
+
+
+    @When("the customer searches for books by title {string}")
+    public void searchForBooksByTitle(final String title) {
+        result = library.booksByTitle(title);
+    }
+
+    @Then("Book {int} should have the author {string}")
+    public void verifyBookAtPositionWrittenBy(final int position, final String author) {
+        Assertions.assertEquals(result.get(position - 1).getAuthor(), author);
+    }
+
+
 
 }

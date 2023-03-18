@@ -7,11 +7,14 @@ Feature: Book Search
     And another book with the title 'Some other book', written by 'Tim Tomson', published in 2014-08-23
     And another book with the title 'How to cook a dino', written by 'Fred Flintstone', published in 2021-01-01
     And another book with the title "The Hitchhiker's Guide to the Galaxy", written by 'Douglas Adams', published in 1979-10-12
-    And another book with the title 'The Catcher in the Rye', written by 'J.D. Salinger', published in 1951-07-16
-    And another book with the title 'The Great Gatsby', written by 'F. Scott Fitzgerald', published in 1925-04-10
-    And another book with the title 'Pride and Prejudice', written by 'Jane Austen', published in 1813-01-28
-    And another book with the title 'The Hobbit', written by 'J.R.R. Tolkien', published in 1937-09-21
-    And another book with the title 'The Lord of the Rings', written by 'J.R.R. Tolkien', published in 1954-07-29
+    And another book with the title 'The Catcher in the Rye', written by 'J.D. Salinger', published in 1951-07-16 and categorized as 'Fiction'
+    And another book with the title 'The Great Gatsby', written by 'F. Scott Fitzgerald', published in 1925-04-10 and categorized as 'Fiction'
+    And another book with the title 'Pride and Prejudice', written by 'Jane Austen', published in 1813-01-28 and categorized as 'Fiction'
+    And another book with the title 'The Hobbit', written by 'J.R.R. Tolkien', published in 1937-09-21 and categorized as 'Fantasy'
+    And another book with the title 'The Lord of the Rings', written by 'J.R.R. Tolkien', published in 1954-07-29 and categorized as 'Fantasy'
+    And a book with the title 'The Hunger Games', written by 'Suzanne Collins', published in 2008-09-14 and categorized as 'Young Adult Fiction'
+    And another book with the title 'The Fault in Our Stars', written by 'John Green', published in 2012-01-10 and categorized as 'Young Adult Fiction'
+    And another book with the title 'The Alchemist', written by 'Paulo Coelho', published in 1988-01-01 and categorized as 'Fiction'
 
   Scenario: Search books by publication year
     When the customer searches for books published between 2013-01-01 and 2014-12-31
@@ -31,6 +34,13 @@ Feature: Book Search
     Then 1 books should have been found
     And Book 1 should have the author 'Douglas Adams'
 
+  Scenario: Search books by category
+    When the customer searches for books in the 'Fiction' category
+    Then 4 books should have been found
+    And Book 1 should have the title 'The Catcher in the Rye'
+    And Book 2 should have the title 'The Great Gatsby'
+    And Book 3 should have the title 'Pride and Prejudice'
+    And Book 4 should have the title 'The Alchemist'
 
 
 

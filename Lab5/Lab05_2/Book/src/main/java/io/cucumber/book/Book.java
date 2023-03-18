@@ -8,10 +8,20 @@ public class Book {
     private final String title;
     private final String author;
     private final LocalDateTime published;
+
+    private final String Category;
+
     public Book(String title, String author, LocalDateTime published) {
         this.title = title;
         this.author = author;
         this.published = published;
+        this.Category = "None";
+    }
+    public Book(String title, String author, LocalDateTime published, String Category) {
+        this.title = title;
+        this.author = author;
+        this.published = published;
+        this.Category = Category;
     }
 
     public String getTitle() {

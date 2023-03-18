@@ -19,4 +19,9 @@ public class Library {
         }).sorted(Comparator.comparing(Book::getPublished).reversed()).collect(Collectors.toList());
     }
 
+    public List<Book> booksByAuthor(final String author) {
+        return store.stream().filter(book -> {
+            return book.getAuthor().equals(author);
+        }).sorted(Comparator.comparing(Book::getPublished).reversed()).collect(Collectors.toList());
+    }
 }

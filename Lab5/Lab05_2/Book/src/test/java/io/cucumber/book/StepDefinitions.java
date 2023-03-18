@@ -1,4 +1,4 @@
-package pt.ua.deti.tqs;
+package io.cucumber.book;
 
 import io.cucumber.java.ParameterType;
 import io.cucumber.java.en.Given;
@@ -8,11 +8,13 @@ import org.junit.jupiter.api.Assertions;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
-public class BookSearchSteps {
-    Library library = new Library();
-    List<Book> result = new ArrayList<>();
+public class StepDefinitions {
+    private final Library library = new Library();
+    private List<Book> result = new ArrayList<>();
+
 
     @ParameterType("([0-9]{4})-([0-9]{2})-([0-9]{2})")
     public LocalDateTime iso8601Date(String year, String month, String day){

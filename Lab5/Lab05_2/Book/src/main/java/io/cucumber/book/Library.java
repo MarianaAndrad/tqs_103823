@@ -27,8 +27,43 @@ public class Library {
 
     public List<Book> booksByTitle(String title) {
         return store.stream().filter(book -> {
-            return book.getTitle().equals(title);
+            return book.getTitle().contains(title);
         }).sorted(Comparator.comparing(Book::getPublished).reversed()).collect(Collectors.toList());
     }
 
+    public List<Book> booksByAuthorAndTitle(String author, String title) {
+        return store.stream().filter(book -> {
+            return book.getAuthor().equals(author) && book.getTitle().contains(title);
+        }).sorted(Comparator.comparing(Book::getPublished).reversed()).collect(Collectors.toList());
+    }
+
+    public List<Book> booksByCategory(String category) {
+        return store.stream().filter(book -> {
+            return book.getCategory().equals(category);
+        }).sorted(Comparator.comparing(Book::getPublished).reversed()).collect(Collectors.toList());
+    }
+
+    public List<Book> booksByTitleAndCategory(String title, String category) {
+        return store.stream().filter(book -> {
+            return book.getTitle().contains(title) && book.getCategory().equals(category);
+        }).sorted(Comparator.comparing(Book::getPublished).reversed()).collect(Collectors.toList());
+    }
+
+    public List<Book> booksByAuthorAndCategory(String author, String category) {
+        return store.stream().filter(book -> {
+            return book.getAuthor().equals(author) && book.getCategory().equals(category);
+        }).sorted(Comparator.comparing(Book::getPublished).reversed()).collect(Collectors.toList());
+    }
+
+    public List<Book> booksByAuthorAndTitleAndCategory(String author, String title, String category) {
+        return store.stream().filter(book -> {
+            return book.getAuthor().equals(author) && book.getTitle().contains(title) && book.getCategory().equals(category);
+        }).sorted(Comparator.comparing(Book::getPublished).reversed()).collect(Collectors.toList());
+    }
+
+    public List<Book> booksByAuthorAndDateAndCategory(String author, LocalDateTime published, String category) {
+        return store.stream().filter(book -> {
+            return book.getAuthor().equals(author) && book.getPublished().isBefore(published) && book.getCategory().equals(category);
+        }).sorted(Comparator.comparing(Book::getPublished).reversed()).collect(Collectors.toList());
+    }
 }

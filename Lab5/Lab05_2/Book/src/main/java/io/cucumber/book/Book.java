@@ -37,5 +37,7 @@ public class Book {
     }
 
 
-
+    public String getCategory() {
+        return Category;
+    }
 }

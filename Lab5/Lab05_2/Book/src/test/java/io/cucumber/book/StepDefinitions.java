@@ -27,9 +27,20 @@ public class StepDefinitions {
         library.addBook(book);
     }
 
+    @Given("a book with the title {string}, written by {string}, published in {iso8601Date} and categorized as {string}")
+    public void addNewBook(final String title, final String author, final LocalDateTime published, final String Category) {
+        Book book = new Book(title, author, published, Category);
+        library.addBook(book);
+    }
     @Given("another book with the title {string}, written by {string}, published in {iso8601Date}")
     public void addAnotherBook(final String title, final String author, final LocalDateTime published) {
         Book book = new Book(title, author, published);
+        library.addBook(book);
+    }
+
+    @Given("another book with the title {string}, written by {string}, published in {iso8601Date} and categorized as {string}")
+    public void addAnotherBook(final String title, final String author, final LocalDateTime published, final String Category) {
+        Book book = new Book(title, author, published, Category);
         library.addBook(book);
     }
 
@@ -57,6 +68,36 @@ public class StepDefinitions {
     @When("the customer searches for books by title {string}")
     public void searchForBooksByTitle(final String title) {
         result = library.booksByTitle(title);
+    }
+
+    @When("the customer searches for books by author {string} and by title {string}")
+    public void searchForBooksByAuthorAndTitle(final String author, final String title) {
+        result = library.booksByAuthorAndTitle(author, title);
+    }
+
+    @When("the customer searches for books in the {string} category")
+    public void searchForBooksByCategory(final String category) {
+        result = library.booksByCategory(category);
+    }
+
+    @When("the customer searches for books by title {string} and in the {string} category")
+    public void searchForBooksByTitleAndCategory(final String title, final String category) {
+        result = library.booksByTitleAndCategory(title, category);
+    }
+
+    @When("the customer searches for books by author {string} and in the {string} category")
+    public void searchForBooksByAuthorAndCategory(final String author, final String category) {
+        result = library.booksByAuthorAndCategory(author, category);
+    }
+
+    @When("the customer searches for books by author {string}, by title {string} and in the {string} category")
+    public void searchForBooksByAuthorAndTitleAndCategory(final String author, final String title, final String category) {
+        result = library.booksByAuthorAndTitleAndCategory(author, title, category);
+    }
+
+    @When("the customer searches for books written by {string} and published before {iso8601Date} and categorized as {string}")
+    public void searchForBooksByAuthorAndDateAndCategory(final String author, final LocalDateTime published, final String category) {
+        result = library.booksByAuthorAndDateAndCategory(author, published, category);
     }
 
     @Then("Book {int} should have the author {string}")

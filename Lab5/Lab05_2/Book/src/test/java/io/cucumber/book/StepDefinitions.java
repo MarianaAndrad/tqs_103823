@@ -1,5 +1,6 @@
 package io.cucumber.book;
 
+import io.cucumber.datatable.DataTable;
 import io.cucumber.java.ParameterType;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -9,6 +10,7 @@ import org.junit.jupiter.api.Assertions;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 public class StepDefinitions {
     private final Library library = new Library();
@@ -102,6 +104,22 @@ public class StepDefinitions {
     @Then("Book {int} should have the author {string}")
     public void verifyBookAtPositionWrittenBy(final int position, final String author) {
         Assertions.assertEquals(result.get(position - 1).getAuthor(), author);
+    }
+
+    // Data table
+    @Given("I have the following books in the store")
+    public void addNewBook(DataTable books) {
+        List<Map<String, String>> booksList = books.asMaps(String.class, String.class);
+        for (Map<String, String> columns : booksList) {
+            String[] date = columns.get("published").split("-");
+            LocalDateTime published = iso8601Date(date[0], date[1], date[2]);
+            library.addBook(new Book(columns.get("Book Title"), columns.get("Author"), published, columns.get("Category")));
+        }
+    }
+
+    @Then("I find {int} books")
+    public void verifyAmountOfBooksFound2(final int booksFound) {
+        Assertions.assertEquals(result.size(), booksFound);
     }
 
 }

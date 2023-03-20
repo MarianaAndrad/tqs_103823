@@ -8,7 +8,6 @@ import org.junit.jupiter.api.Assertions;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 public class StepDefinitions {
@@ -104,7 +103,5 @@ public class StepDefinitions {
     public void verifyBookAtPositionWrittenBy(final int position, final String author) {
         Assertions.assertEquals(result.get(position - 1).getAuthor(), author);
     }
-
-
 
 }

@@ -70,5 +70,7 @@ i++;
 
 > Correção de alguns _code Smell_.
 ![](Lab06_1/refactory.png)
+
+
 # Reference
 [https://docs.sonarqube.org/latest/user-guide/user-account/generating-and-using-tokens/](https://docs.sonarqube.org/latest/user-guide/user-account/generating-and-using-tokens/)

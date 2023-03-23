@@ -1,0 +1,6 @@
+projectKey=local-analysis
+serverUrl=http://localhost:9906
+serverVersion=9.9.0.65466
+dashboardUrl=http://localhost:9906/dashboard?id=local-analysis
+ceTaskId=AYcPOrRic3N8o6MB-nRw
+ceTaskUrl=http://localhost:9906/api/ce/task?id=AYcPOrRic3N8o6MB-nRw

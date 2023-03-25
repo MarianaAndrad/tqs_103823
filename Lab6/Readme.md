@@ -11,7 +11,7 @@ docker run -d --name sonarqube -e SONAR_ES_BOOTSTRAP_CHECKS_DISABLE=true -p 9906
 
 3. Criar um projeto _"manually"_ , alterar para "Lab06_1" ou "local analysis"
 
-4. **Take note of the generated user token**, [token](/Lab06_1/notas.txt)
+4. **Take note of the generated user token**, [token](/notas.txt)
 
 5. Execute o comando dado para analisar o projeto.
 ```bash
@@ -39,21 +39,12 @@ _Resposta:_
 2. Explore the analysis results and complete with a few sample issues, as applicable. 
 
 _Resposta:_
-
- **Issue** | **Problem Description** | **How to solve** |
- --- | --- | --- |
-Bug| - | - |
-Vulnerability | -  | - 
-Code smell(major)| 1. Invoke method(s) only conditionally <br> 2. Refactor the code in order to not assign to this loop counter from within the loop body. <br> 3.This block of commented-out lines of code should be removed. |  2. `for (int i = 0; i < 10; i++) {...}`<br> 3. Remove the comment 
-
+No found bugs and vulnerabilities.
+ **Issue** | **Problem** | **Description** | **Solution** |
+ --- | --- | --- | ---| 
+¹ Code smell(major)| The return type of this method should be an interface such as "List" rather than the implementation "ArrayList".| A for loop stop condition should test the loop counter against an invariant value (i.e. one that is true at both the beginning and ending of every loop iteration). Ideally, this means that the stop condition is set to a local variable just before the loop begins.<br> Stop conditions that are not invariant are slightly less efficient, as well as being difficult to understand and maintain, and likely lead to the introduction of errors in the future.<br> This rule tracks three types of non-invariant stop conditions:<br> When the loop counters are updated in the body of the for loop When the stop condition depend upon a method call When the stop condition depends on an object property, since such properties could change during the execution of the loop.  | `for (int i = 0; i < 10; i++) {...}`
 
 ¹
-```java
-EuromillionsDraw draw = EuromillionsDraw.generateRandomDraw();
-log.info("Draw results:\n{}", draw.getDrawResults().format() )
-```
-
-²
 ```java
 Dip randomDip = new Dip();
 for (int i = 0; i < NUMBERS_REQUIRED; ) {
@@ -63,14 +54,19 @@ for (int i = 0; i < NUMBERS_REQUIRED; ) {
 i++;
 ```
 
-³
-```java
-// return !intersection.isEmpty();
-```
 
 > Correção de alguns _code Smell_.
 ![](Lab06_1/refactory.png)
 
+# Technical debt (Cars)
+O comando dado para analisar o projeto.
+
+  ```bash 
+  mvn clean verify sonar:sonar \
+    -Dsonar.projectKey=cars \
+    -Dsonar.host.url=http://localhost:9906 \
+    -Dsonar.login=sqp_14de22769355d2ef94436460cc304e1a33f6a4c0
+  ```
 
 # Reference
 [https://docs.sonarqube.org/latest/user-guide/user-account/generating-and-using-tokens/](https://docs.sonarqube.org/latest/user-guide/user-account/generating-and-using-tokens/)

@@ -1,4 +1,4 @@
-package pt.ua.deti.tqs.CarsService;
+package pt.ua.deti.tqs.carsservice;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.databind.ObjectMapper;

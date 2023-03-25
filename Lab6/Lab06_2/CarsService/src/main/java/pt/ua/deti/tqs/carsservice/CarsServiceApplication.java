@@ -1,4 +1,4 @@
-package pt.ua.deti.tqs.CarsService;
+package pt.ua.deti.tqs.carsservice;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

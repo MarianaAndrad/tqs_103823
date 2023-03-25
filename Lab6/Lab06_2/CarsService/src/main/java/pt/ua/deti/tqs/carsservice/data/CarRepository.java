@@ -1,8 +1,8 @@
-package pt.ua.deti.tqs.CarsService.Data;
+package pt.ua.deti.tqs.carsservice.data;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
-import pt.ua.deti.tqs.CarsService.Model.Car;
+import pt.ua.deti.tqs.carsservice.model.Car;
 
 import java.util.List;
 

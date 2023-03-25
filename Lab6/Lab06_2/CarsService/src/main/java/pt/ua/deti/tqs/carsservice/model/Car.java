@@ -1,4 +1,4 @@
-package pt.ua.deti.tqs.CarsService.Model;
+package pt.ua.deti.tqs.carsservice.model;
 
 import jakarta.persistence.*;
 

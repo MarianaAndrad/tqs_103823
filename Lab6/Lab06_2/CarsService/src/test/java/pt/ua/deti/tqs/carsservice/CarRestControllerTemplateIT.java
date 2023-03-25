@@ -1,9 +1,8 @@
-package pt.ua.deti.tqs.CarsService;
+package pt.ua.deti.tqs.carsservice;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.boot.test.web.server.LocalServerPort;
@@ -12,8 +11,8 @@ import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.TestPropertySource;
-import pt.ua.deti.tqs.CarsService.Data.CarRepository;
-import pt.ua.deti.tqs.CarsService.Model.Car;
+import pt.ua.deti.tqs.carsservice.data.CarRepository;
+import pt.ua.deti.tqs.carsservice.model.Car;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -22,7 +21,7 @@ import java.util.List;
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 // @AutoConfigureTestDatabase // this annotation is not needed because we are using the same database
 @TestPropertySource(locations = "/application-integrationtest.properties")
-public class CarRestControllerTemplateIT {
+class CarRestControllerTemplateIT {
     // will need to use the server port for the invocation url
     @LocalServerPort
     int randomServerPort;
@@ -122,7 +121,7 @@ public class CarRestControllerTemplateIT {
                 });
 
         assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
-        assertThat(response.getBody().equals(true));
+        assertThat(response.getBody()).isTrue();
     }
 
     @Test
@@ -135,7 +134,7 @@ public class CarRestControllerTemplateIT {
                 });
 
         assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
-        assertThat(response.getBody().equals(false));
+        assertThat(response.getBody()).isFalse();
     }
 
     private void createTestCar(String model, String market) {
@@ -152,7 +151,7 @@ public class CarRestControllerTemplateIT {
                 });
 
         assertThat(response.getStatusCode()).isEqualTo(HttpStatus.ACCEPTED);
-        assertThat(response.getBody().equals("Car deleted successfully"));
+        assertThat(response.getBody()).isEqualTo("Car deleted successfully");
     }
 
 }

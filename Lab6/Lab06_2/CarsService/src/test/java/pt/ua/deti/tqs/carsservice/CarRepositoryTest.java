@@ -1,13 +1,11 @@
-package pt.ua.deti.tqs.CarsService;
+package pt.ua.deti.tqs.carsservice;
 
-
-import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
-import pt.ua.deti.tqs.CarsService.Data.CarRepository;
-import pt.ua.deti.tqs.CarsService.Model.Car;
+import pt.ua.deti.tqs.carsservice.data.CarRepository;
+import pt.ua.deti.tqs.carsservice.model.Car;
 
 import java.util.List;
 
@@ -15,7 +13,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 
 @DataJpaTest
-public class CarRepositoryTest {
+class CarRepositoryTest {
 
     @Autowired
     private TestEntityManager entityManager;

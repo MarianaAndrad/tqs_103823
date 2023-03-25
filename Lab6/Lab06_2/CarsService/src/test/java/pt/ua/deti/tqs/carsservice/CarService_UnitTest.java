@@ -1,7 +1,6 @@
-package pt.ua.deti.tqs.CarsService;
+package pt.ua.deti.tqs.carsservice;
 
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -9,9 +8,9 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.internal.verification.VerificationModeFactory;
 import org.mockito.junit.jupiter.MockitoExtension;
-import pt.ua.deti.tqs.CarsService.Data.CarRepository;
-import pt.ua.deti.tqs.CarsService.Model.Car;
-import pt.ua.deti.tqs.CarsService.Service.CarManagerService;
+import pt.ua.deti.tqs.carsservice.data.CarRepository;
+import pt.ua.deti.tqs.carsservice.model.Car;
+import pt.ua.deti.tqs.carsservice.service.CarManagerService;
 
 import java.util.Arrays;
 import java.util.List;
@@ -21,7 +20,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 
 @ExtendWith(MockitoExtension.class)
-public class CarService_UnitTest {
+class CarService_UnitTest {
 
     @Mock(lenient = true)
     private CarRepository carRepository;
@@ -78,7 +77,7 @@ public class CarService_UnitTest {
         Long carId = 11L;
         Optional<Car> found = carService.getCarDetails(carId);
 
-        assertThat(found.isPresent()).isEqualTo(true);
+        assertThat(found).isPresent();
         assertThat(found.get().getCarId()).isEqualTo(carId);
 
         Mockito.verify(carRepository, VerificationModeFactory.times(1)).findByCarId(carId);
@@ -89,7 +88,7 @@ public class CarService_UnitTest {
         Long carId = -10L;
         Optional<Car> found = carService.getCarDetails(carId);
 
-        assertThat(found.isPresent()).isEqualTo(false);
+        assertThat(found).isNotPresent();
         Mockito.verify(carRepository, VerificationModeFactory.times(1)).findByCarId(carId);
 
     }
@@ -116,7 +115,7 @@ public class CarService_UnitTest {
      void whenGetCarDetails_thenCarShouldBeFound(){
         Optional<Car> carFound = carService.getCarDetails(11L);
 
-        assertThat(carFound.isPresent()).isEqualTo(true);
+        assertThat(carFound).isPresent();
 
         Mockito.verify(carRepository, VerificationModeFactory.times(1)).findByCarId(11L);
 
@@ -128,7 +127,7 @@ public class CarService_UnitTest {
      void whenGetCarDetails_thenCarShouldNotBeFound() {
         Optional<Car> carFound = carService.getCarDetails(-10L);
 
-        assertThat(carFound.isPresent()).isEqualTo(false);
+        assertThat(carFound).isNotPresent();
 
         Mockito.verify(carRepository, VerificationModeFactory.times(1)).findByCarId(-10L);
 
@@ -153,7 +152,7 @@ public class CarService_UnitTest {
         Long carId = 11L;
         boolean found = carService.existsByCarId(carId);
 
-        assertThat(found).isEqualTo(true);
+        assertThat(found).isTrue();
 
         Mockito.verify(carRepository, VerificationModeFactory.times(1)).existsByCarId(carId);
     }
@@ -163,7 +162,7 @@ public class CarService_UnitTest {
         Long carId = -10L;
         boolean found = carService.existsByCarId(carId);
 
-        assertThat(found).isEqualTo(false);
+        assertThat(found).isFalse();
 
         Mockito.verify(carRepository, VerificationModeFactory.times(1)).existsByCarId(carId);
     }
@@ -211,7 +210,7 @@ public class CarService_UnitTest {
 
         Mockito.verify(carRepository, VerificationModeFactory.times(1)).findByModel(model);
 
-        assertThat(carsFound).hasSize(0);
+        assertThat(carsFound).isEmpty();
     }
 
     @Test
@@ -237,6 +236,6 @@ public class CarService_UnitTest {
 
         Mockito.verify(carRepository, VerificationModeFactory.times(1)).findByMaker(maker);
 
-        assertThat(carsFound).hasSize(0);
+        assertThat(carsFound).isEmpty();
     }
 }

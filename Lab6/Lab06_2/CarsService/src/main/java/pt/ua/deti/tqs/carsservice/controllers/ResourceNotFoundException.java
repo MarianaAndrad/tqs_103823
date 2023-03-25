@@ -1,4 +1,4 @@
-package pt.ua.deti.tqs.CarsService.Controllers;
+package pt.ua.deti.tqs.carsservice.controllers;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;

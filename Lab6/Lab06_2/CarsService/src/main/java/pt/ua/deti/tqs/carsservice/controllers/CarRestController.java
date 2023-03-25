@@ -1,11 +1,11 @@
-package pt.ua.deti.tqs.CarsService.Controllers;
+package pt.ua.deti.tqs.carsservice.controllers;
 
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import pt.ua.deti.tqs.CarsService.Service.CarManagerService;
-import pt.ua.deti.tqs.CarsService.Model.Car;
+import pt.ua.deti.tqs.carsservice.service.CarManagerService;
+import pt.ua.deti.tqs.carsservice.model.Car;
 
 import java.util.List;
 
@@ -40,24 +40,23 @@ public class CarRestController {
     }
 
     @GetMapping(path = "/carsModel/{model}", produces = "application/json")
-    public List<Car> getCarByModel(@PathVariable(value = "model") String model) throws ResourceNotFoundException {
+    public List<Car> getCarByModel(@PathVariable(value = "model") String model)  {
         return carManagerService.getCarByModel(model);
     }
 
     @GetMapping(path="/carsMaker/{maker}", produces = "application/json")
-    public List<Car> getCarByMaker(@PathVariable(value = "maker") String maker) throws ResourceNotFoundException {
+    public List<Car> getCarByMaker(@PathVariable(value = "maker") String maker)  {
         return carManagerService.getCarByMaker(maker);
     }
 
     @GetMapping("/Bool/carID/{id}")
-    public boolean existCarById(@PathVariable(value = "id") Long carId) throws ResourceNotFoundException {
+    public boolean existCarById(@PathVariable(value = "id") Long carId) {
         return carManagerService.existsByCarId(carId);
     }
 
     @DeleteMapping("/car/{id}")
     public ResponseEntity<String> deleteCar(@PathVariable(value = "id") Long carId) {
         HttpStatus status = HttpStatus.ACCEPTED;
-        String response = "";
         if (carManagerService.deleteCar(carId).equals("Car deleted successfully")) {
             return new ResponseEntity<>("Car deleted successfully", status);
         } else {

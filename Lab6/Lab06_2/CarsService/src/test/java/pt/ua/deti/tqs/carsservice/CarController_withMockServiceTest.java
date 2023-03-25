@@ -1,4 +1,4 @@
-package pt.ua.deti.tqs.CarsService;
+package pt.ua.deti.tqs.carsservice;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
@@ -9,9 +9,9 @@ import org.mockito.Mockito;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
-import pt.ua.deti.tqs.CarsService.Controllers.CarRestController;
-import pt.ua.deti.tqs.CarsService.Model.Car;
-import pt.ua.deti.tqs.CarsService.Service.CarManagerService;
+import pt.ua.deti.tqs.carsservice.controllers.CarRestController;
+import pt.ua.deti.tqs.carsservice.model.Car;
+import pt.ua.deti.tqs.carsservice.service.CarManagerService;
 
 import java.util.Arrays;
 import java.util.List;
@@ -24,7 +24,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 
 @WebMvcTest(CarRestController.class)
-public class CarController_withMockServiceTest {
+class CarController_withMockServiceTest {
 
     @Autowired
     private MockMvc mvc;

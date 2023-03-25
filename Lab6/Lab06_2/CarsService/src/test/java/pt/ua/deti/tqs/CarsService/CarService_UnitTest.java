@@ -30,7 +30,7 @@ public class CarService_UnitTest {
     private CarManagerService carService;
 
     @BeforeEach
-    public void setUp() throws Exception{
+     void setUp() throws Exception{
         Car audi = new Car("A1", "audi");
         audi.setCarId(11L);
 
@@ -74,7 +74,7 @@ public class CarService_UnitTest {
     }
 
     @Test
-    public void whenValidCarID_thenCarShouldBeFound() {
+     void whenValidCarID_thenCarShouldBeFound() {
         Long carId = 11L;
         Optional<Car> found = carService.getCarDetails(carId);
 
@@ -85,7 +85,7 @@ public class CarService_UnitTest {
     }
 
     @Test
-    public void whenInValidCarID_thenCarShouldNotBeFound() {
+     void whenInValidCarID_thenCarShouldNotBeFound() {
         Long carId = -10L;
         Optional<Car> found = carService.getCarDetails(carId);
 
@@ -95,7 +95,7 @@ public class CarService_UnitTest {
     }
 
     @Test
-    public void given3Cars_whenGetAll_thenReturn3Records(){
+     void given3Cars_whenGetAll_thenReturn3Records(){
         Car audi = new Car(11L,"A1", "audi");
         Car bmw = new Car(12L,"BMW XM", "BMW");
         Car nissan = new Car(13L,"Nissan", "Nissan");
@@ -113,7 +113,7 @@ public class CarService_UnitTest {
     }
 
     @Test
-    public void whenGetCarDetails_thenCarShouldBeFound(){
+     void whenGetCarDetails_thenCarShouldBeFound(){
         Optional<Car> carFound = carService.getCarDetails(11L);
 
         assertThat(carFound.isPresent()).isEqualTo(true);
@@ -125,7 +125,7 @@ public class CarService_UnitTest {
 
 
     @Test
-    public void whenGetCarDetails_thenCarShouldNotBeFound() {
+     void whenGetCarDetails_thenCarShouldNotBeFound() {
         Optional<Car> carFound = carService.getCarDetails(-10L);
 
         assertThat(carFound.isPresent()).isEqualTo(false);
@@ -135,7 +135,7 @@ public class CarService_UnitTest {
     }
 
     @Test
-    public void whenSaveCar_thenCarShouldBeSaved(){
+     void whenSaveCar_thenCarShouldBeSaved(){
         Car audi = new Car(11L,"A1", "audi");
         Car savedCar = carService.save(audi);
 
@@ -149,7 +149,7 @@ public class CarService_UnitTest {
     }
 
     @Test
-    public void whenExistsCar_thenCarShouldBeFound(){
+     void whenExistsCar_thenCarShouldBeFound(){
         Long carId = 11L;
         boolean found = carService.existsByCarId(carId);
 
@@ -159,7 +159,7 @@ public class CarService_UnitTest {
     }
 
     @Test
-    public void whenExistsCar_thenCarShouldNotBeFound(){
+     void whenExistsCar_thenCarShouldNotBeFound(){
         Long carId = -10L;
         boolean found = carService.existsByCarId(carId);
 
@@ -169,7 +169,7 @@ public class CarService_UnitTest {
     }
 
     @Test
-    public void whenDeleteCar_thenCarShouldBeDeleted(){
+     void whenDeleteCar_thenCarShouldBeDeleted(){
         Long carId = 11L;
         String response = carService.deleteCar(carId);
 
@@ -179,7 +179,7 @@ public class CarService_UnitTest {
     }
 
     @Test
-    public void whenDeleteCar_thenCarShouldNotBeDeleted(){
+     void whenDeleteCar_thenCarShouldNotBeDeleted(){
         Long carId = -10L;
         String response = carService.deleteCar(carId);
 
@@ -189,7 +189,7 @@ public class CarService_UnitTest {
     }
 
     @Test
-    public void whenGetCarByModel_thenCarShouldBeFound(){
+     void whenGetCarByModel_thenCarShouldBeFound(){
         String model = "A1";
         List<Car> carsFound = carService.getCarByModel(model);
 
@@ -203,7 +203,7 @@ public class CarService_UnitTest {
     }
 
     @Test
-    public void whenGetCarByModel_thenCarShouldNotBeFound(){
+     void whenGetCarByModel_thenCarShouldNotBeFound(){
         String model = "A2";
         List<Car> carsFound = carService.getCarByModel(model);
 
@@ -215,7 +215,7 @@ public class CarService_UnitTest {
     }
 
     @Test
-    public void whenGetCarByMaker_thenCarShouldBeFound(){
+     void whenGetCarByMaker_thenCarShouldBeFound(){
         String maker = "audi";
         List<Car> carsFound = carService.getCarByMaker(maker);
 
@@ -229,7 +229,7 @@ public class CarService_UnitTest {
     }
 
     @Test
-    public void whenGetCarByMaker_thenCarShouldNotBeFound(){
+     void whenGetCarByMaker_thenCarShouldNotBeFound(){
         String maker = "audi2";
         List<Car> carsFound = carService.getCarByMaker(maker);
 

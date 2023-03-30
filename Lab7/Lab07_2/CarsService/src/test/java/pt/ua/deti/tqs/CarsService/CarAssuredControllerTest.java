@@ -1,6 +1,7 @@
 package pt.ua.deti.tqs.CarsService;
 
 import io.restassured.module.mockmvc.RestAssuredMockMvc;
+import org.hibernate.annotations.NotFound;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
@@ -144,36 +145,39 @@ class CarAssuredControllerTest {
         verify(service, times(1)).getCarByMaker("A1");
     }
 
+    @Test
+    void givenExistingCar_whenCheckIfCarExistsById_thenReturnTrue() throws Exception {
+            Long carId = 1L;
+            Car car = new Car( carId, "Audi", "A1");
 
-    /* @Test
-    void givenCar_whenGetExistingCarByValidID_thenReturnJson() throws Exception {
-        Car car = new Car ("Audi", "A1");
-        car.setCarId(11L);
+            when(service.existsByCarId(carId)).thenReturn(true);
 
+            RestAssuredMockMvc.given()
+                    .contentType("application/json")
+                    .when()
+                    .request("GET", "/api/Bool/carID/" + carId)
+                    .then()
+                    .statusCode(200)
+                    .body(equalTo("true"));
 
-        when(service.existsByCarId(Mockito.anyLong())).thenReturn(true);
-
-        mvc.perform(
-                        get("/api/Bool/carID/11").
-                                contentType(MediaType.APPLICATION_JSON)).
-                andExpect(status().isOk()).
-                andExpect(jsonPath("$", is(true)));
-
-        verify(service, times(1)).existsByCarId(Mockito.anyLong());
+            verify(service, times(1)).existsByCarId(carId);
     }
 
     @Test
     void givenCar_whenGetExistingCarByInvalidID_thenReturnJson() throws Exception {
         when(service.existsByCarId(Mockito.anyLong())).thenReturn(false);
 
-        mvc.perform(
-                        get("/api/Bool/carID/13").
-                                contentType(MediaType.APPLICATION_JSON)).
-                andExpect(status().isOk()).
-                andExpect(jsonPath("$", is(false)));
+        RestAssuredMockMvc.given()
+                .contentType("application/json")
+                .when()
+                .request("GET", "/api/Bool/carID/13")
+                .then()
+                .statusCode(200)
+                .body(equalTo("false"));
 
         verify(service, times(1)).existsByCarId(Mockito.anyLong());
     }
+
 
     @Test
     void whenDeleteCar_thenDeleteCar() throws Exception{
@@ -181,14 +185,15 @@ class CarAssuredControllerTest {
 
         when(service.deleteCar(Mockito.anyLong())).thenReturn("Car deleted successfully");
 
-        mvc.perform(
-                        delete("/api/car/11").
-                                contentType(MediaType.APPLICATION_JSON).
-                                content(JsonUtils.toJson(car))).
-                andExpect(status().isAccepted()).
-                andExpect(jsonPath("$", is("Car deleted successfully")));
+        RestAssuredMockMvc.given()
+                .contentType("application/json")
+                .when()
+                .request("DELETE", "/api/car/11")
+                .then()
+                .statusCode(202)
+                .body(equalTo("Car deleted successfully"));
 
-        verify(service, times(1)).deleteCar(Mockito.any());
+        verify(service, times(1)).deleteCar(Mockito.anyLong());
     }
 
     @Test
@@ -196,14 +201,16 @@ class CarAssuredControllerTest {
         Car car = new Car (11L,"Nissan", "Nissan3");
         when(service.deleteCar(Mockito.anyLong())).thenReturn("Car not found");
 
-        mvc.perform(
-                        delete("/api/car/15").
-                                contentType(MediaType.APPLICATION_JSON).
-                                content(JsonUtils.toJson(car))).
-                andExpect(status().isNotFound()).
-                andExpect(jsonPath("$", is("Car not found")));
+        RestAssuredMockMvc.given()
+                .contentType("application/json")
+                .when()
+                .request("DELETE", "/api/car/11")
+                .then()
+                // HttpStatus.NOT_FOUND
+                .statusCode(404)
+                .body(equalTo("Car not found"));
 
-        verify(service, times(1)).deleteCar(Mockito.any());
+        verify(service, times(1)).deleteCar(Mockito.anyLong());
+
     }
-*/
 }

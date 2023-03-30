@@ -36,6 +36,7 @@ public class CarRestController {
     public ResponseEntity<Car> getCarById(@PathVariable(value = "id") Long carId) throws ResourceNotFoundException {
         Car car = carManagerService.getCarDetails(carId)
                 .orElseThrow(() -> new ResourceNotFoundException("Car not found for id: " + carId));
+        System.out.println(car);
         return ResponseEntity.ok().body(car);
     }
 

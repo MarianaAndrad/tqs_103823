@@ -12,6 +12,7 @@ import org.springframework.test.web.servlet.MockMvc;
 import pt.ua.deti.tqs.carsservice.controllers.CarRestController;
 import pt.ua.deti.tqs.carsservice.model.Car;
 import pt.ua.deti.tqs.carsservice.service.CarManagerService;
+import pt.ua.deti.tqs.carsservice.controllers.ResourceNotFoundException;
 
 import java.util.Arrays;
 import java.util.List;
@@ -84,18 +85,18 @@ class CarController_withMockServiceTest {
         Car car = new Car ("Nissan", "Nissan3");
         car.setCarId(1L);
 
-        when(service.getCarDetails(Mockito.anyLong())).thenReturn(java.util.Optional.of(car));
+        when(service.getCarDetails(1L)).thenReturn(java.util.Optional.of(car));
 
         mvc.perform(
                         get("/api/carId/1").
                                 contentType(MediaType.APPLICATION_JSON)).
                 andExpect(status().isOk()).
+                andExpect(jsonPath("$.carId", is(1))).
                 andExpect(jsonPath("$.model", is("Nissan"))).
                 andExpect(jsonPath("$.maker", is("Nissan3")));
 
         verify(service, times(1)).getCarDetails(Mockito.anyLong());
     }
-
     @Test
     void givenCar_whenGetCarsByModel_thenReturnJson() throws Exception{
         Car car2 = new Car ("Audi", "A1");
@@ -116,6 +117,17 @@ class CarController_withMockServiceTest {
                 andExpect(jsonPath("$[1].maker", is("A2")));
 
         verify(service, times(1)).getCarByModel("Audi");
+    }
+
+    @Test
+    void givenCar_whenGetCarById_thenReturnNotFound() throws Exception {
+        when(service.getCarDetails(100L)).thenReturn(java.util.Optional.empty());
+
+        mvc.perform(get("/api/carId/100")
+                        .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isNotFound());
+
+        verify(service, times(1)).getCarDetails(Mockito.anyLong());
     }
 
     @Test
@@ -200,6 +212,7 @@ class CarController_withMockServiceTest {
 
         verify(service, times(1)).deleteCar(Mockito.any());
     }
+
 
 
 }

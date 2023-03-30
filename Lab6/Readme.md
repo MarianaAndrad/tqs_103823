@@ -106,18 +106,37 @@ Code coverage reports requires the Jacoco plugin.
 ## Alinea B
 Tendo em conta a imagem em cima, sabaemos que o codigo não tem nenhum bug, vulnerabilidade e nem security hotspots e 26 code smells.
 Desses 26 code smells:
-- x major
-- x blocker
-- x minor
-- x info
+- 0 major
+- 3 blocker
+- 13 minor
+- 10 info
 
-(concluir)
+### Blocker
+![blocker](Lab06_2/codeSmellsBlocker.png)
+
+### Minor
+![minor](Lab06_2/codeSmellsMinorPart1.png)
+
+![minor](Lab06_2/codeSmellsMinorPart2.png)
+
+### Info
+![info](Lab06_2/codeSmellsInfo.png)
+
+### After corrections
+![after_corrections](Lab06_2/after_corrections.png)
 
 ## ALinea D
 **Run the static analysis and observe/explore the coverage values on the SonarQube dashboard.How many lines are “not covered”? And how many conditions?**
 
-![after_corrections](Lab06_2/after_corrections.png)
+A coverage é alta mas não 100%, por não feito testes para métodos como hashcode e equals. No entanto, estes testes não são feitos por motivos como a usa implementação padrão e o Custo-Benefício de os fazer, pois este nem sempre valem a pena de gastar tempo e esforço.
+
 ![coveragefiles](Lab06_2/coverageFiles.png)
+
+Pela imagem dada podemos ver que apenas duas das classes é que não tem total coverage, _Car_ e _CarServiceApplication_.
+No caso do _CarServiceApplication_ é visivel que apenas não foram testadas 2 linhas. Estas linhas dizem respeito à função principal que inicializa o aplicativo. 
+Já a class _Car_, tem uma coverage de 76,2% onde não são testadas 5 condições e 5 linhas, que emvolvem as funções de Hashcode, equals e toString.
+
+
 # Custom QG
 
 

@@ -16,19 +16,18 @@ import java.util.List;
 @ToString
 @Entity
 @Table(name = "books")
+public
 class Book {
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
-    private String id;
+    private Long id;
+
 
     private String title;
     private String author;
-    private String isbn;
     private String publisher;
     private Date published_date;
-    private Double price;
     private String description;
     private String category;
-
 
 }

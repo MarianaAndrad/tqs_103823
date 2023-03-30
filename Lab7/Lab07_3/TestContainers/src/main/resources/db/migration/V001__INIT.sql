@@ -1,0 +1,9 @@
+CREATE Table If Not Exists books (
+  id BIGSERIAL PRIMARY KEY,
+  title VARCHAR(255) NOT NULL,
+  author VARCHAR(255) NOT NULL,
+  publisher VARCHAR(255) NOT NULL,
+  published_date TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  description TEXT,
+  category VARCHAR(255) NOT NULL
+);

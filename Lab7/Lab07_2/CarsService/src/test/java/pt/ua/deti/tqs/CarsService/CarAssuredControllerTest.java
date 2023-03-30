@@ -206,11 +206,9 @@ class CarAssuredControllerTest {
                 .when()
                 .request("DELETE", "/api/car/11")
                 .then()
-                // HttpStatus.NOT_FOUND
                 .statusCode(404)
                 .body(equalTo("Car not found"));
 
         verify(service, times(1)).deleteCar(Mockito.anyLong());
-
     }
 }

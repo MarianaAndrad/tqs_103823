@@ -67,6 +67,59 @@ O comando dado para analisar o projeto.
     -Dsonar.host.url=http://localhost:9906 \
     -Dsonar.login=sqp_14de22769355d2ef94436460cc304e1a33f6a4c0
   ```
+## Alinea A
+a) **Technical debt** é uma das considerações mais importantes a ter em mente ao lidar com projetos de software complexos. Trata-se de uma medida do esforço estimado necessário para corrigir os problemas de base de código identificados no código durante a análise, ou seja,  uma medida de comprometimento na qualidade do código feito para compensar cronogramas de entrega rápida. 
+
+A ferramenta de **SonarQube** trata-se de uma das ferramnetas mais populares usadas para análise automatizada de código. Ele fornece uma análise detalhada do código-fonte e gera um relatório com as principais métricas de qualidade do código, incluindo cobertura de testes, complexidade e Technical debt.
+
+![overview](Lab06_2/overview.png)
+
+De acordo, com a imagem acima, podemos ver que a Technical debt é de 2 horas e 33 minutos, o que significa que são necessárias mais de duas horas de trabalho para corrigir todos os problemas identificados na análise. 
+
+## ALinea C
+Code coverage reports requires the Jacoco plugin. 
+```xml 
+<plugin>
+    <groupId>org.jacoco</groupId>
+    <artifactId>jacoco-maven-plugin</artifactId>
+    <version>0.8.8</version>
+    <executions>
+      <execution>
+        <goals>
+          <goal>prepare-agent</goal>
+        </goals>
+      </execution>
+      <execution>
+        <id>report</id>
+        <phase>prepare-package</phase>
+        <goals>
+          <goal>report</goal>
+        </goals>
+      </execution>
+    </executions>
+  </plugin>
+</plugins>
+```
+
+![converagetest](Lab06_2/converagetest.png)
+
+## Alinea B
+Tendo em conta a imagem em cima, sabaemos que o codigo não tem nenhum bug, vulnerabilidade e nem security hotspots e 26 code smells.
+Desses 26 code smells:
+- x major
+- x blocker
+- x minor
+- x info
+
+(concluir)
+
+## ALinea D
+**Run the static analysis and observe/explore the coverage values on the SonarQube dashboard.How many lines are “not covered”? And how many conditions?**
+
+![after_corrections](Lab06_2/after_corrections.png)
+![coveragefiles](Lab06_2/coverageFiles.png)
+# Custom QG
+
 
 # Reference
 [https://docs.sonarqube.org/latest/user-guide/user-account/generating-and-using-tokens/](https://docs.sonarqube.org/latest/user-guide/user-account/generating-and-using-tokens/)

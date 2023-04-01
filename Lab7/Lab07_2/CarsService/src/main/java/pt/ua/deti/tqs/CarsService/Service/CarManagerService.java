@@ -1,5 +1,6 @@
 package pt.ua.deti.tqs.CarsService.Service;
 
+import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 import pt.ua.deti.tqs.CarsService.Data.CarRepository;
 import pt.ua.deti.tqs.CarsService.Model.Car;
@@ -40,8 +41,9 @@ public class CarManagerService {
         return carRepository.findByMaker(maker);
     }
 
+    @Transactional
     public String deleteCar(Long carId) {
-        if (carRepository.deleteByCarId(carId) != null){
+        if (carRepository.deleteByCarId(carId) != 0){
             return "Car deleted successfully";
         }
         return "Car not found";

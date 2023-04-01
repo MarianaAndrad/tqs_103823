@@ -1,0 +1,6 @@
+CREATE TABLE cars (
+    carId BIGSERIAL NOT NULL,
+    model VARCHAR(255) NOT NULL,
+    maker VARCHAR(255) NOT NULL,
+    PRIMARY KEY (id)
+);

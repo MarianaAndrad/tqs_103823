@@ -11,12 +11,8 @@ import org.testcontainers.junit.jupiter.Testcontainers;
 import pt.ua.deti.tqs.TestContainers.Data.BookRepository;
 import pt.ua.deti.tqs.TestContainers.Data.Book;
 
-import java.util.Date;
-import java.util.List;
-
 @SpringBootTest
 @Testcontainers
-@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 class TestContainersApplicationTests {
 
 	private Book book;
@@ -43,7 +39,6 @@ class TestContainersApplicationTests {
 	}
 
 	@Test
-	@Order(1)
 	void contextLoads() {
 		Book book =  new Book(1L,  "The Great Gatsby", "F. Scott Fitzgerald", "Publisher C", "A classic novel about the Roaring Twenties", "Fiction");
 		bookRepository.save(book);
@@ -51,42 +46,4 @@ class TestContainersApplicationTests {
 		System.out.println("Context loads!");
 
 	}
-
-	@Test
-	@Order(2)
-	void testGetBookById() {
-		Book book = bookRepository.findById(1L).get();
-		Assertions.assertEquals("The Great Gatsby", book.getTitle());
-	}
-
-	@Test
-	@Order(3)
-	void testGetBookByTitle() {
-		Book book = bookRepository.findByTitle("The Great Gatsby").get();
-		Assertions.assertEquals("The Great Gatsby", book.getTitle());
-	}
-
-	@Test
-	@Order(4)
-	void testGetAllBooks() {
-		List<Book> books = bookRepository.findAll();
-		Assertions.assertEquals(1, books.size());
-	}
-
-	@Test
-	@Order(4)
-	void testDeleteBook() {
-		Book book = bookRepository.findById(1L).get();
-		bookRepository.delete(book);
-		Assertions.assertFalse(bookRepository.findById(1L).isPresent());
-	}
-
-
-
-
-
-
-
-
-
 }

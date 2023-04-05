@@ -1,0 +1,41 @@
+Endpoints de AirVisual
+GET /airvisual/countries
+
+Retorna uma lista de todos os países suportados pelo serviço AirVisual.
+GET /airvisual/{country}/states
+
+Retorna uma lista de todos os estados/províncias dentro do país fornecido.
+
+Parâmetros:
+
+    {country}: O nome do país para o qual você deseja recuperar a lista de estados/províncias. Deve ser uma string com o nome completo do país, por exemplo: "United States" ou "Brazil".
+
+GET /airvisual/{country}/{state}/cities
+
+Retorna uma lista de todas as cidades dentro do estado/província fornecido.
+
+Parâmetros:
+
+    {country}: O nome do país em que o estado/província está localizado. Deve ser uma string com o nome completo do país, por exemplo: "United States" ou "Brazil".
+    {state}: O nome do estado/província para o qual você deseja recuperar a lista de cidades. Deve ser uma string com o nome completo do estado/província, por exemplo: "California" ou "São Paulo".
+
+GET /airvisual/{country}/{state}/{city}/pollution
+
+Retorna informações sobre a poluição do ar para a cidade fornecida.
+
+Parâmetros:
+
+    {country}: O nome do país em que a cidade está localizada. Deve ser uma string com o nome completo do país, por exemplo: "United States" ou "Brazil".
+    {state}: O nome do estado/província em que a cidade está localizada. Deve ser uma string com o nome completo do estado/província, por exemplo: "California" ou "São Paulo".
+    {city}: O nome da cidade para a qual você deseja recuperar informações sobre a poluição do ar. Deve ser uma string com o nome completo da cidade, por exemplo: "Los Angeles" ou "Rio de Janeiro".
+
+Endpoints de OpenWeather
+GET /openweather/{country}/{state}/{city}/weather
+
+Retorna informações sobre o clima para a cidade fornecida.
+
+Parâmetros:
+
+    {country}: O nome do país em que a cidade está localizada. Deve ser uma string com o nome completo do país, por exemplo: "United States" ou "Brazil".
+    {state}: O nome do estado/província em que a cidade está localizada. Deve ser uma string com o nome completo do estado/província, por exemplo: "California" ou "São Paulo".
+    {city}: O nome da cidade para a qual você deseja recuperar informações sobre o clima. Deve ser uma string com o nome completo da cidade, por exemplo: "Los Angeles" ou "Rio de Janeiro".

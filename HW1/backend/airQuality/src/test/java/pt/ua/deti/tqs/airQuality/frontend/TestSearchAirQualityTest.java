@@ -18,7 +18,7 @@ public class TestSearchAirQualityTest {
 
   @Test
   @Disabled
-  public void testSearchAirQuality(FirefoxDriver driver) {
+  void testSearchAirQuality(FirefoxDriver driver) {
     driver.get("http://localhost:3000/");
     driver.manage().window().setSize(new Dimension(1850, 1053));
     {

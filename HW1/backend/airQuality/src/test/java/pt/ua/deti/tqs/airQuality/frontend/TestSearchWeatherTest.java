@@ -20,7 +20,7 @@ public class TestSearchWeatherTest {
 
   @Test
   @Disabled
-  public void testSearchWeather(FirefoxDriver driver) {
+  void testSearchWeather(FirefoxDriver driver) {
     driver.get("http://localhost:3000/");
     driver.manage().window().setSize(new Dimension(1850, 1053));
     {

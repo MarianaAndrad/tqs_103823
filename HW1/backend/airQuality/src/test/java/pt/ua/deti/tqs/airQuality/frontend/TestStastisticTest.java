@@ -17,7 +17,7 @@ import java.util.List;
 public class TestStastisticTest {
   @Test
   @Disabled
-  public void testStastistic(FirefoxDriver driver) {
+  void testStastistic(FirefoxDriver driver) {
     driver.get("http://localhost:3000/");
     driver.manage().window().setSize(new Dimension(1850, 1053));
     {

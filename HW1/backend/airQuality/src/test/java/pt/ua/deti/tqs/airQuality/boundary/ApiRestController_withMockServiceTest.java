@@ -25,6 +25,6 @@ class ApiRestController_withMockServiceTest {
     private OpenWeatherService openWeatherService;
 
     @BeforeEach
-    public void setUp() throws Exception {
+    void setUp() throws Exception {
     }
 }

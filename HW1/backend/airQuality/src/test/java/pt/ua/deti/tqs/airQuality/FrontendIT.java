@@ -46,7 +46,7 @@ public class FrontendIT {
 
     @Test
     @DisplayName("Test Search Air Quality")
-    public void testSearchAirQuality() {
+    void testSearchAirQuality() {
         driver.get("http://localhost:3000/");
         driver.manage().window().setSize(new Dimension(1850, 1053));
         {
@@ -76,7 +76,7 @@ public class FrontendIT {
 
     @Test
     @DisplayName("Test Statistics")
-    public void testStatistic(FirefoxDriver driver) {
+    void testStatistic() {
         driver.get("http://localhost:3000/");
         driver.manage().window().setSize(new Dimension(1850, 1053));
         {
@@ -129,7 +129,7 @@ public class FrontendIT {
 
     @Test
     @DisplayName("Test Search Weather")
-    public void testSearchWeather(FirefoxDriver driver) {
+    void testSearchWeather() {
         driver.get("http://localhost:3000/");
         driver.manage().window().setSize(new Dimension(1850, 1053));
         {

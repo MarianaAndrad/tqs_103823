@@ -1,6 +1,5 @@
-import Link from "next/link";
-import React, {useEffect, useRef, useState} from "react";
-import {useRouter} from "next/router";
+import React, {useEffect, useState} from "react";
+import Image from "next/image";
 
 export default function OpenWeather() {
 
@@ -88,12 +87,22 @@ export default function OpenWeather() {
                         </div>
                         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 py-8">
                             <div className="stats shadow">
+                                <div className="stat-figure text-secondary">
+                                    <label className="swap swap-active text-6xl">
+                                        <div className="swap-on">📌️</div>
+                                    </label>
+                                </div>
                                 <div className="stat">
                                     <div className="stat-title">Coordenates Information</div>
                                     <div className="stat-value">({airQualityData["latitude"].toFixed(2)}, {airQualityData["longitude"].toFixed(2)}) </div>
                                 </div>
                             </div>
                             <div className="stats shadow">
+                                <div className="stat-figure text-secondary">
+                                    <label className="swap swap-active text-6xl">
+                                        <div className="swap-on">🌐</div>
+                                    </label>
+                                </div>
                                 <div className="stat">
                                     <div className="stat-title">Location Information</div>
                                     <div className="stat-value">{city}</div>
@@ -101,6 +110,11 @@ export default function OpenWeather() {
                                 </div>
                             </div>
                             <div className="stats shadow">
+                                <div className="stat-figure">
+                                    <label className="swap swap-active text-6xl">
+                                        <div className="swap-on"> ♻ </div>
+                                    </label>
+                                </div>
                                 <div className="stat">
                                     <div className="stat-title">Air Quality Index (AQI)</div>
                                     <div className="stat-value">{airQualityData["aqi"]}</div>
@@ -113,107 +127,78 @@ export default function OpenWeather() {
 
                             <div className="stats shadow">
                                 <div className="stat">
-                                    <div className="stat-figure text-primary">
-                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                             className="inline-block w-8 h-8 stroke-current">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                  d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
-                                        </svg>
+                                    <div className="stat-figure text-secondary">
+                                        <label className="swap swap-active text-6xl">
+                                            <div className="swap-on">CO</div>
+                                        </label>
                                     </div>
                                     <div className="stat-title">Carbon Monoxide</div>
-                                    <div className="stat-value text-primary">{airQualityData["co"]}</div>
-                                    <div className="stat-desc">CO</div>
+                                    <div className="stat-value text-accent">{airQualityData["co"]}</div>
                                 </div>
 
                                 <div className="stat">
                                     <div className="stat-figure text-secondary">
-                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                             className="inline-block w-8 h-8 stroke-current">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                  d="M13 10V3L4 14h7v7l9-11h-7z"></path>
-                                        </svg>
+                                        <label className="swap swap-active text-6xl">
+                                            <div className="swap-on text-primary">NO</div>
+                                        </label>
                                     </div>
                                     <div className="stat-title">Nitrogen Oxide</div>
                                     <div className="stat-value">{airQualityData["no"]}</div>
-                                    <div className="stat-desc">NO</div>
-                                </div>
 
-                                <div className="stat">
-                                    <div className="stat-figure text-primary">
-                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                             className="inline-block w-8 h-8 stroke-current">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                  d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
-                                        </svg>
-                                    </div>
-                                    <div className="stat-title">Ammonia</div>
-                                    <div className="stat-value text-primary">{airQualityData["nh3"]}</div>
-                                    <div className="stat-desc">NH3</div>
                                 </div>
 
                                 <div className="stat">
                                     <div className="stat-figure text-secondary">
-                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                             className="inline-block w-8 h-8 stroke-current">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                  d="M13 10V3L4 14h7v7l9-11h-7z"></path>
-                                        </svg>
+                                        <label className="swap swap-active text-6xl">
+                                            <div className="swap-on text-accent">NH3</div>
+                                        </label>
+                                    </div>
+                                    <div className="stat-title">Ammonia</div>
+                                    <div className="stat-value text-primary">{airQualityData["nh3"]}</div>
+                                </div>
+
+                                <div className="stat">
+                                    <div className="stat-figure text-secondary">
+                                        <label className="swap swap-active text-6xl">
+                                            <div className="swap-on">NO2</div>
+                                        </label>
                                     </div>
                                     <div className="stat-title">Nitrogen Dioxide</div>
                                     <div className="stat-value">{airQualityData["no2"]}</div>
-                                    <div className="stat-desc">NO2</div>
                                 </div>
 
                             </div>
                             <div className="stats shadow">
                                 <div className="stat">
                                     <div className="stat-figure text-secondary">
-                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                             className="inline-block w-8 h-8 stroke-current">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                  d="M13 10V3L4 14h7v7l9-11h-7z"></path>
-                                        </svg>
+                                        <label className="swap swap-active text-6xl">
+                                            <div className="swap-on">O3</div>
+                                        </label>
                                     </div>
                                     <div className="stat-title">Ozone</div>
                                     <div className="stat-value">{airQualityData["o3"]}</div>
-                                    <div className="stat-desc">O3</div>
                                 </div>
 
                                 <div className="stat">
-                                    <div className="stat-figure text-primary">
-                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                             className="inline-block w-8 h-8 stroke-current">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                  d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
-                                        </svg>
+                                    <div className="stat-figure text-secondary">
+                                        <label className="swap swap-active text-6xl">
+                                            <div className="swap-on">SO2</div>
+                                        </label>
                                     </div>
                                     <div className="stat-title">Sulfur Dioxide</div>
                                     <div className="stat-value text-primary">{airQualityData["so2"]}</div>
-                                    <div className="stat-desc">SO2</div>
                                 </div>
 
                                 <div className="stat">
-                                    <div className="stat-figure text-secondary">
-                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                             className="inline-block w-8 h-8 stroke-current">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                  d="M13 10V3L4 14h7v7l9-11h-7z"></path>
-                                        </svg>
-                                    </div>
                                     <div className="stat-title">PM2.5</div>
                                     <div className="stat-value">{airQualityData["pm2_5"]}</div>
+                                    <div className="stat-desc text-accent">Partículas finas com diâmetro menor ou igual a 2.5 micrômetros </div>
                                 </div>
 
                                 <div className="stat">
-                                    <div className="stat-figure text-secondary">
-                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                             className="inline-block w-8 h-8 stroke-current">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                  d="M13 10V3L4 14h7v7l9-11h-7z"></path>
-                                        </svg>
-                                    </div>
                                     <div className="stat-title">PM10</div>
                                     <div className="stat-value">{airQualityData["pm10"]}</div>
+                                    <div className="stat-desc text-accent">Partículas finas com diâmetro menor ou igual a 10 micrômetros </div>
                                 </div>
 
                             </div>

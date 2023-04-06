@@ -34,19 +34,6 @@ export default function OpenWeather() {
         }
     };
 
-
-    useEffect(() => {
-        if (country && city) {
-            fetch(`http://localhost:8080/api/v1/${country}/${city}/geocoding`)
-                .then((res) => res.json())
-                .then((data) => {
-                    console.log(data);
-                    setcoor(data);
-                })
-                .catch((err) => setApiError(true));
-        }
-    }, [country, city]);
-
     const handleSearchButtonClick = () => {
         handleSearch();
         Other(coord);

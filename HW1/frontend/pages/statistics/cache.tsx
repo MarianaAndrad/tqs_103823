@@ -51,7 +51,6 @@ export default function Cache() {
 
                 <div className="bg-white rounded-lg shadow p-6">
                     <h2 className="text-xl font-bold mb-4">Cache hit rate</h2>
-                    {/*<p className="text-green-600 text-3xl font-bold">{successRate.toFixed(2)}%</p>*/}
                     <div className="radial-progress text-green-600 color-green-600" style={{"--value": successRate} as React.CSSProperties}>{Math.round(successRate)}%</div>
                     <div className="stat-desc mt-2">{successRate.toFixed(2)}%</div>
                 </div>

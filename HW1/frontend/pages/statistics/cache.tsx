@@ -29,7 +29,7 @@ export default function Cache() {
 
     return (
         <div className="p-6 h-screen">
-            <h1 className="text-3xl font-bold mb-6 p-10">Controller Statistics</h1>
+            <h1 className="text-3xl font-bold mb-6 p-10">Cache Statistics</h1>
 
             <div className="grid grid-cols-2 gap-6">
                 <div className="bg-white rounded-lg shadow p-6">

@@ -41,18 +41,6 @@ export default function OpenWeather() {
 
     return (
         <>
-            {apiError &&
-                <div className="alert alert-error shadow-lg mt-10">
-                    <div>
-                        <svg onClick={e => setApiError(false)} xmlns="http://www.w3.org/2000/svg" className="cursor-pointer stroke-current flex-shrink-0 h-6 w-6"
-                             fill="none" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                  d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                        </svg>
-                        <span>Not Found Info or Internal Server Error</span>
-                    </div>
-                </div>
-            }
             {(!airQualityData["latitude"]) && (
                     <div className="container h-screen  py-8 pt-20">
                         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 py-8">
@@ -60,6 +48,18 @@ export default function OpenWeather() {
                             <input name="country" type="text" placeholder="Country" className="input input-bordered input-secondary w-full " value={country} onChange={(e) => setCountry(e.target.value)}/>
                             <button className="btn btn-primary max-w-xs" onClick={handleSearchButtonClick}>Search</button>
                         </div>
+                        {apiError &&
+                            <div className="alert alert-error shadow-lg mt-10">
+                                <div>
+                                    <svg onClick={e => setApiError(false)} xmlns="http://www.w3.org/2000/svg" className="cursor-pointer stroke-current flex-shrink-0 h-6 w-6"
+                                         fill="none" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                              d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                                    </svg>
+                                    <span>Internal Server Error</span>
+                                </div>
+                            </div>
+                        }
                     </div>
                 )
             }

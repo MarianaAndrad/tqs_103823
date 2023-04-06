@@ -45,7 +45,7 @@ export default function Navbar() {
                 </div>
             </div>
             <div className="navbar-center">
-                <a className="btn btn-ghost normal-case text-xl">Air Quality</a>
+                <a className="btn btn-ghost normal-case text-xl" href="/">Air Quality</a>
             </div>
             <div className="navbar-end">
             </div>

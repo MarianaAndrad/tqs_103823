@@ -26,6 +26,21 @@ export default function Home() {
                             </div>
                         </div>
                     </div>
+
+                    <div className="grid grid-cols-1 gap-8">
+                        <div className="card shadow-lg">
+                            <div className="card-body">
+                                <h2 className="card-title text-xl font-bold mb-4">Statistic Data</h2>
+                                <p className="card-text text-base mb-4">View the statistic data for the APIs and the cache.</p>
+                                <div className={"flex flex-row gap-4"}>
+                                    <a href="/statistics/api" className="btn btn-primary">Api</a>
+                                    <a href="/statistics/cache" className="btn btn-primary">Cache</a>
+                                    <a href="/statistics/controller" className="btn btn-primary">Controller</a>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

@@ -17,9 +17,6 @@ public class Statistics {
     private Integer cacheHits = 0; // number of times the cache was used
     private Integer cacheMisses = 0; //number of times the cache was not used
 
-    private Integer successfulRequests = 0; //number of requests made to our API with success
-    private Integer failedRequests = 0; //number of requests made to our API with failure
-
     private Integer successfulGeocodingRequests = 0; //number of requests made to the Geocoding API with success
     private Integer failedGeocodingRequests = 0; //number of requests made to the Geocoding API with failure
 
@@ -29,6 +26,8 @@ public class Statistics {
     private Integer successfulOpenWeatherRequests = 0; //number of requests made to the Weather API with success
     private Integer failedOpenWeatherRequests = 0; //number of requests made to the Weather API with failure
 
+    private HashMap<String, Integer> successfulRequestsBySource = new HashMap<>();
+    private HashMap<String, Integer> failedRequestsBySource = new HashMap<>();
 
     public void hitCache() {
         cacheHits++;
@@ -36,14 +35,6 @@ public class Statistics {
 
     public void missCache() {
         cacheMisses++;
-    }
-
-    public void successfulRequest() {
-        successfulRequests++;
-    }
-
-    public void failedRequest() {
-        failedRequests++;
     }
 
     public void successfulGeocodingRequest() {
@@ -70,32 +61,52 @@ public class Statistics {
         failedOpenWeatherRequests++;
     }
 
+    public void successfulRequestBySource(String source) {
+        if (successfulRequestsBySource.containsKey(source)) {
+            successfulRequestsBySource.put(source, successfulRequestsBySource.get(source) + 1);
+        } else {
+            successfulRequestsBySource.put(source, 1);
+        }
+    }
+
+    public void failedRequestBySource(String source) {
+        if (failedRequestsBySource.containsKey(source)) {
+            failedRequestsBySource.put(source, failedRequestsBySource.get(source) + 1);
+        } else {
+            failedRequestsBySource.put(source, 1);
+        }
+    }
+
     public void reset() {
         cacheHits = 0;
         cacheMisses = 0;
-        successfulRequests = 0;
-        failedRequests = 0;
         successfulGeocodingRequests = 0;
         failedGeocodingRequests = 0;
         successfulAirVisualRequests = 0;
         failedAirVisualRequests = 0;
         successfulOpenWeatherRequests = 0;
         failedOpenWeatherRequests = 0;
+        successfulRequestsBySource = new HashMap<>();
+        failedRequestsBySource = new HashMap<>();
+
     }
 
-    public HashMap<String, Integer> getStatistics() {
-        HashMap<String, Integer> result = new HashMap<>();
+    public HashMap<String, Object> getStatistics() {
+        HashMap<String, Object> result = new HashMap<>();
 
         result.put("cacheHits", cacheHits);
         result.put("cacheMisses", cacheMisses);
-        result.put("successfulRequests", successfulRequests);
-        result.put("failedRequests", failedRequests);
+        result.put("successfulRequests", successfulRequestsBySource.values().stream().reduce(0, Integer::sum));
+        result.put("failedRequests", failedRequestsBySource.values().stream().reduce(0, Integer::sum));
         result.put("successfulGeocodingRequests", successfulGeocodingRequests);
         result.put("failedGeocodingRequests", failedGeocodingRequests);
         result.put("successfulAirVisualRequests", successfulAirVisualRequests);
         result.put("failedAirVisualRequests", failedAirVisualRequests);
         result.put("successfulOpenWeatherRequests", successfulOpenWeatherRequests);
         result.put("failedOpenWeatherRequests", failedOpenWeatherRequests);
+        result.put("totalRequests", successfulRequestsBySource.values().stream().reduce(0, Integer::sum) + failedRequestsBySource.values().stream().reduce(0, Integer::sum));
+        result.put("successfulRequestsBySource", successfulRequestsBySource);
+        result.put("failedRequestsBySource", failedRequestsBySource);
 
         return result;
     }

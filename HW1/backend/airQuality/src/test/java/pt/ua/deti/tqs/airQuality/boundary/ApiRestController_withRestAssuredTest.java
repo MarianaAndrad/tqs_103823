@@ -21,6 +21,7 @@ import pt.ua.deti.tqs.airQuality.services.OpenWeatherService;
 
 import java.util.List;
 
+import static org.hamcrest.Matchers.aMapWithSize;
 import static org.hamcrest.Matchers.is;
 import static org.mockito.Mockito.*;
 
@@ -377,14 +378,17 @@ public class ApiRestController_withRestAssuredTest {
                 .statusCode(200)
                 .body("cacheHits", is(0))
                 .body("cacheMisses", is(0))
-                .body("successfulRequests", is(0))
+                .body("successfulRequests", is(1))
                 .body("failedRequests", is(0))
                 .body("successfulGeocodingRequests", is(0))
                 .body("failedGeocodingRequests", is(0))
                 .body("successfulAirVisualRequests", is(0))
                 .body("failedAirVisualRequests", is(0))
                 .body("successfulOpenWeatherRequests", is(0))
-                .body("failedOpenWeatherRequests", is(0));
+                .body("failedOpenWeatherRequests", is(0))
+                .body("totalRequests", is(1))
+                .body("successfulRequestsBySource", is(aMapWithSize(1)))
+                .body("failedRequestsBySource", is(aMapWithSize(0)));
 
         verifyNoInteractions(openWeatherService);
         verifyNoInteractions(airVisualService);

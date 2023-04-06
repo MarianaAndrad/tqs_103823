@@ -1,0 +1,578 @@
+{
+  "id": "5b857cc3-dc90-4a8a-9663-83cd2cf6fcfc",
+  "version": "2.0",
+  "name": "HW1-TQS",
+  "url": "http://localhost:3000",
+  "tests": [{
+    "id": "15ce4136-03d2-4b03-ba3d-25d2e1d7f8e4",
+    "name": "TestStastistic",
+    "commands": [{
+      "id": "55087079-06cf-480a-b883-83e9447d6d10",
+      "comment": "",
+      "command": "open",
+      "target": "/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "90769728-15b7-4cea-8f31-138a770f3635",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1850x1053",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "d10a5921-b8f6-4f23-b788-ac8a36f6bd54",
+      "comment": "",
+      "command": "assertElementPresent",
+      "target": "linkText=Air Quality",
+      "targets": [
+        ["linkText=Air Quality", "linkText"],
+        ["css=.normal-case", "css:finder"],
+        ["xpath=//a[contains(text(),'Air Quality')]", "xpath:link"],
+        ["xpath=//div[@id='__next']/div/div/div[2]/a", "xpath:idRelative"],
+        ["xpath=(//a[contains(@href, '/')])[7]", "xpath:href"],
+        ["xpath=//div[2]/a", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "0ab256e9-2396-4b7f-b2c6-2e4fe7a71355",
+      "comment": "",
+      "command": "assertElementPresent",
+      "target": "css=.btn-primary:nth-child(1)",
+      "targets": [
+        ["css=.btn-primary:nth-child(1)", "css:finder"],
+        ["xpath=//a[contains(text(),'Api')]", "xpath:link"],
+        ["xpath=//div[@id='__next']/div/div[2]/div/div/div/div[2]/div/div/div/a", "xpath:idRelative"],
+        ["xpath=(//a[contains(@href, '/statistics/api')])[2]", "xpath:href"],
+        ["xpath=//div[2]/div/div/div/a", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "51cefcd8-eb48-43c3-8e1a-f687bae8094c",
+      "comment": "",
+      "command": "assertElementPresent",
+      "target": "css=.btn:nth-child(2)",
+      "targets": [
+        ["css=.btn:nth-child(2)", "css:finder"],
+        ["xpath=//a[contains(text(),'Cache')]", "xpath:link"],
+        ["xpath=//div[@id='__next']/div/div[2]/div/div/div/div[2]/div/div/div/a[2]", "xpath:idRelative"],
+        ["xpath=(//a[contains(@href, '/statistics/cache')])[2]", "xpath:href"],
+        ["xpath=//a[2]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "d64968e6-048f-43b0-9cf2-e0b5d8a5baf6",
+      "comment": "",
+      "command": "assertElementPresent",
+      "target": "css=.flex > .btn:nth-child(3)",
+      "targets": [
+        ["css=.flex > .btn:nth-child(3)", "css:finder"],
+        ["xpath=//a[contains(text(),'Controller')]", "xpath:link"],
+        ["xpath=//div[@id='__next']/div/div[2]/div/div/div/div[2]/div/div/div/a[3]", "xpath:idRelative"],
+        ["xpath=(//a[contains(@href, '/statistics/controller')])[2]", "xpath:href"],
+        ["xpath=//a[3]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "08e30a24-5a04-46c0-ba30-663006164ba5",
+      "comment": "",
+      "command": "click",
+      "target": "css=.btn-primary:nth-child(1)",
+      "targets": [
+        ["css=.btn-primary:nth-child(1)", "css:finder"],
+        ["xpath=//a[contains(text(),'Api')]", "xpath:link"],
+        ["xpath=//div[@id='__next']/div/div[2]/div/div/div/div[2]/div/div/div/a", "xpath:idRelative"],
+        ["xpath=(//a[contains(@href, '/statistics/api')])[2]", "xpath:href"],
+        ["xpath=//div[2]/div/div/div/a", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "4263a9da-d46d-4c7b-a8fd-d980110a8d56",
+      "comment": "",
+      "command": "assertElementPresent",
+      "target": "css=.stats:nth-child(3) > .stat:nth-child(1) .swap-on",
+      "targets": [
+        ["css=.stats:nth-child(3) > .stat:nth-child(1) .swap-on", "css:finder"],
+        ["xpath=//div[@id='__next']/div/div[2]/div/div/div/div/label/div", "xpath:idRelative"],
+        ["xpath=//label/div", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "0b65fb4f-1ae0-4fe2-b5b3-e83835fabffd",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Air Quality",
+      "targets": [
+        ["linkText=Air Quality", "linkText"],
+        ["css=.normal-case", "css:finder"],
+        ["xpath=//a[contains(text(),'Air Quality')]", "xpath:link"],
+        ["xpath=//div[@id='__next']/div/div/div[2]/a", "xpath:idRelative"],
+        ["xpath=(//a[contains(@href, '/')])[7]", "xpath:href"],
+        ["xpath=//div[2]/a", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "68fb9d63-a873-48e0-bf2f-31d20fb529a2",
+      "comment": "",
+      "command": "click",
+      "target": "css=.btn:nth-child(2)",
+      "targets": [
+        ["css=.btn:nth-child(2)", "css:finder"],
+        ["xpath=//a[contains(text(),'Cache')]", "xpath:link"],
+        ["xpath=//div[@id='__next']/div/div[2]/div/div/div/div[2]/div/div/div/a[2]", "xpath:idRelative"],
+        ["xpath=(//a[contains(@href, '/statistics/cache')])[2]", "xpath:href"],
+        ["xpath=//a[2]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "8dbfcf3d-c19f-486d-b0ad-1f1408695045",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Air Quality",
+      "targets": [
+        ["linkText=Air Quality", "linkText"],
+        ["css=.normal-case", "css:finder"],
+        ["xpath=//a[contains(text(),'Air Quality')]", "xpath:link"],
+        ["xpath=//div[@id='__next']/div/div/div[2]/a", "xpath:idRelative"],
+        ["xpath=(//a[contains(@href, '/')])[7]", "xpath:href"],
+        ["xpath=//div[2]/a", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "e93bdd2d-d8ce-416b-8f18-dbf601861d82",
+      "comment": "",
+      "command": "mouseOver",
+      "target": "linkText=Air Quality",
+      "targets": [
+        ["linkText=Air Quality", "linkText"],
+        ["css=.normal-case", "css:finder"],
+        ["xpath=//a[contains(text(),'Air Quality')]", "xpath:link"],
+        ["xpath=//div[@id='__next']/div/div/div[2]/a", "xpath:idRelative"],
+        ["xpath=(//a[contains(@href, '/')])[7]", "xpath:href"],
+        ["xpath=//div[2]/a", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "830ac5df-bc7e-49b0-92c5-5937ab5c9c6a",
+      "comment": "",
+      "command": "mouseOver",
+      "target": "linkText=Air Quality",
+      "targets": [
+        ["linkText=Air Quality", "linkText"],
+        ["css=.normal-case", "css:finder"],
+        ["xpath=//a[contains(text(),'Air Quality')]", "xpath:link"],
+        ["xpath=//div[@id='__next']/div/div/div[2]/a", "xpath:idRelative"],
+        ["xpath=(//a[contains(@href, '/')])[7]", "xpath:href"],
+        ["xpath=//div[2]/a", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "182b66e0-9f2c-4d4d-b0a6-c40443e5ba0e",
+      "comment": "",
+      "command": "mouseOut",
+      "target": "linkText=Air Quality",
+      "targets": [
+        ["linkText=Air Quality", "linkText"],
+        ["css=.normal-case", "css:finder"],
+        ["xpath=//a[contains(text(),'Air Quality')]", "xpath:link"],
+        ["xpath=//div[@id='__next']/div/div/div[2]/a", "xpath:idRelative"],
+        ["xpath=(//a[contains(@href, '/')])[7]", "xpath:href"],
+        ["xpath=//div[2]/a", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "94c03a6f-8138-48e9-ae8e-b41680a2e7b1",
+      "comment": "",
+      "command": "click",
+      "target": "css=.flex > .btn:nth-child(3)",
+      "targets": [
+        ["css=.flex > .btn:nth-child(3)", "css:finder"],
+        ["xpath=//a[contains(text(),'Controller')]", "xpath:link"],
+        ["xpath=//div[@id='__next']/div/div[2]/div/div/div/div[2]/div/div/div/a[3]", "xpath:idRelative"],
+        ["xpath=(//a[contains(@href, '/statistics/controller')])[2]", "xpath:href"],
+        ["xpath=//a[3]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "0a4a27ac-7431-4e52-8022-fd6a49624c1e",
+      "comment": "",
+      "command": "assertElementPresent",
+      "target": "css=.mb-6",
+      "targets": [],
+      "value": ""
+    }]
+  }, {
+    "id": "91726fef-447e-4201-8ebb-296394ee43f0",
+    "name": "TestSearchAirQuality",
+    "commands": [{
+      "id": "d2431ae6-3886-4fbf-a87e-dad34b3f5106",
+      "comment": "",
+      "command": "open",
+      "target": "/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "f35b03b9-f7a2-4af0-b0f0-49a6fa28838f",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1850x1053",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "4289d4a9-525d-43e1-b15c-c6a7179e3572",
+      "comment": "",
+      "command": "assertElementPresent",
+      "target": "css=.card:nth-child(1) > .card-body > .btn",
+      "targets": [
+        ["css=.card:nth-child(1) > .card-body > .btn", "css:finder"],
+        ["xpath=//a[contains(text(),'Search')]", "xpath:link"],
+        ["xpath=//div[@id='__next']/div/div[2]/div/div/div/div/div/div/a", "xpath:idRelative"],
+        ["xpath=(//a[contains(@href, '/search/openweather')])[2]", "xpath:href"],
+        ["xpath=//div/div/div/div/div/a", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "824410d4-a806-4947-b0a9-baffaebb5216",
+      "comment": "",
+      "command": "assertElementPresent",
+      "target": "linkText=Air Quality",
+      "targets": [
+        ["linkText=Air Quality", "linkText"],
+        ["css=.normal-case", "css:finder"],
+        ["xpath=//a[contains(text(),'Air Quality')]", "xpath:link"],
+        ["xpath=//div[@id='__next']/div/div/div[2]/a", "xpath:idRelative"],
+        ["xpath=(//a[contains(@href, '/')])[7]", "xpath:href"],
+        ["xpath=//div[2]/a", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "1f218605-a137-4b46-9ad3-837e249e67d2",
+      "comment": "",
+      "command": "click",
+      "target": "css=.card:nth-child(1) > .card-body > .btn",
+      "targets": [
+        ["css=.card:nth-child(1) > .card-body > .btn", "css:finder"],
+        ["xpath=//a[contains(text(),'Search')]", "xpath:link"],
+        ["xpath=//div[@id='__next']/div/div[2]/div/div/div/div/div/div/a", "xpath:idRelative"],
+        ["xpath=(//a[contains(@href, '/search/openweather')])[2]", "xpath:href"],
+        ["xpath=//div/div/div/div/div/a", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "c56ae1c2-7d8c-4b53-94bd-02682a600cfd",
+      "comment": "",
+      "command": "click",
+      "target": "name=city",
+      "targets": [
+        ["name=city", "name"],
+        ["css=.input:nth-child(1)", "css:finder"],
+        ["xpath=//input[@name='city']", "xpath:attributes"],
+        ["xpath=//div[@id='__next']/div/div[2]/div/div/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "c22db632-a7b3-4850-9d87-1108f6c6b82f",
+      "comment": "",
+      "command": "type",
+      "target": "name=city",
+      "targets": [
+        ["name=city", "name"],
+        ["css=.input:nth-child(1)", "css:finder"],
+        ["xpath=//input[@name='city']", "xpath:attributes"],
+        ["xpath=//div[@id='__next']/div/div[2]/div/div/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "Ovar"
+    }, {
+      "id": "4af8fb64-0b8f-47a3-bc04-8a26227ba7a4",
+      "comment": "",
+      "command": "click",
+      "target": "name=country",
+      "targets": [
+        ["name=country", "name"],
+        ["css=.input:nth-child(2)", "css:finder"],
+        ["xpath=//input[@name='country']", "xpath:attributes"],
+        ["xpath=//div[@id='__next']/div/div[2]/div/div/input[2]", "xpath:idRelative"],
+        ["xpath=//input[2]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "cac723bc-327a-41b1-810c-a917e5664bbc",
+      "comment": "",
+      "command": "type",
+      "target": "name=country",
+      "targets": [
+        ["name=country", "name"],
+        ["css=.input:nth-child(2)", "css:finder"],
+        ["xpath=//input[@name='country']", "xpath:attributes"],
+        ["xpath=//div[@id='__next']/div/div[2]/div/div/input[2]", "xpath:idRelative"],
+        ["xpath=//input[2]", "xpath:position"]
+      ],
+      "value": "Portugal"
+    }, {
+      "id": "c4c0e785-3143-446e-9874-a909f7448449",
+      "comment": "",
+      "command": "click",
+      "target": "css=.btn-primary",
+      "targets": [
+        ["css=.btn-primary", "css:finder"],
+        ["xpath=//div[@id='__next']/div/div[2]/div/div/button", "xpath:idRelative"],
+        ["xpath=//button", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "6f9fb75a-75c2-4b7a-915f-f90c1e52d9bf",
+      "comment": "",
+      "command": "click",
+      "target": "css=.btn-primary",
+      "targets": [
+        ["css=.btn-primary", "css:finder"],
+        ["xpath=//div[@id='__next']/div/div[2]/div/div/button", "xpath:idRelative"],
+        ["xpath=//button", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "a84cbb6b-89d1-46b8-86db-18e958157393",
+      "comment": "",
+      "command": "assertElementPresent",
+      "target": "css=.text-2xl",
+      "targets": [
+        ["css=.text-2xl", "css:finder"],
+        ["xpath=//div[@id='__next']/div/div[2]/div/h1", "xpath:idRelative"],
+        ["xpath=//h1", "xpath:position"],
+        ["xpath=//h1[contains(.,'Pollutant Concentrations')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "e31be553-21b4-41e4-9435-56bf298700a7",
+      "comment": "",
+      "command": "assertElementPresent",
+      "target": "css=.stats:nth-child(1) > .stat-figure .swap-on",
+      "targets": [
+        ["css=.stats:nth-child(1) > .stat-figure .swap-on", "css:finder"],
+        ["xpath=//div[@id='__next']/div/div[2]/div/div[2]/div/div/label/div", "xpath:idRelative"],
+        ["xpath=//label/div", "xpath:position"]
+      ],
+      "value": ""
+    }]
+  }, {
+    "id": "b56b7b93-7c42-4100-9696-92e4afb0223e",
+    "name": "TestSearchWeather",
+    "commands": [{
+      "id": "00549fbf-0dc6-4ee5-b9b9-3f97a9001306",
+      "comment": "",
+      "command": "open",
+      "target": "/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "7ac2a162-7b34-4027-8571-43e34cfc6a87",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1850x1053",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "5f89bf8c-5620-4325-8b3b-d28ba1939aa8",
+      "comment": "",
+      "command": "assertElementPresent",
+      "target": "css=.card:nth-child(2) .btn",
+      "targets": [
+        ["css=.card:nth-child(2) .btn", "css:finder"],
+        ["xpath=(//a[contains(text(),'Search')])[2]", "xpath:link"],
+        ["xpath=//div[@id='__next']/div/div[2]/div/div/div/div/div[2]/div/a", "xpath:idRelative"],
+        ["xpath=(//a[contains(@href, '/search/visualapi')])[2]", "xpath:href"],
+        ["xpath=//div[2]/div/a", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "aad8adf0-999f-4162-9709-38aa8126dc5d",
+      "comment": "",
+      "command": "assertElementPresent",
+      "target": "linkText=Air Quality",
+      "targets": [
+        ["linkText=Air Quality", "linkText"],
+        ["css=.normal-case", "css:finder"],
+        ["xpath=//a[contains(text(),'Air Quality')]", "xpath:link"],
+        ["xpath=//div[@id='__next']/div/div/div[2]/a", "xpath:idRelative"],
+        ["xpath=(//a[contains(@href, '/')])[7]", "xpath:href"],
+        ["xpath=//div[2]/a", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "2c71a432-7ddd-424f-9299-bddb21ca3ba8",
+      "comment": "",
+      "command": "click",
+      "target": "css=.card:nth-child(2) .btn",
+      "targets": [
+        ["css=.card:nth-child(2) .btn", "css:finder"],
+        ["xpath=(//a[contains(text(),'Search')])[2]", "xpath:link"],
+        ["xpath=//div[@id='__next']/div/div[2]/div/div/div/div/div[2]/div/a", "xpath:idRelative"],
+        ["xpath=(//a[contains(@href, '/search/visualapi')])[2]", "xpath:href"],
+        ["xpath=//div[2]/div/a", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "6fe6aee3-fc42-458d-8c0c-e6928ea03047",
+      "comment": "",
+      "command": "click",
+      "target": "name=country",
+      "targets": [
+        ["name=country", "name"],
+        ["css=.select:nth-child(2)", "css:finder"],
+        ["xpath=//select[@name='country']", "xpath:attributes"],
+        ["xpath=//div[@id='__next']/div/div[2]/div/div/select", "xpath:idRelative"],
+        ["xpath=//select", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "65658c1e-140a-4f50-a6a1-e9cb8d9907e2",
+      "comment": "",
+      "command": "select",
+      "target": "name=country",
+      "targets": [],
+      "value": "label=Portugal"
+    }, {
+      "id": "d99147e4-068e-47d2-84d4-a56ce978e0ec",
+      "comment": "",
+      "command": "click",
+      "target": "css=option:nth-child(110)",
+      "targets": [
+        ["css=option:nth-child(110)", "css:finder"],
+        ["xpath=//option[@value='Portugal']", "xpath:attributes"],
+        ["xpath=//div[@id='__next']/div/div[2]/div/div/select/option[110]", "xpath:idRelative"],
+        ["xpath=//option[110]", "xpath:position"],
+        ["xpath=//option[contains(.,'Portugal')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "3f505107-653e-44a0-8706-c5e602f50c25",
+      "comment": "",
+      "command": "click",
+      "target": "name=state",
+      "targets": [
+        ["name=state", "name"],
+        ["css=.select:nth-child(3)", "css:finder"],
+        ["xpath=//select[@name='state']", "xpath:attributes"],
+        ["xpath=//div[@id='__next']/div/div[2]/div/div/select[2]", "xpath:idRelative"],
+        ["xpath=//select[2]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "14e948f1-da7e-488a-bc34-fc9cd80a4fc7",
+      "comment": "",
+      "command": "select",
+      "target": "name=state",
+      "targets": [],
+      "value": "label=Aveiro"
+    }, {
+      "id": "bf90e1da-d4ae-4e20-a41a-6a6330785999",
+      "comment": "",
+      "command": "click",
+      "target": "css=.select:nth-child(3) > option:nth-child(2)",
+      "targets": [
+        ["css=.select:nth-child(3) > option:nth-child(2)", "css:finder"],
+        ["xpath=//option[@value='Aveiro']", "xpath:attributes"],
+        ["xpath=//div[@id='__next']/div/div[2]/div/div/select[2]/option[2]", "xpath:idRelative"],
+        ["xpath=//select[2]/option[2]", "xpath:position"],
+        ["xpath=//option[contains(.,'Aveiro')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "7f6aef61-7b82-4cc4-b64d-1afd343019d6",
+      "comment": "",
+      "command": "click",
+      "target": "name=city",
+      "targets": [
+        ["name=city", "name"],
+        ["css=.mb-4", "css:finder"],
+        ["xpath=//select[@name='city']", "xpath:attributes"],
+        ["xpath=//div[@id='__next']/div/div[2]/div/div/select[3]", "xpath:idRelative"],
+        ["xpath=//select[3]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "838ec2d6-9089-4cf1-b761-361916a61110",
+      "comment": "",
+      "command": "select",
+      "target": "name=city",
+      "targets": [],
+      "value": "label=Agueda"
+    }, {
+      "id": "64428530-a136-4222-b654-f37d1e1176b8",
+      "comment": "",
+      "command": "click",
+      "target": "css=.mb-4 > option:nth-child(2)",
+      "targets": [
+        ["css=.mb-4 > option:nth-child(2)", "css:finder"],
+        ["xpath=//option[@value='Agueda']", "xpath:attributes"],
+        ["xpath=//div[@id='__next']/div/div[2]/div/div/select[3]/option[2]", "xpath:idRelative"],
+        ["xpath=//select[3]/option[2]", "xpath:position"],
+        ["xpath=//option[contains(.,'Agueda')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "437ad5bc-eb40-4284-b3dc-5c45a458e622",
+      "comment": "",
+      "command": "assertValue",
+      "target": "name=country",
+      "targets": [
+        ["name=country", "name"],
+        ["css=.select:nth-child(2)", "css:finder"],
+        ["xpath=//select[@name='country']", "xpath:attributes"],
+        ["xpath=//div[@id='__next']/div/div[2]/div/div/select", "xpath:idRelative"],
+        ["xpath=//select", "xpath:position"]
+      ],
+      "value": "Portugal"
+    }, {
+      "id": "aeadeb39-d6f7-4ebe-965f-0805e4960449",
+      "comment": "",
+      "command": "assertValue",
+      "target": "name=state",
+      "targets": [],
+      "value": "Aveiro"
+    }, {
+      "id": "072482db-32fe-46ef-811b-2e4b345d6f2e",
+      "comment": "",
+      "command": "assertValue",
+      "target": "name=city",
+      "targets": [],
+      "value": "Agueda"
+    }, {
+      "id": "2598b0e7-5791-4c29-8833-07ed04918557",
+      "comment": "",
+      "command": "click",
+      "target": "css=.btn-outline",
+      "targets": [
+        ["css=.btn-outline", "css:finder"],
+        ["xpath=//div[@id='__next']/div/div[2]/div/div/button", "xpath:idRelative"],
+        ["xpath=//button", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "28218f61-4c33-4773-924c-2780360a55d0",
+      "comment": "",
+      "command": "assertElementPresent",
+      "target": "css=.btn-outline",
+      "targets": [
+        ["css=.btn-outline", "css:finder"],
+        ["xpath=//a[contains(text(),'Previous page')]", "xpath:link"],
+        ["xpath=//div[@id='__next']/div/div[2]/div/div[3]/a", "xpath:idRelative"],
+        ["xpath=(//a[contains(@href, '/search/visualapi')])[2]", "xpath:href"],
+        ["xpath=//div[3]/a", "xpath:position"]
+      ],
+      "value": ""
+    }]
+  }],
+  "suites": [{
+    "id": "a9b2696a-f0ff-45d3-ace6-66dfb2f4513a",
+    "name": "Default Suite",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": ["15ce4136-03d2-4b03-ba3d-25d2e1d7f8e4"]
+  }],
+  "urls": ["http://localhost:3000/"],
+  "plugins": []
+}

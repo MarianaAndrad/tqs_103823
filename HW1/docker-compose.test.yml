@@ -1,0 +1,26 @@
+services:
+  frontend:
+    build: ./frontend
+    environment:
+      - APP_BACKEND_URL=http://backend:8080
+    depends_on:
+      backend:
+        condition: service_healthy
+
+  backend:
+    build: ./backend/airQuality
+    healthcheck:
+      test: ["CMD-SHELL", "curl --fail http://localhost:8080/api/statistics || exit 1"]
+      interval: 30s
+      timeout: 10000s
+      retries: 300
+
+  chrome:
+    image: selenium/standalone-chrome
+    ports:
+      - 4444:4444/tcp
+    healthcheck:
+      test: ["CMD-SHELL", "curl --silent --fail http://localhost:4444/status || exit 1"]
+      interval: 30s
+      timeout: 10000s
+      retries: 300

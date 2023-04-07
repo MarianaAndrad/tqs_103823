@@ -2,6 +2,20 @@ import Link from "next/link";
 import React, {useEffect, useRef, useState} from "react";
 import img from "@/pages/search/imageWeather.png";
 
+interface WeatherData {
+    city: string,
+    latitude: number,
+    longitude: number,
+    country: string,
+    state: string,
+    date: string,
+    temperature: number,
+    humidity: number,
+    windSpeed: number,
+    windDirection: number,
+    pressure: number,
+}
+
 export default function VisualAPI() {
     const [apiError, setApiError] = useState(false);
     const [toManyRequest, setToManyRequest] = useState(false);
@@ -17,7 +31,7 @@ export default function VisualAPI() {
     const stateRef = useRef(null);
     const cityRef = useRef(null);
 
-    const [weatherData, setWeatherData] = useState([]);
+    const [weatherData, setWeatherData] = useState<WeatherData | null>(null);
 
     useEffect(() => {
         fetch("http://localhost:8080/api/v1/countries")
@@ -28,7 +42,7 @@ export default function VisualAPI() {
             .catch(err => setToManyRequest(true));
     }, []);
 
-    const stateFetch = (countrydata) => {
+    const stateFetch = (countrydata: string) => {
         fetch("http://localhost:8080/api/v1/" + countrydata + "/states")
             .then(res => res.json())
             .then(data => {
@@ -36,12 +50,14 @@ export default function VisualAPI() {
             })
             .catch(err => setToManyRequest(true));
 
+        // @ts-ignore
         stateRef.current.selectedIndex = 0;
         setState("");
         setCity("")
+        // @ts-ignore
         cityRef.current.selectedIndex = 0;
     }
-    const cityFetch = (countrydata, statedata) => {
+    const cityFetch = (countrydata: string, statedata: string) => {
         fetch("http://localhost:8080/api/v1/" + countrydata + "/" + statedata + "/cities")
             .then(res => res.json())
             .then(data => {
@@ -49,6 +65,7 @@ export default function VisualAPI() {
             })
             .catch(err => setToManyRequest(true));
 
+        // @ts-ignore
         cityRef.current.selectedIndex = 0;
         setCity("");
     }
@@ -65,14 +82,14 @@ export default function VisualAPI() {
     const handleSearchButtonClick = () => {
         handleSearch();
     }
-    const selectCountry = (e) => {
+    const selectCountry = (e: React.ChangeEvent<HTMLSelectElement>) => {
         setCountry(e.target.value);
         stateFetch(e.target.value);
         //remover o states existentes
         setAllState([]);
     }
 
-    const selectState = (e) => {
+    const selectState = (e: React.ChangeEvent<HTMLSelectElement>) => {
         setState(e.target.value);
         cityFetch(country, e.target.value);
         //remover o cities existentes
@@ -81,7 +98,7 @@ export default function VisualAPI() {
 
     return (
         <>
-            { (!weatherData["city"]) && (
+            { (weatherData && !weatherData["city"]) && (
             <div className="container h-screen">
                 <div className="min-h-screen bg-base-100 pt-20">
                         <h1 className="text-5xl font-bold text-primary my-8">Weather Search</h1>
@@ -129,7 +146,7 @@ export default function VisualAPI() {
             )}
 
 
-            { (weatherData["city"]) && (
+            { (weatherData && weatherData["city"]) && (
                 <div className="container h-screen py-8 pt-20 mx-auto">
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-8 py-8">
                         <div className="stats shadow">
@@ -228,7 +245,7 @@ export default function VisualAPI() {
                     </div>
 
                     <div className="container pt-6 ">
-                        <a className="btn btn-outline" href="/search/visualapi">Previous page</a>
+                        <Link className="btn btn-outline" href="/search/visualapi">Previous page</Link>
                     </div>
 
                     {apiError &&

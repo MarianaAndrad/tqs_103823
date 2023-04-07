@@ -27,7 +27,7 @@ export default function ResultsInfo() {
                 })
                 .catch(err => console.log(err));
         }
-    }, [])
+    }, [country, state, city, pollution, weather])
 
     return (
         <>

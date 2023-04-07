@@ -23,7 +23,6 @@ import static org.hamcrest.Matchers.aMapWithSize;
 import static org.hamcrest.Matchers.hasSize;
 import static org.mockito.Mockito.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -53,7 +52,7 @@ class ApiRestController_withMockServiceTest {
         when(airVisualService.countries()).thenReturn(countries);
 
         mockMvc.perform(get("/api/v1/countries")
-                .contentType("application/json"))
+                        .contentType("application/json"))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$", hasSize(2)))
                 .andExpect(jsonPath("$[0]", is("Portugal")))
@@ -70,7 +69,7 @@ class ApiRestController_withMockServiceTest {
         when(airVisualService.countries()).thenReturn(null);
 
         mockMvc.perform(get("/api/v1/countries")
-                .contentType("application/json"))
+                        .contentType("application/json"))
                 .andExpect(status().isNotFound());
 
         verify(airVisualService, times(1)).countries();
@@ -85,7 +84,7 @@ class ApiRestController_withMockServiceTest {
         when(airVisualService.states("Portugal")).thenReturn(states);
 
         mockMvc.perform(get("/api/v1/Portugal/states")
-                .contentType("application/json"))
+                        .contentType("application/json"))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$", hasSize(2)))
                 .andExpect(jsonPath("$[0]", is("Lisboa")))
@@ -101,7 +100,7 @@ class ApiRestController_withMockServiceTest {
         when(airVisualService.states("Portugal")).thenReturn(null);
 
         mockMvc.perform(get("/api/v1/Portugal/states")
-                .contentType("application/json"))
+                        .contentType("application/json"))
                 .andExpect(status().isNotFound());
 
         verify(airVisualService, times(1)).states("Portugal");
@@ -116,7 +115,7 @@ class ApiRestController_withMockServiceTest {
         when(airVisualService.cities("Portugal", "Lisboa")).thenReturn(cities);
 
         mockMvc.perform(get("/api/v1/Portugal/Lisboa/cities")
-                .contentType("application/json"))
+                        .contentType("application/json"))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$", hasSize(2)))
                 .andExpect(jsonPath("$[0]", is("Lisboa")))
@@ -133,7 +132,7 @@ class ApiRestController_withMockServiceTest {
         when(airVisualService.cities("Portugal", "Lisboa")).thenReturn(null);
 
         mockMvc.perform(get("/api/v1/Portugal/Lisboa/cities")
-                .contentType("application/json"))
+                        .contentType("application/json"))
                 .andExpect(status().isNotFound());
 
         verify(airVisualService, times(1)).cities("Portugal", "Lisboa");
@@ -147,7 +146,7 @@ class ApiRestController_withMockServiceTest {
         when(airVisualService.getWeather("Agueda", "Aveiro", "Portugal")).thenReturn(weather);
 
         mockMvc.perform(get("/api/v1/Portugal/Aveiro/Agueda/weather")
-                .contentType("application/json"))
+                        .contentType("application/json"))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.country", is(weather.getCountry())))
                 .andExpect(jsonPath("$.state", is(weather.getState())))
@@ -173,10 +172,10 @@ class ApiRestController_withMockServiceTest {
         when(airVisualService.getWeather("Agueda", "Aveiro", "Portugal")).thenReturn(null);
 
         mockMvc.perform(get("/api/v1/Portugal/Aveiro/Agueda/weather")
-                .contentType("application/json"))
+                        .contentType("application/json"))
                 .andExpect(status().isNotFound());
 
-        verify(airVisualService, times(1)).getWeather("Portugal", "Aveiro", "Agueda");
+        verify(airVisualService, times(1)).getWeather("Agueda", "Aveiro", "Portugal");
         verifyNoMoreInteractions(openWeatherService);
         verifyNoInteractions(geocodingService);
     }
@@ -189,10 +188,10 @@ class ApiRestController_withMockServiceTest {
         when(geocodingService.getCoordinates("Ovar", "Portugal")).thenReturn(geocoding);
 
         mockMvc.perform(get("/api/v1/Portugal/Ovar/geocoding")
-                .contentType("application/json"))
+                        .contentType("application/json"))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$.longitude", is(geocoding.getLat())))
-                .andExpect(jsonPath("$.latitude", is(geocoding.getLon())));
+                .andExpect(jsonPath("$.lat", is(geocoding.getLat())))
+                .andExpect(jsonPath("$.lon", is(geocoding.getLon())));
 
         verify(geocodingService, times(1)).getCoordinates("Ovar", "Portugal");
         verifyNoMoreInteractions(openWeatherService);
@@ -204,7 +203,7 @@ class ApiRestController_withMockServiceTest {
         when(geocodingService.getCoordinates("Agueda", "Portugal")).thenReturn(null);
 
         mockMvc.perform(get("/api/v1/Portugal/Agueda/geocoding")
-                .contentType("application/json"))
+                        .contentType("application/json"))
                 .andExpect(status().isNotFound());
 
         verify(geocodingService, times(1)).getCoordinates("Agueda", "Portugal");
@@ -247,7 +246,7 @@ class ApiRestController_withMockServiceTest {
         when(openWeatherService.getWeather(7.0, 6.0)).thenReturn(null);
 
         mockMvc.perform(get("/api/v1/7.0/6.0/weather")
-                .contentType("application/json"))
+                        .contentType("application/json"))
                 .andExpect(status().isNotFound());
 
         verify(openWeatherService, times(1)).getWeather(7.0, 6.0);
@@ -301,7 +300,7 @@ class ApiRestController_withMockServiceTest {
         when(openWeatherService.getAirQuality(6.0, 7.0)).thenReturn(null);
 
         mockMvc.perform(get("/api/v1/6.0/7.0/air-quality")
-                .contentType("application/json"))
+                        .contentType("application/json"))
                 .andExpect(status().isNotFound());
 
         verify(openWeatherService, times(1)).getAirQuality(6.0, 7.0);

@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 
 import img from "@/public/homeimage.jpg"
 
@@ -15,14 +16,14 @@ export default function Home() {
                             <div className="card-body">
                                 <h2 className="card-title text-xl font-bold mb-4">Air Quality Search</h2>
                                 <p className="card-text text-base mb-4">Search for real-time air quality information for a specific location by providing the city and country.</p>
-                                <a href="/search/openweather" className="btn btn-primary">Search</a>
+                                <Link href="/search/openweather" className="btn btn-primary">Search</Link>
                             </div>
                         </div>
                         <div className="card shadow-lg">
                             <div className="card-body">
                                 <h2 className="card-title text-xl font-bold mb-4">Weather Search</h2>
                                 <p className="card-text text-base mb-4">Search for real-time weather information for a specific location by providing the city, state and country.</p>
-                                <a href="/search/visualapi" className="btn btn-primary">Search</a>
+                                <Link href="/search/visualapi" className="btn btn-primary">Search</Link>
                             </div>
                         </div>
                     </div>
@@ -33,9 +34,9 @@ export default function Home() {
                                 <h2 className="card-title text-xl font-bold mb-4">Statistic Data</h2>
                                 <p className="card-text text-base mb-4">View the statistic data for the APIs and the cache.</p>
                                 <div className={"flex flex-row gap-4"}>
-                                    <a href="/statistics/api" className="btn btn-primary">Api</a>
-                                    <a href="/statistics/cache" className="btn btn-primary">Cache</a>
-                                    <a href="/statistics/controller" className="btn btn-primary">Controller</a>
+                                    <Link href="/statistics/api" className="btn btn-primary">Api</Link>
+                                    <Link href="/statistics/cache" className="btn btn-primary">Cache</Link>
+                                    <Link href="/statistics/controller" className="btn btn-primary">Controller</Link>
                                 </div>
 
                             </div>

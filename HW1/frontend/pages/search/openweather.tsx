@@ -1,26 +1,46 @@
 import React, {useEffect, useState} from "react";
 import Image from "next/image";
 
+interface Coord {
+    lat: number;
+    lon: number;
+}
+
+interface AirQualityData {
+    latitude: number;
+    longitude: number;
+    aqi: number;
+    no2: number;
+    co: number;
+    no: number;
+    nh3: number;
+    o3: number;
+    so2: number;
+    pm2_5: number;
+    pm10: number;
+    date: number;
+}
+
 export default function OpenWeather() {
 
     const [country, setCountry] = useState("");
     const [city, setCity] = useState("");
 
     const [apiError, setApiError] = useState(false);
-    const [coord, setcoor] = useState([]);
-    const [airQualityData, setAirQualityData] = useState([]);
+    const [coord, setcoord] = useState<Coord | null>(null);
+    const [airQualityData, setAirQualityData] = useState<AirQualityData | null>(null);
 
     const handleSearch = () => {
         fetch(`http://localhost:8080/api/v1/${country}/${city}/geocoding`)
             .then((res) => res.json())
             .then((data) => {
                 console.log(data);
-                setcoor(data);
+                setcoord(data);
             })
             .catch((err) => setApiError(true));
     };
 
-    const Other = (data) => {
+    const Other = (data: Coord) => {
         if (data && data["lat"] && data["lon"]) {
             const lat = data["lat"];
             const lon = data["lon"];
@@ -36,12 +56,14 @@ export default function OpenWeather() {
 
     const handleSearchButtonClick = () => {
         handleSearch();
-        Other(coord);
+        if (coord) {
+            Other(coord);
+        }
     }
 
     return (
         <>
-            {(!airQualityData["latitude"]) && (
+            {(airQualityData && !airQualityData["latitude"]) && (
                     <div className="container h-screen  py-8 pt-20">
                         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 py-8">
                             <input name="city" type="text" placeholder="City" className="input input-bordered input-secondary w-full" value={city} onChange={(e) => setCity(e.target.value)}/>
@@ -65,7 +87,7 @@ export default function OpenWeather() {
             }
 
             {
-                airQualityData["latitude"]  && (
+                airQualityData && airQualityData["latitude"]  && (
                     <div className="container  h-screen py-8">
                         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 py-8">
                             <input name="city" type="text" placeholder="City" className="input input-bordered input-secondary w-full" value={city} onChange={(e) => setCity(e.target.value)}/>

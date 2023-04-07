@@ -7,7 +7,6 @@ import lombok.*;
 @AllArgsConstructor
 @Getter
 @Setter
-@ToString
 public class AirQualityEntry {
     private Double latitude;
     private Double longitude;

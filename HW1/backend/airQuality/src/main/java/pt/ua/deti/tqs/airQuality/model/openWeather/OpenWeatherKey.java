@@ -7,7 +7,6 @@ import lombok.*;
 @AllArgsConstructor
 @Getter
 @Setter
-@ToString
 public class OpenWeatherKey {
     private Double latitude;
     private Double longitude;

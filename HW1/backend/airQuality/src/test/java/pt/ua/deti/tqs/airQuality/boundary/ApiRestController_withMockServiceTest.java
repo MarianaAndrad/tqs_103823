@@ -9,6 +9,7 @@ import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.web.servlet.MockMvc;
 import pt.ua.deti.tqs.airQuality.model.Geocoding.CoordEntry;
+import pt.ua.deti.tqs.airQuality.model.Geocoding.GeoKey;
 import pt.ua.deti.tqs.airQuality.model.Statistics;
 import pt.ua.deti.tqs.airQuality.model.airVisual.WeatherEntry;
 import pt.ua.deti.tqs.airQuality.model.openWeather.AirQualityEntry;
@@ -28,7 +29,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @WebMvcTest(ApiRestController.class)
-// @Disabled // REMOVE THIS LINE TO RUN THE TESTS But if you do, the tests will fail, because the number of requests to the external APIs is limited
+// @Disabled // REMOVE Or Comment THIS LINE TO RUN THE TESTS But if you do, the tests will fail, because the number of requests to the external APIs is limited
 class ApiRestController_withMockServiceTest {
 
     @Autowired
@@ -185,7 +186,13 @@ class ApiRestController_withMockServiceTest {
     @Test
     @DisplayName("When the service returns a geocoding, then returns 200 and the geocoding")
     void whenGetGeocoding_thenReturns200AndReturnGeocoding() throws Exception {
-        CoordEntry geocoding = new CoordEntry(40.85,-8.625);
+        CoordEntry geocoding = new CoordEntry();
+        geocoding.setLat(40.9);
+        geocoding.setLon(-8.5);
+
+        GeoKey key = new GeoKey();
+        key.setCity("Ovar");
+        key.setCountry("Portugal");
 
         when(geocodingService.getCoordinates("Ovar", "Portugal")).thenReturn(geocoding);
 
@@ -202,7 +209,8 @@ class ApiRestController_withMockServiceTest {
     @Test
     @DisplayName("When the geocoding service fails, then returns 404")
     void whenGetGeocoding_thenReturns404() throws Exception {
-        when(geocodingService.getCoordinates("Agueda", "Portugal")).thenReturn(null);
+        GeoKey key = new GeoKey("Agueda", "Portugal");
+        when(geocodingService.getCoordinates(key.getCity(), key.getCountry())).thenReturn(null);
 
         mockMvc.perform(get("/api/v1/Portugal/Agueda/geocoding")
                         .contentType("application/json"))

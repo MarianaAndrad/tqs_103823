@@ -4,6 +4,9 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.time.Duration;
 
 public class AirQualityPage {
     private WebDriver driver;
@@ -31,13 +34,18 @@ public class AirQualityPage {
 
     public void search(String city, String country) {
         cityInput.click();
+        cityInput.clear();
         cityInput.sendKeys(city);
         countryInput.click();
+        countryInput.clear();
         countryInput.sendKeys(country);
+        searchButton.click();
         searchButton.click();
     }
 
     public Boolean getAirQualityIndex() {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        wait.until(webDriver -> airQualityIndex.isDisplayed());
         return airQualityIndex.isDisplayed();
     }
 

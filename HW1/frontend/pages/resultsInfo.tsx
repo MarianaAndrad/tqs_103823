@@ -1,7 +1,7 @@
 import { useRouter } from 'next/router';
 import {useEffect, useState} from "react";
 
-export default function ResultsInfo() {
+export default function ResultsInfo({ backend }: { backend: string }) {
     const router = useRouter();
     const { country, state, city, pollution, weather } = router.query;
     const [pollutionData, setPollutionData] = useState([]);
@@ -9,7 +9,7 @@ export default function ResultsInfo() {
 
     useEffect(() => {
         if (pollution === "on") {
-            fetch("http://localhost:8080/api/v1/" + country + "/" + state + "/" + city + "/pollution")
+            fetch(backend + "/api/v1/" + country + "/" + state + "/" + city + "/pollution")
                 .then(res => res.json())
                 .then(data => {
                     console.log(data);
@@ -19,7 +19,7 @@ export default function ResultsInfo() {
             }
 
         if (weather === "on") {
-            fetch("http://localhost:8080/api/v1/" + country + "/" + state + "/" + city + "/weather")
+            fetch(backend + "/api/v1/" + country + "/" + state + "/" + city + "/weather")
                 .then(res => res.json())
                 .then(data => {
                     console.log(data);
@@ -116,4 +116,13 @@ export default function ResultsInfo() {
             )}
         </>
     );
+}
+
+
+export function getServerSideProps() {
+    return {
+        props: {
+            backend: process.env.APP_BACKEND_URL
+        },
+    };
 }

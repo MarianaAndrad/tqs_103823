@@ -14,9 +14,9 @@ import java.util.List;
 
 
 @ExtendWith(SeleniumJupiter.class)
+@Disabled
 public class TestStastisticTest {
   @Test
-  @Disabled
   void testStastistic(FirefoxDriver driver) {
     driver.get("http://localhost:3000/");
     driver.manage().window().setSize(new Dimension(1850, 1053));

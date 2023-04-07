@@ -15,10 +15,11 @@ services:
       timeout: 10000s
       retries: 300
 
-  chrome:
-    image: selenium/standalone-chrome
+  broswer:
+    image: selenium/standalone-firefox
     ports:
       - 4444:4444/tcp
+      - 5900:5900/tcp
     healthcheck:
       test: ["CMD-SHELL", "curl --silent --fail http://localhost:4444/status || exit 1"]
       interval: 30s

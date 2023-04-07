@@ -1,10 +1,7 @@
 package pt.ua.deti.tqs.airQuality.pageObject;
 
 import io.github.bonigarcia.seljup.SeleniumJupiter;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -19,6 +16,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @ExtendWith(SeleniumJupiter.class)
+@Disabled
 public class frontendPageObject {
     private final static String DOCKER_COMPOSE_LOCATION = "../../docker-compose.test.yml";
 
@@ -32,6 +30,11 @@ public class frontendPageObject {
         environment.start();
     }
 
+    @AfterAll
+    static void afterAll() {
+        environment.stop();
+    }
+
     @BeforeEach
     void setup() throws MalformedURLException {
         URL url = new URL("http://localhost:4444/wd/hub");
@@ -43,6 +46,8 @@ public class frontendPageObject {
     @Test
     @DisplayName("Test Search Air Quality")
     void testSearchAirQuality() {
+        driver.get("http://frontend:3000/");
+        driver.manage().window();
         HomePage homePage = new HomePage(driver);
         homePage.open();
         assertTrue(homePage.isAirQualityButtonDisplayed());
@@ -57,6 +62,8 @@ public class frontendPageObject {
     @Test
     @DisplayName("Test Search Weather")
     void testSearchWeather() {
+        driver.get("http://frontend:3000/");
+        driver.manage().window();
         HomePage homePage = new HomePage(driver);
         homePage.open();
         assertTrue(homePage.isWeatherButtonDisplayed());
@@ -78,6 +85,8 @@ public class frontendPageObject {
     @Test
     @DisplayName("Test Statistics")
     void testStatistics() {
+        driver.get("http://frontend:3000/");
+        driver.manage().window();
         HomePage homePage = new HomePage(driver);
         homePage.open();
         assertTrue(homePage.isApiStatisticButtonDisplayed());

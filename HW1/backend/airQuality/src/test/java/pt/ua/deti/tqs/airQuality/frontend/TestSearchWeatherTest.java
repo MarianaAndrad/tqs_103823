@@ -16,10 +16,10 @@ import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
 
 @ExtendWith(SeleniumJupiter.class)
+@Disabled
 public class TestSearchWeatherTest {
 
   @Test
-  @Disabled
   void testSearchWeather(FirefoxDriver driver) {
     driver.get("http://localhost:3000/");
     driver.manage().window().setSize(new Dimension(1850, 1053));

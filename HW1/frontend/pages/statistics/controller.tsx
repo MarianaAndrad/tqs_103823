@@ -1,7 +1,7 @@
 import {useEffect, useState} from "react";
 import React from 'react';
 
-export default function Controller() {
+export default function Controller({ backend }: { backend: string }) {
     const [successfulRequests, setSuccessfulRequests] = useState(0);
     const [failedRequests, setFailedRequests] = useState(0);
 
@@ -9,7 +9,7 @@ export default function Controller() {
     const [failRate, setFailRate] = useState(0);
 
     const requestStats = () => {
-        fetch("http://localhost:8080/api/v1/statistics")
+        fetch(backend + "/api/v1/statistics")
             .then(res => res.json())
             .then(data => {
                 setSuccessRate(data.successfulRequests / (data.successfulRequests + data.failedRequests) * 100);
@@ -56,4 +56,12 @@ export default function Controller() {
             </div>
         </div>
     );
+}
+
+export function getServerSideProps() {
+    return {
+        props: {
+            backend: process.env.APP_BACKEND_URL
+        },
+    };
 }

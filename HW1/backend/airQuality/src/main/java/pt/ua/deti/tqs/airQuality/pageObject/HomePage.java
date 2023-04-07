@@ -40,7 +40,7 @@ public class HomePage {
 
 
     public void open() {
-        driver.get("http://localhost:4444/wd/hub");
+        driver.get("http://frontend:3000/");
         driver.manage().window().setSize(new Dimension(1850, 1053));
     }
 

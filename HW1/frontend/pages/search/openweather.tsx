@@ -21,7 +21,7 @@ interface AirQualityData {
     date: number;
 }
 
-export default function OpenWeather() {
+export default function OpenWeather({ backend }: { backend: string}) {
 
     const [country, setCountry] = useState("");
     const [city, setCity] = useState("");
@@ -31,7 +31,7 @@ export default function OpenWeather() {
     const [airQualityData, setAirQualityData] = useState<AirQualityData | null>(null);
 
     const handleSearch = () => {
-        fetch(`http://localhost:8080/api/v1/${country}/${city}/geocoding`)
+        fetch(backend + `/api/v1/${country}/${city}/geocoding`)
             .then((res) => res.json())
             .then((data) => {
                 console.log(data);
@@ -44,7 +44,7 @@ export default function OpenWeather() {
         if (data && data["lat"] && data["lon"]) {
             const lat = data["lat"];
             const lon = data["lon"];
-            fetch(`http://localhost:8080/api/v1/${lat}/${lon}/air-quality`)
+            fetch(backend + `/api/v1/${lat}/${lon}/air-quality`)
                 .then((res) => res.json())
                 .then((data) => {
                     console.log(data);
@@ -63,7 +63,7 @@ export default function OpenWeather() {
 
     return (
         <>
-            {(airQualityData && !airQualityData["latitude"]) && (
+            {(!airQualityData || !airQualityData["latitude"]) && (
                     <div className="container h-screen  py-8 pt-20">
                         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 py-8">
                             <input name="city" type="text" placeholder="City" className="input input-bordered input-secondary w-full" value={city} onChange={(e) => setCity(e.target.value)}/>
@@ -211,14 +211,18 @@ export default function OpenWeather() {
                                 </div>
 
                             </div>
-
-
                         </div>
                     </div>
                 )
             }
-
-
         </>
     )
+}
+
+export function getServerSideProps() {
+    return {
+        props: {
+            backend: process.env.APP_BACKEND_URL
+        },
+    };
 }

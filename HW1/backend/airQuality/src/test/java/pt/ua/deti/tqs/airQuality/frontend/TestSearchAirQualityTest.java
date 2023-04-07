@@ -14,10 +14,10 @@ import java.util.List;
 
 
 @ExtendWith(SeleniumJupiter.class)
+@Disabled
 public class TestSearchAirQualityTest {
 
   @Test
-  @Disabled
   void testSearchAirQuality(FirefoxDriver driver) {
     driver.get("http://localhost:3000/");
     driver.manage().window().setSize(new Dimension(1850, 1053));

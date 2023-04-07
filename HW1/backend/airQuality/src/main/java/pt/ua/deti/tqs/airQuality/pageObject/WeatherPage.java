@@ -47,15 +47,15 @@ public class WeatherPage {
     }
 
     public String getCountry() {
-        return countryInput.getText();
+        return countryInput.getAttribute("value");
     }
 
     public String getState() {
-        return stateInput.getText();
+        return stateInput.getAttribute("value");
     }
 
     public String getCity() {
-        return cityInput.getText();
+        return cityInput.getAttribute("value");
     }
 
     public Boolean isPreviusPageButtonDisplayed() {

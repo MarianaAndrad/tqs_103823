@@ -16,7 +16,7 @@ interface WeatherData {
     pressure: number,
 }
 
-export default function VisualAPI() {
+export default function VisualAPI({ backend }: { backend: string }) {
     const [apiError, setApiError] = useState(false);
     const [toManyRequest, setToManyRequest] = useState(false);
 
@@ -34,7 +34,7 @@ export default function VisualAPI() {
     const [weatherData, setWeatherData] = useState<WeatherData | null>(null);
 
     useEffect(() => {
-        fetch("http://localhost:8080/api/v1/countries")
+        fetch(backend + "/api/v1/countries")
             .then(res => res.json())
             .then(data => {
                 setAllCountry(data);
@@ -43,7 +43,7 @@ export default function VisualAPI() {
     }, []);
 
     const stateFetch = (countrydata: string) => {
-        fetch("http://localhost:8080/api/v1/" + countrydata + "/states")
+        fetch(backend + "/api/v1/" + countrydata + "/states")
             .then(res => res.json())
             .then(data => {
                 setAllState(data);
@@ -58,7 +58,7 @@ export default function VisualAPI() {
         cityRef.current.selectedIndex = 0;
     }
     const cityFetch = (countrydata: string, statedata: string) => {
-        fetch("http://localhost:8080/api/v1/" + countrydata + "/" + statedata + "/cities")
+        fetch(backend + "/api/v1/" + countrydata + "/" + statedata + "/cities")
             .then(res => res.json())
             .then(data => {
                 setAllCity(data);
@@ -70,7 +70,7 @@ export default function VisualAPI() {
         setCity("");
     }
     const handleSearch = () => {
-        fetch("http://localhost:8080/api/v1/" + country + "/" + state + "/" + city + "/weather")
+        fetch(backend + "/api/v1/" + country + "/" + state + "/" + city + "/weather")
             .then(res => res.json())
             .then(data => {
                 console.log(data);
@@ -98,7 +98,7 @@ export default function VisualAPI() {
 
     return (
         <>
-            { (weatherData && !weatherData["city"]) && (
+            { (!weatherData || !weatherData["city"]) && (
             <div className="container h-screen">
                 <div className="min-h-screen bg-base-100 pt-20">
                         <h1 className="text-5xl font-bold text-primary my-8">Weather Search</h1>
@@ -267,4 +267,13 @@ export default function VisualAPI() {
 
         </>
     )
+}
+
+
+export function getServerSideProps() {
+    return {
+        props: {
+            backend: process.env.APP_BACKEND_URL
+        },
+    };
 }

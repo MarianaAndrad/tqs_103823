@@ -1,7 +1,7 @@
 import {useEffect, useState} from "react";
 import React from 'react';
 
-export default function Cache() {
+export default function Cache({ backend }: { backend: string }) {
     const [cacheHits, setCacheHits] = useState(0);
     const [cacheMisses, setCacheMisses] = useState(0);
 
@@ -9,7 +9,7 @@ export default function Cache() {
     const [failRate, setFailRate] = useState(0);
 
     const requestStats = () => {
-        fetch("http://localhost:8080/api/v1/statistics")
+        fetch(backend + "/api/v1/statistics")
             .then(res => res.json())
             .then(data => {
                 setSuccessRate(data.cacheHits / (data.cacheHits + data.cacheMisses) * 100);
@@ -57,4 +57,12 @@ export default function Cache() {
             </div>
         </div>
     );
+}
+
+export function getServerSideProps() {
+    return {
+        props: {
+            backend: process.env.APP_BACKEND_URL
+        },
+    };
 }

@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from "react";
 
-export default function Api() {
+export default function Api({ backend }: { backend: string }) {
     const [successfulGeocodingRequests, setSuccessfulGeocodingRequests] = useState(0);
     const [failedGeocodingRequests, setFailedGeocodingRequests] = useState(0);
 
@@ -20,7 +20,7 @@ export default function Api() {
     const [failRateGeocoding, setFailRateGeocoding] = useState(0);
 
     const requestStats = () => {
-        fetch("http://localhost:8080/api/v1/statistics")
+        fetch(backend + "/api/v1/statistics")
             .then(res => res.json())
             .then(data => {
                 if (data.successfulOpenWeatherRequests + data.failedOpenWeatherRequests == 0){
@@ -209,4 +209,12 @@ export default function Api() {
             </div>
         </div>
     );
+}
+
+export function getServerSideProps() {
+    return {
+        props: {
+            backend: process.env.APP_BACKEND_URL
+        },
+    };
 }

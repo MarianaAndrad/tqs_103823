@@ -1,6 +1,7 @@
 package pt.ua.deti.tqs.airQuality.boundary;
 
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,6 +28,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @WebMvcTest(ApiRestController.class)
+// @Disabled // REMOVE THIS LINE TO RUN THE TESTS But if you do, the tests will fail, because the number of requests to the external APIs is limited
 class ApiRestController_withMockServiceTest {
 
     @Autowired

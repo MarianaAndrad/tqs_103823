@@ -1,4 +1,4 @@
-package pt.ua.deti.tqs.airQuality.pageObject;
+package io.cucumber;
 
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebDriver;
@@ -36,7 +36,7 @@ public class HomePage {
 
 
     public void open() {
-        driver.get("http://frontend:3000/");
+        driver.get("http://localhost:3000/");
         driver.manage().window().setSize(new Dimension(1850, 1053));
     }
 
@@ -90,6 +90,9 @@ public class HomePage {
     }
 
 
+    public String getUrl() {
+        return driver.getCurrentUrl();
+    }
 }
 
 

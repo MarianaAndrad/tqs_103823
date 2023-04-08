@@ -24,4 +24,8 @@ public class ControllerStatisticPage {
         homePageLink.click();
         return new HomePage(driver);
     }
+
+    public String getUrl() {
+        return driver.getCurrentUrl();
+    }
 }

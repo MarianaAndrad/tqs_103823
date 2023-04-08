@@ -1,11 +1,10 @@
-package pt.ua.deti.tqs.airQuality.pageObject;
+package io.cucumber.pageObject;
 
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-
 
 public class HomePage {
 
@@ -90,6 +89,9 @@ public class HomePage {
     }
 
 
+    public String getUrl() {
+        return driver.getCurrentUrl();
+    }
 }
 
 

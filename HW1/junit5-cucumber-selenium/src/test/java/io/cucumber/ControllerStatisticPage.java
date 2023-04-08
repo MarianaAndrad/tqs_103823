@@ -1,4 +1,4 @@
-package pt.ua.deti.tqs.airQuality.pageObject;
+package io.cucumber;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -23,5 +23,9 @@ public class ControllerStatisticPage {
     public HomePage clickHomePageLink() {
         homePageLink.click();
         return new HomePage(driver);
+    }
+
+    public String getUrl() {
+        return driver.getCurrentUrl();
     }
 }

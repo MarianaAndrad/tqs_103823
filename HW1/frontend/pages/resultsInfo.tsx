@@ -122,7 +122,7 @@ export default function ResultsInfo({ backend }: { backend: string }) {
 export function getServerSideProps() {
     return {
         props: {
-            backend: process.env.APP_BACKEND_URL
+            backend: process.env.APP_BACKEND_URL ? process.env.APP_BACKEND_URL : "http://localhost:8080"
         },
     };
 }

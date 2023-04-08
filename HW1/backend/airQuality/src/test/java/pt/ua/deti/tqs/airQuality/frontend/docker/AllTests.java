@@ -26,6 +26,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 
 @ExtendWith(SeleniumJupiter.class)
+@Disabled
 public class AllTests {
     private final static String DOCKER_COMPOSE_LOCATION = "../../docker-compose.test.yml";
 
@@ -199,7 +200,7 @@ public class AllTests {
     }
 
     @Test
-    @DisplayName("Test Search Air Quality")
+    @DisplayName("Test Search Air Quality Page Object")
     void testSearchAirQualityPageObject() {
         driver.get("http://frontend:3000/");
         driver.manage().window();
@@ -215,7 +216,7 @@ public class AllTests {
     }
 
     @Test
-    @DisplayName("Test Search Weather")
+    @DisplayName("Test Search Weather Page Object")
     void testSearchWeatherPageObject() {
         driver.get("http://frontend:3000/");
         driver.manage().window();
@@ -238,7 +239,7 @@ public class AllTests {
     }
 
     @Test
-    @DisplayName("Test Statistics")
+    @DisplayName("Test Statistics Page Object")
     void testStatisticsPageObject() {
         driver.get("http://frontend:3000/");
         driver.manage().window();

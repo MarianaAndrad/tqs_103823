@@ -15,3 +15,5 @@ jobs:
           distribution: 'corretto'
       - name: Build and Test with Maven
         run: cd HW1/backend/airQuality; mvn test
+      - name: Build and Test with Maven
+        run: cd HW1/backend/airQuality; mvn verify

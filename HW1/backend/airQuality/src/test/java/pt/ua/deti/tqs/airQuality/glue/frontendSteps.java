@@ -7,9 +7,7 @@ import io.cucumber.java.en.When;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testcontainers.containers.DockerComposeContainer;
-import pt.ua.deti.tqs.airQuality.pageObject.AirQualityPage;
-import pt.ua.deti.tqs.airQuality.pageObject.HomePage;
-import pt.ua.deti.tqs.airQuality.pageObject.WeatherPage;
+import pt.ua.deti.tqs.airQuality.pageObject.*;
 
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -22,6 +20,9 @@ public class frontendSteps {
     private HomePage homePage;
     private AirQualityPage airQualityPage;
     private WeatherPage weatherPage;
+    private ControllerStatisticPage controllerStatisticPage;
+    private ApiStatisticPage apiStatisticPage;
+    private CacheStatisticPage cacheStatisticPage;
 
     @Given("I am on the homepage")
     public void iAmOnTheHomepage() throws MalformedURLException {
@@ -38,6 +39,9 @@ public class frontendSteps {
         homePage = new HomePage(driver);
         airQualityPage = new AirQualityPage(driver);
         weatherPage = new WeatherPage(driver);
+        controllerStatisticPage = new ControllerStatisticPage(driver);
+        apiStatisticPage = new ApiStatisticPage(driver);
+        cacheStatisticPage = new CacheStatisticPage(driver);
     }
 
     @When("I click on the Search Air Quality button")
@@ -93,5 +97,40 @@ public class frontendSteps {
     @Then("I should see {string}, {string} and {string} in the weather data")
     public void iShouldSeeTheWeatherData(String city,String state,String country) {
         weatherPage.assertData(city,state,country);
+    }
+
+    @When("I go to the api statistics page")
+    public void iGoToTheApiStatisticsPage() {
+        homePage.clickApiStatisticButton();
+    }
+
+    @Then("I see relevant statistics about api calls")
+    public void iSeeRelevantStatisticsAboutApiCalls() {
+        apiStatisticPage.assertApiStatistics();
+    }
+
+    @When("I go to the cache statistics page")
+    public void iGoToTheCacheStatisticsPage() {
+        homePage.clickCacheStatisticButton();
+    }
+
+    @Then("I see relevant statistics about cache calls")
+    public void iSeeRelevantStatisticsAboutCacheCalls() {
+        cacheStatisticPage.assertCacheStatistics();
+    }
+
+    @When("I go to the controller statistics page")
+    public void iGoToTheControllerStatisticsPage() {
+        homePage.clickControllerStatisticButton();
+    }
+
+    @Then("I see relevant statistics about controller calls")
+    public void iSeeRelevantStatisticsAboutControllerCalls() {
+        controllerStatisticPage.assertControllerStatistics();
+    }
+
+    @When("I go to the homepage")
+    public void iGoToTheHomepage() {
+        homePage.clickHomeButton();
     }
 }

@@ -25,14 +25,17 @@ public class HomePage {
     @FindBy(css = ".card:nth-child(2) .btn")
     private WebElement weatherButton;
 
-    @FindBy(css =".btn-primary:nth-child(1)")
+    @FindBy(xpath = "/html/body/div[1]/div/div[2]/div/div/div/div[2]/div/div/div/a[1]")
     private WebElement apiStatisticButton;
 
-    @FindBy(css =".btn:nth-child(2)")
+    @FindBy(xpath = "/html/body/div[1]/div/div[2]/div/div/div/div[2]/div/div/div/a[3]")
     private WebElement controllerStatisticButton;
 
-    @FindBy(css =".flex > .btn:nth-child(3)")
+    @FindBy(xpath = "/html/body/div[1]/div/div[2]/div/div/div/div[2]/div/div/div/a[2]")
     private WebElement cacheStatisticButton;
+
+    @FindBy(xpath = "/html/body/div[1]/div/div[1]/div[2]/a")
+    private WebElement homeButton;
 
 
     public void open() {
@@ -89,7 +92,9 @@ public class HomePage {
         return cacheStatisticButton.isDisplayed();
     }
 
-
+    public void clickHomeButton() {
+        homeButton.click();
+    }
 }
 
 

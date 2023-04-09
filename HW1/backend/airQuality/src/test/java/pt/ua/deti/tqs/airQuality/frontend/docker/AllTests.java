@@ -26,7 +26,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 
 @ExtendWith(SeleniumJupiter.class)
-//@Disabled
+@Disabled //Remove this line to run the tests
 public class AllTests {
     private final static String DOCKER_COMPOSE_LOCATION = "../../docker-compose.test.yml";
 
@@ -104,14 +104,12 @@ public class AllTests {
             dropdown.findElement(By.xpath("//option[. = 'Portugal']")).click();
         }
         {
-            // driver.findElement(By.name("state")).click();
             WebElement dropdown = driver.findElement(By.name("state"));
             WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
             wait.until(webDriver -> dropdown.findElement(By.xpath("//option[. = 'Aveiro']")).isDisplayed());
             dropdown.findElement(By.xpath("//option[. = 'Aveiro']")).click();
         }
         {
-            // driver.findElement(By.name("city")).click();
             WebElement dropdown = driver.findElement(By.name("city"));
             WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
             wait.until(webDriver -> dropdown.findElement(By.xpath("//option[. = 'Agueda']")).isDisplayed());

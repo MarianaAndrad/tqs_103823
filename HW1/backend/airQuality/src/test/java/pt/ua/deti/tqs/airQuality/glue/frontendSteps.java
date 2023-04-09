@@ -60,9 +60,9 @@ public class frontendSteps {
         airQualityPage.search();
     }
 
-    @Then("I should see the air quality data")
-    public void iShouldSeeTheAirQualityData() {
-        airQualityPage.assertData();
+    @Then("I should see {string} and {string} in the air quality data")
+    public void iShouldSeeTheAirQualityData(String city, String country) {
+        airQualityPage.assertData(city, country);
     }
 
     @When("I click on the search weather button")
@@ -90,8 +90,8 @@ public class frontendSteps {
         weatherPage.search();
     }
 
-    @Then("I should see the weather data")
-    public void iShouldSeeTheWeatherData() {
-        weatherPage.assertData();
+    @Then("I should see {string}, {string} and {string} in the weather data")
+    public void iShouldSeeTheWeatherData(String city,String state,String country) {
+        weatherPage.assertData(city,state,country);
     }
 }

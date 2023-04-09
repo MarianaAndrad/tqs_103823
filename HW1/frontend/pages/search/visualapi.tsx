@@ -19,6 +19,7 @@ interface WeatherData {
 export default function VisualAPI({ backend }: { backend: string }) {
     const [apiError, setApiError] = useState(false);
     const [toManyRequest, setToManyRequest] = useState(false);
+    const [searching , setSearching] = useState(true);
 
     const [allCountry, setAllCountry] = useState([]);
     const [allState, setAllState] = useState([]);
@@ -81,6 +82,7 @@ export default function VisualAPI({ backend }: { backend: string }) {
 
     const handleSearchButtonClick = () => {
         handleSearch();
+        setSearching(false);
     }
     const selectCountry = (e: React.ChangeEvent<HTMLSelectElement>) => {
         setCountry(e.target.value);
@@ -96,9 +98,18 @@ export default function VisualAPI({ backend }: { backend: string }) {
         setAllCity([]);
     }
 
+    const reset = () => {
+        setSearching(true);
+        setWeatherData(null);
+        setCountry("");
+        setState("");
+        setCity("");
+
+    }
+
     return (
         <>
-            { (!weatherData || !weatherData["city"]) && (
+            { searching && (
             <div className="container h-screen">
                 <div className="min-h-screen bg-base-100 pt-20">
                         <h1 className="text-5xl font-bold text-primary my-8">Weather Search</h1>
@@ -123,7 +134,7 @@ export default function VisualAPI({ backend }: { backend: string }) {
                             )}
                         </select>
 
-                    {!(country === "" && state === "" && city === "" ) &&
+                    {(country !== "" && state !== "" && city !== "" ) &&
                         <button className="btn btn-outline btn-success"
                                 onClick={handleSearchButtonClick}>Submit</button>
                     }
@@ -146,7 +157,7 @@ export default function VisualAPI({ backend }: { backend: string }) {
             )}
 
 
-            { (weatherData && weatherData["city"]) && (
+            { !searching && weatherData && (
                 <div className="container h-screen py-8 pt-20 mx-auto">
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-8 py-8">
                         <div className="stats shadow">
@@ -245,7 +256,7 @@ export default function VisualAPI({ backend }: { backend: string }) {
                     </div>
 
                     <div className="container pt-6 ">
-                        <Link className="btn btn-outline" href="/search/visualapi">Previous page</Link>
+                        <Link className="btn btn-outline" href="/search/visualapi" onClick={_ => reset()}>Previous page</Link>
                     </div>
 
                     {apiError &&

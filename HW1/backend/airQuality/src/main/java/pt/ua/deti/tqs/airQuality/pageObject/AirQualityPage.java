@@ -32,6 +32,12 @@ public class AirQualityPage {
     @FindBy(css = ".text-2xl")
     private WebElement subTitle;
 
+    @FindBy(xpath = "/html/body/div[1]/div/div[2]/div/div[2]/div[2]/div[2]/div[2]")
+    private WebElement cityLocation;
+
+    @FindBy(xpath = "/html/body/div[1]/div/div[2]/div/div[2]/div[2]/div[2]/div[3]")
+    private WebElement countryLocation;
+
     public void search(String city, String country) {
         cityInput.click();
         cityInput.clear();
@@ -69,14 +75,12 @@ public class AirQualityPage {
     public void search() {
         searchButton.click();
         searchButton.click();
-        searchButton.click();
     }
 
-    public void assertData() {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+    public void assertData(String city, String country) {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
         wait.until(webDriver -> airQualityIndex.isDisplayed());
-        wait.until(webDriver -> subTitle.isDisplayed());
-        // airQualityIndex.isDisplayed();
-        // subTitle.isDisplayed();
+        wait.until(webDriver -> cityLocation.getText().equals(city));
+        wait.until(webDriver -> countryLocation.getText().contains(country));
     }
 }

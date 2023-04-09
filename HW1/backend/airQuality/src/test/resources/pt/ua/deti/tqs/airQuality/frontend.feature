@@ -11,7 +11,7 @@ Feature: Search for Air Quality and Weather statistics
     And I enter "Ovar" in the city field
     And I enter "Portugal" in the country field
     And I click the search button
-    Then I should see the air quality data
+    Then I should see "Ovar" and "Portugal" in the air quality data
 
   Scenario: Search for Weather
     When I click on the search weather button
@@ -19,7 +19,7 @@ Feature: Search for Air Quality and Weather statistics
     And I select "Aveiro" in the state field
     And I select "Agueda" in the city field
     And I search for the weather
-    Then I should see the weather data
+    Then I should see "Agueda", "Aveiro" and "Portugal" in the weather data
 
 #  Scenario: View statistics
 #    When I click on the "API" button
@@ -41,4 +41,4 @@ Feature: Search for Air Quality and Weather statistics
 #    And I should see the relevant Controller statistics
 #
 #    When I am finished viewing the statistics
-#    Then I should click on the "Air Quality"    button to return to the home page.
+#    Then I should click on the "Air Quality" button to return to the home page.

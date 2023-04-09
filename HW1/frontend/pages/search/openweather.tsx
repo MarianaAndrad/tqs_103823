@@ -30,6 +30,9 @@ export default function OpenWeather({ backend }: { backend: string}) {
     const [coord, setcoord] = useState<Coord | null>(null);
     const [airQualityData, setAirQualityData] = useState<AirQualityData | null>(null);
 
+    const [searchedCity, setSearchedCity] = useState<string>("");
+    const [searchedCountry, setSearchedCountry] = useState<string>("");
+
     const handleSearch = () => {
         fetch(backend + `/api/v1/${country}/${city}/geocoding`)
             .then((res) => res.json())
@@ -55,45 +58,40 @@ export default function OpenWeather({ backend }: { backend: string}) {
     };
 
     const handleSearchButtonClick = () => {
+        setSearchedCity(city);
+        setSearchedCountry(country);
         handleSearch();
+    }
+
+    useEffect(() => {
         if (coord) {
             Other(coord);
         }
-    }
+    }, [coord]);
 
     return (
         <>
-            {(!airQualityData || !airQualityData["latitude"]) && (
-                    <div className="container h-screen  py-8 pt-20">
-                        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 py-8">
-                            <input name="city" type="text" placeholder="City" className="input input-bordered input-secondary w-full" value={city} onChange={(e) => setCity(e.target.value)}/>
-                            <input name="country" type="text" placeholder="Country" className="input input-bordered input-secondary w-full " value={country} onChange={(e) => setCountry(e.target.value)}/>
-                            <button className="btn btn-primary max-w-xs" onClick={handleSearchButtonClick}>Search</button>
+            <div className="container  h-screen py-8">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-8 py-8">
+                    <input name="city" type="text" placeholder="City" className="input input-bordered input-secondary w-full" value={city} onChange={(e) => setCity(e.target.value)}/>
+                    <input name="country" type="text" placeholder="Country" className="input input-bordered input-secondary w-full " value={country} onChange={(e) => setCountry(e.target.value)}/>
+                    <button className="btn btn-primary max-w-xs" onClick={handleSearchButtonClick}>Search</button>
+                </div>
+                {apiError &&
+                    <div className="alert alert-error shadow-lg mt-10">
+                        <div>
+                            <svg onClick={e => setApiError(false)} xmlns="http://www.w3.org/2000/svg" className="cursor-pointer stroke-current flex-shrink-0 h-6 w-6"
+                                 fill="none" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                      d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                            </svg>
+                            <span>Internal Server Error</span>
                         </div>
-                        {apiError &&
-                            <div className="alert alert-error shadow-lg mt-10">
-                                <div>
-                                    <svg onClick={e => setApiError(false)} xmlns="http://www.w3.org/2000/svg" className="cursor-pointer stroke-current flex-shrink-0 h-6 w-6"
-                                         fill="none" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                              d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                                    </svg>
-                                    <span>Internal Server Error</span>
-                                </div>
-                            </div>
-                        }
                     </div>
-                )
-            }
+                }
 
-            {
-                airQualityData && airQualityData["latitude"]  && (
-                    <div className="container  h-screen py-8">
-                        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 py-8">
-                            <input name="city" type="text" placeholder="City" className="input input-bordered input-secondary w-full" value={city} onChange={(e) => setCity(e.target.value)}/>
-                            <input name="country" type="text" placeholder="Country" className="input input-bordered input-secondary w-full " value={country} onChange={(e) => setCountry(e.target.value)}/>
-                            <button className="btn btn-primary max-w-xs" onClick={handleSearchButtonClick}>Search</button>
-                        </div>
+                { airQualityData && airQualityData["latitude"]  && (
+                    <>
                         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 py-8">
                             <div className="stats shadow">
                                 <div className="stat-figure text-secondary">
@@ -114,8 +112,8 @@ export default function OpenWeather({ backend }: { backend: string}) {
                                 </div>
                                 <div className="stat">
                                     <div className="stat-title">Location Information</div>
-                                    <div className="stat-value">{city}</div>
-                                    <div className="stat-desc">In {country} </div>
+                                    <div className="stat-value">{searchedCity}</div>
+                                    <div className="stat-desc">In {searchedCountry} </div>
                                 </div>
                             </div>
                             <div className="stats shadow">
@@ -212,9 +210,10 @@ export default function OpenWeather({ backend }: { backend: string}) {
 
                             </div>
                         </div>
-                    </div>
+                    </>
                 )
             }
+        </div>
         </>
     )
 }

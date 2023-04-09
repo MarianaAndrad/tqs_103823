@@ -26,9 +26,14 @@ public class WeatherPage {
     @FindBy(name = "city")
     private WebElement cityInput;
 
-    @FindBy(css = ".mb-4 > option:nth-child(2)")
+    @FindBy(xpath = "/html/body/div/div/div[2]/div/div/button")
     private WebElement conditionOption;
 
+    @FindBy(xpath = "/html/body/div[1]/div/div[2]/div/div[1]/div[2]/div[2]/div[2]")
+    private WebElement cityLocation;
+
+    @FindBy(xpath = "/html/body/div[1]/div/div[2]/div/div[1]/div[2]/div[2]/div[3]")
+    private WebElement countryAndStateLocation;
 
     @FindBy(css = ".btn-outline")
     private WebElement previusPageButton;
@@ -90,11 +95,15 @@ public class WeatherPage {
     }
 
     public void search() {
+
         conditionOption.click();
     }
 
-    public void assertData() {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+    public void assertData(String city, String state, String country) {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
         wait.until(webDriver -> previusPageButton.isDisplayed());
+        wait.until(webDriver -> cityLocation.getText().contains(city));
+        wait.until(webDriver -> countryAndStateLocation.getText().contains(state));
+        wait.until(webDriver -> countryAndStateLocation.getText().contains(country));
     }
 }

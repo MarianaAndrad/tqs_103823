@@ -54,4 +54,29 @@ public class AirQualityPage {
     }
 
 
+    public void insertCity(String city) {
+        cityInput.click();
+        cityInput.clear();
+        cityInput.sendKeys(city);
+    }
+
+    public void insertCountry(String country) {
+        countryInput.click();
+        countryInput.clear();
+        countryInput.sendKeys(country);
+    }
+
+    public void search() {
+        searchButton.click();
+        searchButton.click();
+        searchButton.click();
+    }
+
+    public void assertData() {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        wait.until(webDriver -> airQualityIndex.isDisplayed());
+        wait.until(webDriver -> subTitle.isDisplayed());
+        // airQualityIndex.isDisplayed();
+        // subTitle.isDisplayed();
+    }
 }

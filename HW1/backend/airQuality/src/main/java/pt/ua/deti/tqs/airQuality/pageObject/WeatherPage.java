@@ -5,6 +5,9 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.time.Duration;
 
 public class WeatherPage {
     private WebDriver driver;
@@ -60,5 +63,38 @@ public class WeatherPage {
 
     public Boolean isPreviusPageButtonDisplayed() {
         return previusPageButton.isDisplayed();
+    }
+
+    public void selectCountry(String country) {
+        countryInput.click();
+        Select countryDropdown = new Select(countryInput);
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        wait.until(webDriver -> countryDropdown.getOptions().size() > 1);
+        countryDropdown.selectByVisibleText(country);
+    }
+
+    public void selectState(String state) {
+        stateInput.click();
+        Select stateDropdown = new Select(stateInput);
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        wait.until(webDriver -> stateDropdown.getOptions().size() > 1);
+        stateDropdown.selectByVisibleText(state);
+    }
+
+    public void selectCity(String city) {
+        cityInput.click();
+        Select cityDropdown = new Select(cityInput);
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        wait.until(webDriver -> cityDropdown.getOptions().size() > 1);
+        cityDropdown.selectByVisibleText(city);
+    }
+
+    public void search() {
+        conditionOption.click();
+    }
+
+    public void assertData() {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        wait.until(webDriver -> previusPageButton.isDisplayed());
     }
 }

@@ -49,6 +49,10 @@
 			<!-- Imcompatibility with org.json -->
 			<exclusions>
 				<exclusion>
+					<groupId>org.junit.jupiter</groupId>
+					<artifactId>junit-jupiter-engine</artifactId>
+				</exclusion>
+				<exclusion>
 					<groupId>com.vaadin.external.google</groupId>
 					<artifactId>android-json</artifactId>
 				</exclusion>
@@ -112,7 +116,6 @@
 			<groupId>io.github.bonigarcia</groupId>
 			<artifactId>selenium-jupiter</artifactId>
 			<version>4.3.3</version>
-			<scope>test</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.seleniumhq.selenium</groupId>
@@ -193,6 +196,10 @@
 						</exclude>
 					</excludes>
 				</configuration>
+			</plugin>
+			<plugin>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>3.0.0-M9</version>
 			</plugin>
 			<!-- Jacoco runner to inspect code coverage -->
 			<plugin>

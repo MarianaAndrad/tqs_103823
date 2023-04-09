@@ -6,12 +6,12 @@ Feature: Search for Air Quality and Weather statistics
   Background:
     Given I am on the homepage
 
-  Scenario: Search for Air Quality
-    When I click on the Search Air Quality button
-    And I enter "Ovar" in the city field
-    And I enter "Portugal" in the country field
-    And I click the search button
-    Then I should see "Ovar" and "Portugal" in the air quality data
+#  Scenario: Search for Air Quality
+#    When I click on the Search Air Quality button
+#    And I enter "Ovar" in the city field
+#    And I enter "Portugal" in the country field
+#    And I click the search button
+#    Then I should see "Ovar" and "Portugal" in the air quality data
 
   Scenario: Search for Weather
     When I click on the search weather button

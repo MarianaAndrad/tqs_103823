@@ -58,10 +58,12 @@ public class WeatherPage {
     }
 
     public void selectCountry(String country) {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        wait.until(webDriver -> countryInput.isDisplayed());
         countryInput.click();
         Select countryDropdown = new Select(countryInput);
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        wait.until(webDriver -> countryDropdown.getOptions().size() > 1);
+        WebDriverWait wait2 = new WebDriverWait(driver, Duration.ofSeconds(10));
+        wait2.until(webDriver -> countryDropdown.getOptions().size() > 1);
         countryDropdown.selectByVisibleText(country);
     }
 

@@ -26,6 +26,9 @@ public class WeatherPage {
     @FindBy(name = "city")
     private WebElement cityInput;
 
+    @FindBy(css = ".mb-4 > option:nth-child(2)")
+    private WebElement buttonsearch;
+
     @FindBy(xpath = "/html/body/div/div/div[2]/div/div/button")
     private WebElement conditionOption;
 
@@ -37,22 +40,6 @@ public class WeatherPage {
 
     @FindBy(css = ".btn-outline")
     private WebElement previusPageButton;
-
-    public void search(String country, String state, String city) {
-        countryInput.click();
-        Select countryDropdown = new Select(countryInput);
-        countryDropdown.selectByVisibleText(country);
-
-        stateInput.click();
-        Select stateDropdown = new Select(stateInput);
-        stateDropdown.selectByVisibleText(state);
-
-        cityInput.click();
-        Select cityDropdown = new Select(cityInput);
-        cityDropdown.selectByVisibleText(city);
-
-        conditionOption.click();
-    }
 
     public String getCountry() {
         return countryInput.getAttribute("value");
@@ -105,5 +92,9 @@ public class WeatherPage {
         wait.until(webDriver -> cityLocation.getText().contains(city));
         wait.until(webDriver -> countryAndStateLocation.getText().contains(state));
         wait.until(webDriver -> countryAndStateLocation.getText().contains(country));
+    }
+
+    public void clickSearchButton() {
+        buttonsearch.click();
     }
 }

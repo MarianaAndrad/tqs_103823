@@ -20,25 +20,3 @@ Feature: Search for Air Quality and Weather statistics
     And I select "Agueda" in the city field
     And I search for the weather
     Then I should see "Agueda", "Aveiro" and "Portugal" in the weather data
-
-#  Scenario: View statistics
-#    When I click on the "API" button
-#    Then I should be redirected to the API statistics page
-#    And I should see the relevant API statistics
-#
-#    When I click on the "Air Quality" button
-#    Then I should be redirected to homepage.
-#
-#    When I click on the "Cache" button
-#    Then I should be redirected to the Cache statistics page
-#    And I should see the relevant Cache statistics
-#
-#    When I click on the "Air Quality" button
-#    Then I should be redirected to homepage.
-#
-#    When I click on the "Controller" button
-#    Then I should be redirected to the Controller statistics page
-#    And I should see the relevant Controller statistics
-#
-#    When I am finished viewing the statistics
-#    Then I should click on the "Air Quality" button to return to the home page.

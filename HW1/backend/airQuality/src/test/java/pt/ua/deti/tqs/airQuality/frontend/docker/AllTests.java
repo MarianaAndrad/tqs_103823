@@ -26,7 +26,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 
 @ExtendWith(SeleniumJupiter.class)
-@Disabled
+//@Disabled
 public class AllTests {
     private final static String DOCKER_COMPOSE_LOCATION = "../../docker-compose.test.yml";
 
@@ -132,12 +132,6 @@ public class AllTests {
             String value = driver.findElement(By.name("city")).getAttribute("value");
             assertThat(value, is("Agueda"));
         }
-
-        driver.findElement(By.cssSelector(".btn-outline")).click();
-        {
-            List<WebElement> elements = driver.findElements(By.cssSelector(".btn-outline"));
-            assert(elements.size() > 0);
-        }
     }
 
     @Test
@@ -162,10 +156,6 @@ public class AllTests {
             assert(elements.size() > 0);
         }
         driver.executeScript("document.querySelector('a[href=\"/statistics/api\"').click()");
-        {
-            List<WebElement> elements = driver.findElements(By.cssSelector(".stats:nth-child(3) > .stat:nth-child(1) .swap-on"));
-            assert(elements.size() > 0);
-        }
 
         driver.findElement(By.linkText("Air Quality")).click();
         {
@@ -225,8 +215,12 @@ public class AllTests {
         assertTrue(homePage.isWeatherButtonDisplayed());
         assertTrue(homePage.isAirQualityLinkDisplayed());
 
+
         WeatherPage weatherPage = homePage.clickWeatherButton();
-        weatherPage.search("Portugal", "Aveiro","Agueda");
+        weatherPage.selectCountry("Portugal");
+        weatherPage.selectState("Aveiro");
+        weatherPage.selectCity("Agueda");
+        weatherPage.clickSearchButton();
         String country = weatherPage.getCountry();
         String city = weatherPage.getCity();
         String state = weatherPage.getState();

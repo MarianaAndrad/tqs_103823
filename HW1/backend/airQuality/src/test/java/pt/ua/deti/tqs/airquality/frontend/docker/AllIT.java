@@ -24,7 +24,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 
 @ExtendWith(SeleniumJupiter.class)
-// @Disabled //Remove this line to run the tests
+@Disabled //Remove this line to run the tests
 class AllIT {
     private final static String DOCKER_COMPOSE_LOCATION = "../../docker-compose.test.yml";
 

@@ -9,7 +9,7 @@ import org.junit.platform.suite.api.Suite;
 
 import static io.cucumber.junit.platform.engine.Constants.GLUE_PROPERTY_NAME;
 
-@Disabled
+
 @Suite
 @IncludeEngines("cucumber")
 @SelectClasspathResource("pt/ua/deti/tqs/airQuality")

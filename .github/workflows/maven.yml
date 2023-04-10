@@ -14,6 +14,6 @@ jobs:
           java-version: '17'
           distribution: 'corretto'
       - name: Build and Test with Maven
-        run: cd HW1/backend/airQuality; mvn test
-      - name: Build and Test with Maven
-        run: cd HW1/backend/airQuality; mvn verify
+        run: cd HW1/backend/airQuality; mvn test -Pskip-sonarqube
+      - name: Build and Test with Maven 
+        run: cd HW1/backend/airQuality; mvn verify -Pskip-sonarqube

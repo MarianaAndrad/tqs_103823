@@ -4,8 +4,9 @@ ENV MAVEN_OPTS="-XX:+TieredCompilation -XX:TieredStopAtLevel=1"
 COPY pom.xml pom.xml
 RUN mvn dependency:go-offline
 
+RUN ls -las
 COPY . .
-RUN mvn clean install -Dmaven.test.skip=true
+RUN mvn clean install -Dmaven.test.skip=true -Pskip-sonarqube
 
 FROM builder AS base
 WORKDIR /app

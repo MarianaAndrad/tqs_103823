@@ -1,6 +1,4 @@
- sqp_12d81390e39fd7d033dcd2671f71844e7bf79538
-
- mvn clean verify sonar:sonar \
-   -Dsonar.projectKey=airqualitytqs \
-   -Dsonar.host.url=http://localhost:9906 \
-   -Dsonar.login=sqp_12d81390e39fd7d033dcd2671f71844e7bf79538
+mvn clean verify sonar:sonar \
+  -Dsonar.projectKey=NEWPROJECT \
+  -Dsonar.host.url=http://localhost:9906 \
+  -Dsonar.login=sqp_3ffe4b48ed7f86968ac228b433bd8664dc4a6235

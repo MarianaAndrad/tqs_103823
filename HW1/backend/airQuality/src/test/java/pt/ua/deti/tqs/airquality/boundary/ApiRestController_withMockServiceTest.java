@@ -29,7 +29,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @WebMvcTest(ApiRestController.class)
-@Disabled // REMOVE Or Comment THIS LINE TO RUN THE TESTS But if you do, the tests will fail, because the number of requests to the external APIs is limited
+// @Disabled // REMOVE Or Comment THIS LINE TO RUN THE TESTS But if you do, the tests will fail, because the number of requests to the external APIs is limited
 class ApiRestController_withMockServiceTest {
 
     @Autowired

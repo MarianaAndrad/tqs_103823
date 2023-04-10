@@ -36,12 +36,10 @@ class AirVisualServiceTest {
     private Storage<AirVisualKey, WeatherEntry> weatherStorage;
 
     private AirVisualService service;
-
     @BeforeEach
     void setup() {
         service = new AirVisualService(api, geocodingService, openWeatherService, locations, weatherStorage);
     }
-
     @Test
     void testCountriesWhenInCache() throws URISyntaxException, IOException {
         when(locations.get("countries")).thenReturn(List.of("Portugal", "Spain"));
@@ -56,7 +54,6 @@ class AirVisualServiceTest {
         verify(openWeatherService, times(0)).getWeather(any(), any());
         verify(geocodingService, times(0)).getCoordinates(any(),any());
     }
-
     @Test
     void testCountriesWhenNotInCache() throws URISyntaxException, IOException {
         when(locations.get("countries")).thenReturn(null);

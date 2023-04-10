@@ -22,13 +22,9 @@ class StorageTest {
     }
 
     @Test
-    void testTTL() {
+    void testTTL() throws InterruptedException {
         storage.add("key", "value");
-        try{
-            Thread.sleep(5);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        Thread.sleep(5);
         assertNull(storage.get("key"));
     }
 }

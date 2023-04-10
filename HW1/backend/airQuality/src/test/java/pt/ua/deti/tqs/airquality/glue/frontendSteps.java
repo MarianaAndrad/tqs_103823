@@ -17,12 +17,10 @@ import java.net.URL;
 public class frontendSteps {
     private static final DockerComposeContainer environment = new DockerComposeContainer(new java.io.File("../../docker-compose.test.yml"))
             .withBuild(true);
-
     private RemoteWebDriver driver;
     private HomePage homePage;
     private AirQualityPage airQualityPage;
     private WeatherPage weatherPage;
-
     @Given("I am on the homepage")
     public void iAmOnTheHomepage() throws MalformedURLException {
         environment.stop();

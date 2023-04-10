@@ -18,7 +18,7 @@ import static org.hamcrest.Matchers.*;
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT, classes = AirQualityApplication.class)
 @TestPropertySource(locations = "classpath:application-integrationtest.properties")
 @AutoConfigureMockMvc
-@Disabled // Remove this line to run the integration tests
+// @Disabled // Remove this line to run the integration tests
 class ApiRestControllerIT {
     @Autowired
     private MockMvc mvc;

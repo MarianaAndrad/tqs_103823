@@ -5,8 +5,7 @@ Esta aplicação oferece detalhes uma pesquisa  _Air Quality_ e _Weather_ e deta
 ![demo]()
 
 # Arquitetura 
-<!-- COLOCAR E FAZER DIAGRAMA -->
-![diagrama]() 
+![diagrama](https://media.discordapp.net/attachments/801404922272546816/1095011613989417151/mariana.png) 
 
 ## Techonologies stack 
 Component | Tecnology

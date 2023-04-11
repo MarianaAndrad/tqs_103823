@@ -65,7 +65,7 @@ export default function Api({ backend }: { backend: string }) {
 
     return (
         <div className="pt-20 h-screen">
-            <h1 className="text-3xl font-bold mb-6 p-5">APi Statistics</h1>
+            <h1 className="text-3xl font-bold mb-6 p-5">API Statistics</h1>
 
             <h1 className="p-5"></h1>
             <div className="stats shadow grid grid-cols-4">
@@ -83,7 +83,7 @@ export default function Api({ backend }: { backend: string }) {
                 <div className="stat">
                     <div className="stat-figure ">
                         <label className="swap swap-active text-6xl">
-                            <div className="swap-on text-secondary">❌</div>
+                            <div className="swap-on text-secondary">X</div>
                         </label>
                     </div>
                     <div className="stat-title">Open Weather</div>
@@ -130,7 +130,7 @@ export default function Api({ backend }: { backend: string }) {
                 <div className="stat">
                     <div className="stat-figure ">
                         <label className="swap swap-active text-6xl">
-                            <div className="swap-on text-secondary">❌</div>
+                            <div className="swap-on text-secondary">X</div>
                         </label>
                     </div>
                     <div className="stat-title">Air Visual</div>
@@ -177,7 +177,7 @@ export default function Api({ backend }: { backend: string }) {
                 <div className="stat">
                     <div className="stat-figure ">
                         <label className="swap swap-active text-6xl">
-                            <div className="swap-on text-secondary">❌</div>
+                            <div className="swap-on text-secondary">X</div>
                         </label>
                     </div>
                     <div className="stat-title">Geocoding</div>

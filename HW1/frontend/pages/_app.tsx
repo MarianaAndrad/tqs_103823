@@ -9,6 +9,6 @@ export default function App({ Component, pageProps }: AppProps) {
     <div className="container mx-auto">
       <Component {...pageProps} />
     </div>
-    <Footer />
+    {/*<Footer />*/}
   </div>
 }

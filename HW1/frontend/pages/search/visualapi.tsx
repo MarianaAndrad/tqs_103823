@@ -168,8 +168,8 @@ export default function VisualAPI({ backend }: { backend: string }) {
                             </div>
                             <div className="stat">
                                 <div className="stat-title">Coordenates Information</div>
-                                <div className="stat-value">latitude: {weatherData["latitude"]}</div>
-                                <div className="stat-value">longitude: {weatherData["longitude"]}</div>
+                                <div className="stat-value">latitude: {weatherData["latitude"].toFixed(2)}</div>
+                                <div className="stat-value">longitude: {weatherData["longitude"].toFixed(2)}</div>
                             </div>
                         </div>
                         <div className="stats shadow">

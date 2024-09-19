@@ -21,5 +21,8 @@
 
 - [Lab07 - Additional tools for integration tests (Test Containers, REST Assured)](/Lab7/readme.md) </br>
 
+## Homework
+-[homework](/Hw1)
+
 ## Project
 - [project](https://github.com/Roadrunner-TQS)

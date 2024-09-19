@@ -19,10 +19,10 @@
 
 - [Lab06 - Static Code analysis (with SonarQube)](/Lab6/Readme.md) </br>
 
-- [Lab07 - Additional tools for integration tests (Test Containers, REST Assured)](/Lab7/readme.md) </br>
+- [Lab07 - Additional tools for integration tests (Test Containers, REST Assured)](/Lab7) </br>
 
 ## Homework
--[homework](/Hw1)
+- [homework](/HW1/)
 
 ## Project
 - [project](https://github.com/Roadrunner-TQS)
